@@ -24,7 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.ConexionBD;
-//import expendioproyecto.modelo.dao.InicioSesionDAO;
+import expendioproyecto.modelo.dao.IniciarSesionDAO;
 //import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 
@@ -32,7 +32,7 @@ import expendioproyecto.utilidad.Utilidad;
  *
  * @author uriel
  */
-public class FXMLInicioSesionController implements Initializable{
+public class FXMLIniciarSesionController implements Initializable{
 
     @FXML
     private TextField tfUsuario;
@@ -74,7 +74,7 @@ public class FXMLInicioSesionController implements Initializable{
     
     private void validarCredenciales(String usuario, String contrasena){
         try{
-            Usuario usuarioSesion = InicioSesionDAO.verificarCredenciales
+            Usuario usuarioSesion = IniciarSesionDAO.verificarCredenciales
             (usuario, contrasena);
             if (usuarioSesion != null){
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, 
