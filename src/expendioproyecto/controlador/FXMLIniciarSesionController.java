@@ -25,6 +25,7 @@ import javafx.stage.Stage;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.ConexionBD;
 import expendioproyecto.modelo.dao.IniciarSesionDAO;
+import expendioproyecto.modelo.pojo.Usuario;
 //import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 
@@ -35,13 +36,13 @@ import expendioproyecto.utilidad.Utilidad;
 public class FXMLIniciarSesionController implements Initializable{
 
     @FXML
-    private TextField tfUsuario;
+    private TextField tfUsername;
     @FXML
-    private PasswordField tfContraseña;
+    private Label lbErrorUsername;
     @FXML
-    private Label lbErrorUsuario;
+    private Label lbErrorPassword;
     @FXML
-    private Label lbErrorContraseña;
+    private PasswordField tfPassword;
     
     @Override
     public void initialize (URL url, ResourceBundle rb){
@@ -50,38 +51,38 @@ public class FXMLIniciarSesionController implements Initializable{
 
     @FXML
     private void btnClicVerificarSesion(ActionEvent event) {
-        String usuario = tfUsuario.getText();
-        String contraseña = tfContraseña.getText();
-        if(validarCampos(usuario, contraseña))
-            validarCredenciales(usuario, contraseña);
+        String username = tfUsername.getText();
+        String password = tfPassword.getText();
+        if(validarCampos(username, password))
+            validarCredenciales(username, password);
     }
     
-    private boolean validarCampos(String usuario, String contrasena){
+    private boolean validarCampos(String username, String password){
         //Limpiar campos
-        lbErrorUsuario.setText("");
-        lbErrorContraseña.setText("");
+        lbErrorUsername.setText("");
+        lbErrorPassword.setText("");
         boolean camposValidos = true;
-        if(usuario.isEmpty()){
-            lbErrorUsuario.setText("Usuario obligatorio");
+        if(username.isEmpty()){
+            lbErrorUsername.setText("Usuario obligatorio");
             camposValidos = false;
         }
-        if(contrasena.isEmpty()){
-            lbErrorContraseña.setText("Contraseña obligatoria");
+        if(password.isEmpty()){
+            lbErrorPassword.setText("Contraseña obligatoria");
             camposValidos = false;
         }
         return camposValidos;
     }
     
-    private void validarCredenciales(String usuario, String contrasena){
+    private void validarCredenciales(String username, String password){
         try{
             Usuario usuarioSesion = IniciarSesionDAO.verificarCredenciales
-            (usuario, contrasena);
+            (username, password);
             if (usuarioSesion != null){
-                Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, 
-                        "Credenciales correctas", "Bienvenido(a) " 
-                        + usuarioSesion.toString() + " al sistema.");
+                //Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, 
+                        //"Credenciales correctas", "Bienvenido(a) " 
+                        //+ usuarioSesion.toString() + " al sistema.");
                 irPantallaPrincipal(usuarioSesion);
-            }else{                
+            }else{
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, 
                         "Credenciales incorrectas", "Usuario y/o contraseña "
                         + "incorrectos, por favor verifica tu información.");
@@ -94,15 +95,12 @@ public class FXMLIniciarSesionController implements Initializable{
     
     private void irPantallaPrincipal(Usuario usuario){
         try {
-            Stage escenarioBase = (Stage) tfUsuario.getScene().getWindow();
-            //Parent vista = FXMLLoader.load(JavaFXAppEscolar.class.getResource("vista/FXMLPrincipal.fxml"));
-            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLPrincipal.fxml"));
+            Stage escenarioBase = (Stage) tfUsername.getScene().getWindow();
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();
-            FXMLVentanaPrincipalController controlador = cargador.getController();
-            controlador.inicializarInformacion(usuario);
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
-            escenarioBase.setTitle("Home");
+            escenarioBase.setTitle("Inicio de Sesión");
             escenarioBase.showAndWait();
         } catch (IOException ex) {
             ex.printStackTrace();

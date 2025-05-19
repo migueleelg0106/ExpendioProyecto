@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import expendioproyecto.modelo.ConexionBD;
+import expendioproyecto.modelo.pojo.Usuario;
 //import expendioproyecto.modelo.pojo.Usuario;
 
 /**
@@ -22,10 +23,9 @@ public class IniciarSesionDAO {
         Usuario usuarioSesion = null;
         Connection conexionBD = ConexionBD.abrirConexion();
         if(conexionBD != null){
-            String consulta = "SELECT idUsuario, nombre, apellidoPaterno, "
-                    + "apellidoMaterno, username "
-                    + "FROM usuario "
-                    + "WHERE username = ? AND password = ?";
+            String consulta = "SELECT * FROM usuario WHERE username = ? AND "
+                + "AES_DECRYPT(password, 'ClaveExpendio2025@') = ?";
+
             
             PreparedStatement sentencia = conexionBD.prepareStatement(consulta);
             sentencia.setString(1, username);
@@ -43,12 +43,9 @@ public class IniciarSesionDAO {
         
     private static Usuario convertirRegistroUsuario(ResultSet resultado) throws SQLException{
         Usuario usuario = new Usuario();
-        usuario.setIdUsuario(resultado.getInt("idUsuario"));
-        usuario.setNombre(resultado.getString("nombre"));
-        usuario.setApellidoPaterno(resultado.getString("apellidoPaterno"));
-        usuario.setApellidoMaterno(resultado.getString("apellidoMaterno") 
-                != null ? resultado.getString("apellidoMaterno") : "");
         usuario.setUsername(resultado.getString("username"));
+        usuario.setPassword(resultado.getString("password"));
+        
         return usuario;
     }
 }
