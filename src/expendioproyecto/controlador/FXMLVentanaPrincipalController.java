@@ -5,6 +5,7 @@
 package expendioproyecto.controlador;
 
 import expendioproyecto.ExpendioProyecto;
+import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,7 +39,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicManejarInventario(ActionEvent event) {
         try{
-            Stage escenarioBase = (Stage) lbSeleccionarOpcion.getScene().getWindow();
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
             Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLInventario.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);
@@ -53,7 +54,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicPedidosDeClientes(ActionEvent event) {
         try{
-            Stage escenarioBase = (Stage) lbSeleccionarOpcion.getScene().getWindow();
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
             Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLPedidosClientes.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);
@@ -68,7 +69,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicPedidosDeProveedor(ActionEvent event) {
         try{
-            Stage escenarioBase = (Stage) lbSeleccionarOpcion.getScene().getWindow();
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
             Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLPedidosProveedor.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);
@@ -83,7 +84,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicVentas(ActionEvent event) {
         try{
-            Stage escenarioBase = (Stage) lbSeleccionarOpcion.getScene().getWindow();
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
             Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLVenta.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);
@@ -98,7 +99,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicBebidas(ActionEvent event) {
         try{
-            Stage escenarioBase = (Stage) lbSeleccionarOpcion.getScene().getWindow();
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
             Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLBebida.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);
@@ -113,7 +114,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicProveedores(ActionEvent event) {
         try{
-            Stage escenarioBase = (Stage) lbSeleccionarOpcion.getScene().getWindow();
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
             Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLProveedor.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);
@@ -128,7 +129,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicPromociones(ActionEvent event) {
         try{
-            Stage escenarioBase = (Stage) lbSeleccionarOpcion.getScene().getWindow();
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
             Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLPromocion.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);
@@ -143,7 +144,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicReportes(ActionEvent event) {
         try{
-            Stage escenarioBase = (Stage) lbSeleccionarOpcion.getScene().getWindow();
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
             Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporte.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);
@@ -158,7 +159,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicCompras(ActionEvent event) {
         try{
-            Stage escenarioBase = (Stage) lbSeleccionarOpcion.getScene().getWindow();
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
             Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLCompras.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);
@@ -173,7 +174,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicClientes(ActionEvent event) {
         try{
-            Stage escenarioBase = (Stage) lbSeleccionarOpcion.getScene().getWindow();
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
             Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLCliente.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);
@@ -188,7 +189,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicCerrarSesión(ActionEvent event) {
         try{
-            Stage escenarioBase = (Stage) lbSeleccionarOpcion.getScene().getWindow();
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
             Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLIniciarSesion.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);

@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLBebidaController">
-    
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLBebidaController">
+   <children>
+      <Label prefHeight="77.0" prefWidth="800.0" style="-fx-background-color: #ffa333;" text="    Administración de Bebidas">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="34.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="77.0" fitWidth="82.0" layoutX="715.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recurso/logoExpendioBlancoNegro.png" />
+         </image>
+      </ImageView>
+      <TableView layoutX="28.0" layoutY="178.0" prefHeight="354.0" prefWidth="744.0" style="-fx-background-color: ffca79;">
+        <columns>
+          <TableColumn fx:id="colNombre" prefWidth="135.0" text="Nombre" />
+          <TableColumn fx:id="colExistencia" prefWidth="101.0" text="Existencia" />
+            <TableColumn fx:id="colPrecio" minWidth="0.0" prefWidth="82.0" text="Precio" />
+            <TableColumn fx:id="colStockMin" minWidth="0.0" prefWidth="139.0" text="Stock Mínimo" />
+            <TableColumn fx:id="colDescripcion" minWidth="0.0" prefWidth="286.0" text="Descripción" />
+        </columns>
+      </TableView>
+      <TextField fx:id="tfBuscar" layoutX="28.0" layoutY="106.0" prefHeight="39.0" prefWidth="393.0" promptText="Buscar bebida" style="-fx-background-color: FFFFFF; -fx-cursor: hand;" />
+      <Button layoutX="684.0" layoutY="106.0" mnemonicParsing="false" onAction="#btnClicEliminar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Eliminar" />
+      <Button layoutX="569.0" layoutY="106.0" mnemonicParsing="false" onAction="#btnClicModificar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Modificar" />
+      <Button layoutX="462.0" layoutY="106.0" mnemonicParsing="false" onAction="#btnClicAgregar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Agregar" />
+      <ImageView fitHeight="39.0" fitWidth="51.0" layoutX="381.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recurso/icons8-buscar-50.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="28.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
+   </children>
 </AnchorPane>

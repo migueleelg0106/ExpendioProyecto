@@ -95,12 +95,12 @@ public class FXMLIniciarSesionController implements Initializable{
     
     private void irPantallaPrincipal(Usuario usuario){
         try {
-            Stage escenarioBase = (Stage) tfUsername.getScene().getWindow();
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(tfUsername);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
-            escenarioBase.setTitle("Inicio de Sesión");
+            escenarioBase.setTitle("Menú Principal");
             escenarioBase.showAndWait();
         } catch (IOException ex) {
             ex.printStackTrace();

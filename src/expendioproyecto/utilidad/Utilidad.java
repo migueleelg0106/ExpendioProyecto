@@ -5,6 +5,8 @@
 package expendioproyecto.utilidad;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.Control;
+import javafx.stage.Stage;
 
 /**
  *
@@ -17,5 +19,9 @@ public class Utilidad {
         alerta.setHeaderText(null);
         alerta.setContentText(mensaje);
         alerta.showAndWait();
+    }
+    
+    public static Stage gestEscenarioComponente(Control componente){
+        return (Stage) componente.getScene().getWindow();
     }
 }
