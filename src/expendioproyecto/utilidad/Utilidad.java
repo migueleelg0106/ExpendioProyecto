@@ -24,4 +24,8 @@ public class Utilidad {
     public static Stage gestEscenarioComponente(Control componente){
         return (Stage) componente.getScene().getWindow();
     }
+    
+    public static void cerrarVentanaComponente(Control componente){
+        ((Stage) componente.getScene().getWindow()).close();
+    }
 }

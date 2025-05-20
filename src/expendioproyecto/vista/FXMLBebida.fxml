@@ -21,7 +21,7 @@
             <Image url="@../recurso/logoExpendioBlancoNegro.png" />
          </image>
       </ImageView>
-      <TableView layoutX="28.0" layoutY="178.0" prefHeight="354.0" prefWidth="744.0" style="-fx-background-color: ffca79;">
+      <TableView fx:id="tvBebidas" layoutX="28.0" layoutY="178.0" prefHeight="354.0" prefWidth="744.0" style="-fx-background-color: ffca79;">
         <columns>
           <TableColumn fx:id="colNombre" prefWidth="135.0" text="Nombre" />
           <TableColumn fx:id="colExistencia" prefWidth="101.0" text="Existencia" />
@@ -30,7 +30,7 @@
             <TableColumn fx:id="colDescripcion" minWidth="0.0" prefWidth="286.0" text="Descripción" />
         </columns>
       </TableView>
-      <TextField fx:id="tfBuscar" layoutX="28.0" layoutY="106.0" prefHeight="39.0" prefWidth="393.0" promptText="Buscar bebida" style="-fx-background-color: FFFFFF; -fx-cursor: hand;" />
+      <TextField fx:id="tfBuscar" layoutX="28.0" layoutY="106.0" prefHeight="39.0" prefWidth="393.0" promptText="Buscar bebida" style="-fx-background-color: FFFFFF; -fx-cursor: text;" />
       <Button layoutX="684.0" layoutY="106.0" mnemonicParsing="false" onAction="#btnClicEliminar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Eliminar" />
       <Button layoutX="569.0" layoutY="106.0" mnemonicParsing="false" onAction="#btnClicModificar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Modificar" />
       <Button layoutX="462.0" layoutY="106.0" mnemonicParsing="false" onAction="#btnClicAgregar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Agregar" />

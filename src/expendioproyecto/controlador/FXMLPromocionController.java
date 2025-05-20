@@ -5,6 +5,7 @@
 package expendioproyecto.controlador;
 
 import expendioproyecto.ExpendioProyecto;
+import expendioproyecto.modelo.pojo.Promoción;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,17 +29,19 @@ import javafx.stage.Stage;
 public class FXMLPromocionController implements Initializable {
 
     @FXML
-    private TableColumn<?, ?> colBebida;
+    private TableColumn colBebida;
     @FXML
-    private TableColumn<?, ?> colDescuento;
+    private TableColumn colDescuento;
     @FXML
-    private TableColumn<?, ?> colFechaInicio;
+    private TableColumn colFechaInicio;
     @FXML
-    private TableColumn<?, ?> colFechaVencimiento;
+    private TableColumn colFechaVencimiento;
     @FXML
-    private TableColumn<?, ?> colDescripcion;
+    private TableColumn colDescripcion;
     @FXML
     private TextField tfBuscar;
+    @FXML
+    private TableView<Promoción> tvPromocion;
 
     /**
      * Initializes the controller class.

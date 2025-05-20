@@ -8,24 +8,24 @@ package expendioproyecto.modelo.pojo;
  *
  * @author uriel
  */
-public class Producto {
+public class Bebida {
     
     private int idProducto;
     private String nombre;
     private int existencia;
     private float precio;
-    private int StockMinimo;
+    private int stockMinimo;
     private String descripcion;
 
-    public Producto() {
+    public Bebida() {
     }
 
-    public Producto(int idProducto, String nombre, int existencia, float precio, int StockMinimo, String descripcion) {
+    public Bebida(int idProducto, String nombre, int existencia, float precio, int StockMinimo, String descripcion) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.existencia = existencia;
         this.precio = precio;
-        this.StockMinimo = StockMinimo;
+        this.stockMinimo = StockMinimo;
         this.descripcion = descripcion;
     }
 
@@ -62,11 +62,11 @@ public class Producto {
     }
 
     public int getStockMinimo() {
-        return StockMinimo;
+        return stockMinimo;
     }
 
-    public void setStockMinimo(int StockMinimo) {
-        this.StockMinimo = StockMinimo;
+    public void setStockMinimo(int stockMinimo) {
+        this.stockMinimo = stockMinimo;
     }
 
     public String getDescripcion() {

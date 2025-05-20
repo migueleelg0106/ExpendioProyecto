@@ -5,6 +5,7 @@
 package expendioproyecto.controlador;
 
 import expendioproyecto.ExpendioProyecto;
+import expendioproyecto.modelo.pojo.Proveedor;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,15 +29,17 @@ import javafx.stage.Stage;
 public class FXMLProveedorController implements Initializable {
 
     @FXML
-    private TableColumn<?, ?> colRazonSocial;
+    private TableColumn colRazonSocial;
     @FXML
-    private TableColumn<?, ?> colDireccion;
+    private TableColumn colDireccion;
     @FXML
-    private TableColumn<?, ?> colCorreo;
+    private TableColumn colCorreo;
     @FXML
-    private TableColumn<?, ?> colTelefono;
+    private TableColumn colTelefono;
     @FXML
     private TextField tfBuscar;
+    @FXML
+    private TableView<Proveedor> tvProveedor;
 
     /**
      * Initializes the controller class.

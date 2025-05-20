@@ -5,6 +5,7 @@
 package expendioproyecto.controlador;
 
 import expendioproyecto.ExpendioProyecto;
+import expendioproyecto.modelo.pojo.Cliente;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,19 +29,21 @@ import javafx.stage.Stage;
 public class FXMLClienteController implements Initializable {
 
     @FXML
-    private TableColumn<?, ?> colRazonSocial;
+    private TableColumn colRazonSocial;
     @FXML
-    private TableColumn<?, ?> colDireccion;
+    private TableColumn colDireccion;
     @FXML
-    private TableColumn<?, ?> colCorreo;
+    private TableColumn colCorreo;
     @FXML
-    private TableColumn<?, ?> colTelefono;
+    private TableColumn colTelefono;
     @FXML
-    private TableColumn<?, ?> colTipo;
+    private TableColumn colTipo;
     @FXML
-    private TableColumn<?, ?> colRFC;
+    private TableColumn colRFC;
     @FXML
     private TextField tfBuscar;
+    @FXML
+    private TableView<Cliente> tvClientes;
 
     /**
      * Initializes the controller class.
