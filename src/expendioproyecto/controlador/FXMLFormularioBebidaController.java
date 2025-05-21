@@ -44,6 +44,7 @@ public class FXMLFormularioBebidaController implements Initializable {
 
     @FXML
     private void clicCancelar(ActionEvent event) {
+        cerrarVentana();
     }
     
     private void cerrarVentana(){

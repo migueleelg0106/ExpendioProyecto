@@ -134,7 +134,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
-            escenarioBase.setTitle("Inicio Sesión");
+            escenarioBase.setTitle("Promociones");
             escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();

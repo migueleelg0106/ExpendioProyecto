@@ -5,7 +5,7 @@
 package expendioproyecto.modelo.dao;
 
 import expendioproyecto.modelo.ConexionBD;
-import expendioproyecto.modelo.pojo.Bebida;
+import expendioproyecto.modelo.pojo.Proveedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,17 +16,17 @@ import java.util.ArrayList;
  *
  * @author uriel
  */
-public class BebidaDAO {
-    public static ArrayList<Bebida> obtenerBebidas() throws SQLException{
-        ArrayList<Bebida> bebidas = new ArrayList<Bebida>();
+public class ProveedorDAO {
+    public static ArrayList<Proveedor> obtenerProveedores() throws SQLException{
+        ArrayList<Proveedor> proveedores = new ArrayList<Proveedor>();
         Connection conexionBD = ConexionBD.abrirConexion();
         
         if(conexionBD != null){
-            String consulta = "SELECT idProducto, nombre, existencia, precio, stockMinimo, descripcion FROM producto";
+            String consulta = "SELECT idProveedor, razonSocial, direccion, correo, telefono FROM proveedor";
             PreparedStatement sentencia = conexionBD.prepareStatement(consulta);
             ResultSet resultado = sentencia.executeQuery();
             while(resultado.next()){
-                bebidas.add(convertirRegistroBebida(resultado));
+                proveedores.add(convertirRegistroProveedores(resultado));
             }
             sentencia.close();
             resultado.close();
@@ -34,18 +34,18 @@ public class BebidaDAO {
         }else{
             throw new SQLException("Sin conexión en la BD");
         }
-        return bebidas;
+        return proveedores;
     }
     
-    private static Bebida convertirRegistroBebida(ResultSet resultado) throws SQLException{
-        Bebida bebida = new Bebida();
-        bebida.setIdProducto(resultado.getInt("idProducto"));
-        bebida.setNombre(resultado.getString("nombre"));
-        bebida.setExistencia(resultado.getInt("existencia"));
-        bebida.setPrecio(resultado.getFloat("precio"));
-        bebida.setStockMinimo(resultado.getInt("stockMinimo"));
-        bebida.setDescripcion(resultado.getString("descripcion"));
+    private static Proveedor convertirRegistroProveedores(ResultSet resultado) throws SQLException{
+        Proveedor proveedor = new Proveedor();
+        proveedor.setIdProveedor(resultado.getInt("idProveedor"));
+        proveedor.setRazonSocial(resultado.getString("razonSocial"));
+        proveedor.setDireccion(resultado.getString("direccion"));
+        proveedor.setCorreo(resultado.getString("correo"));
+        proveedor.setTelefono(resultado.getString("telefono"));
         
-        return bebida;
+        return proveedor;
     }
+    
 }

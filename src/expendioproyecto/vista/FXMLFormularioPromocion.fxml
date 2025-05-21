@@ -1,11 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLFormularioPromocionController">
-    
+<AnchorPane id="AnchorPane" prefHeight="543.0" prefWidth="457.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLFormularioPromocionController">
+   <children>
+      <Label layoutX="25.0" layoutY="164.0" text="Ingrese el descuento:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="93.0" text="Ingrese la bebida a la que aplica la promoción:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfDescuento" layoutX="25.0" layoutY="191.0" promptText="Descuento" />
+      <TextField fx:id="tfBebida" layoutX="25.0" layoutY="120.0" prefHeight="31.0" prefWidth="403.0" promptText="Bebida" />
+      <Label prefHeight="81.0" prefWidth="457.0" style="-fx-background-color: #ffa333;" text="    Agregar Promoción">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="23.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="71.0" fitWidth="75.0" layoutX="376.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recurso/logoExpendioBlancoNegro.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="129.0" layoutY="495.0" mnemonicParsing="false" onAction="#clicGuardar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Guardar">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="257.0" layoutY="495.0" mnemonicParsing="false" onAction="#clicCancelar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Cancelar">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="25.0" layoutY="342.0" text="Ingrese la fecha de inicio de la promoción:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dpFechaInicio" layoutX="25.0" layoutY="367.0" promptText="Fecha de inicio" />
+      <DatePicker fx:id="dpFechaVencimiento" layoutX="26.0" layoutY="437.0" promptText="Fecha de vencimiento" />
+      <Label layoutX="26.0" layoutY="412.0" text="Ingrese la fecha de vencimiento de la promoción:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="238.0" text="Ingrese la descripción:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfDescripcion" layoutX="25.0" layoutY="261.0" prefHeight="71.0" prefWidth="407.0" promptText="Descripción" />
+   </children>
 </AnchorPane>

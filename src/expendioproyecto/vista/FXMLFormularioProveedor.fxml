@@ -1,11 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLFormularioProveedorController">
-    
+<AnchorPane id="AnchorPane" prefHeight="374.0" prefWidth="457.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLFormularioProveedorController">
+   <children>
+      <Label layoutX="25.0" layoutY="93.0" text="Ingrese la razón social:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfDireccion" layoutX="25.0" layoutY="193.0" prefHeight="17.0" prefWidth="407.0" promptText="Dirección" />
+      <TextField fx:id="tfTelefono" layoutX="243.0" layoutY="120.0" promptText="Teléfono" />
+      <TextField fx:id="tfRazonSocial" layoutX="25.0" layoutY="120.0" promptText="Razón social" />
+      <Label prefHeight="81.0" prefWidth="457.0" style="-fx-background-color: #ffa333;" text="    Agregar Proveedor">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="23.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="71.0" fitWidth="75.0" layoutX="376.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recurso/logoExpendioBlancoNegro.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="121.0" layoutY="321.0" mnemonicParsing="false" onAction="#clicGuardar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Guardar">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="249.0" layoutY="321.0" mnemonicParsing="false" onAction="#clicCancelar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Cancelar">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="243.0" layoutY="93.0" text="Ingrese el teléfono:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="167.0" text="Ingrese la dirección:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="25.0" layoutY="239.0" text="Ingrese el correo electrónico:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfCorreo" layoutX="25.0" layoutY="265.0" prefHeight="17.0" prefWidth="407.0" promptText="Correo electrónico" />
+   </children>
 </AnchorPane>

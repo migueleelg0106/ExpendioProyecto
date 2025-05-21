@@ -73,7 +73,7 @@ public class FXMLBebidaController implements Initializable {
     private void cargarInformacionTabla(){
         try {
             bebidas = FXCollections.observableArrayList();
-            ArrayList<Bebida> bebidasDAO = BebidaDAO.obtenerAlumnos();
+            ArrayList<Bebida> bebidasDAO = BebidaDAO.obtenerBebidas();
             bebidas.addAll(bebidasDAO);
             tvBebidas.setItems(bebidas);
         } catch (SQLException ex) {

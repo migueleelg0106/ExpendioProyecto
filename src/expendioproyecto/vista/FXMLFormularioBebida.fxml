@@ -32,12 +32,12 @@
          <image>
             <Image url="@../recurso/logoExpendioBlancoNegro.png" />
          </image></ImageView>
-      <Button layoutX="131.0" layoutY="362.0" mnemonicParsing="false" onAction="#clicGuardar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Guardar">
+      <Button layoutX="121.0" layoutY="363.0" mnemonicParsing="false" onAction="#clicGuardar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Guardar">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="259.0" layoutY="362.0" mnemonicParsing="false" onAction="#clicCancelar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Cancelar">
+      <Button layoutX="249.0" layoutY="363.0" mnemonicParsing="false" onAction="#clicCancelar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Cancelar">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>

@@ -13,22 +13,24 @@ import java.time.LocalDateTime;
 public class Promoción {
     
     private int idPromocion;
-    private LocalDateTime fechaInicio;
-    private LocalDateTime fechaVencimiento;
+    private String fechaInicio;
+    private String fechaVencimiento;
     private int descuento;
     private String descripcion;
     private int idProducto;
+    private String producto;
 
     public Promoción() {
     }
 
-    public Promoción(int idPromocion, LocalDateTime fechaInicio, LocalDateTime fechaVencimiento, int descuento, String descripcion, int idProducto) {
+    public Promoción(int idPromocion, String fechaInicio, String fechaVencimiento, int descuento, String descripcion, int idProducto, String producto) {
         this.idPromocion = idPromocion;
         this.fechaInicio = fechaInicio;
         this.fechaVencimiento = fechaVencimiento;
         this.descuento = descuento;
         this.descripcion = descripcion;
         this.idProducto = idProducto;
+        this.producto = producto;
     }
 
     public int getIdPromocion() {
@@ -39,19 +41,19 @@ public class Promoción {
         this.idPromocion = idPromocion;
     }
 
-    public LocalDateTime getFechaInicio() {
+    public String getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(LocalDateTime fechaInicio) {
+    public void setFechaInicio(String fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public LocalDateTime getFechaVencimiento() {
+    public String getFechaVencimiento() {
         return fechaVencimiento;
     }
 
-    public void setFechaVencimiento(LocalDateTime fechaVencimiento) {
+    public void setFechaVencimiento(String fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
     }
 
@@ -79,4 +81,11 @@ public class Promoción {
         this.idProducto = idProducto;
     }
     
+    public String getProducto() {
+        return producto;
+    }
+
+    public void setProducto(String producto) {
+        this.producto = producto;
+    }
 }

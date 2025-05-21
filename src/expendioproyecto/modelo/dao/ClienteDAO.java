@@ -5,7 +5,7 @@
 package expendioproyecto.modelo.dao;
 
 import expendioproyecto.modelo.ConexionBD;
-import expendioproyecto.modelo.pojo.Bebida;
+import expendioproyecto.modelo.pojo.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,17 +16,18 @@ import java.util.ArrayList;
  *
  * @author uriel
  */
-public class BebidaDAO {
-    public static ArrayList<Bebida> obtenerBebidas() throws SQLException{
-        ArrayList<Bebida> bebidas = new ArrayList<Bebida>();
+public class ClienteDAO {
+    
+    public static ArrayList<Cliente> obtenerClientes() throws SQLException{
+        ArrayList<Cliente> bebidas = new ArrayList<Cliente>();
         Connection conexionBD = ConexionBD.abrirConexion();
         
         if(conexionBD != null){
-            String consulta = "SELECT idProducto, nombre, existencia, precio, stockMinimo, descripcion FROM producto";
+            String consulta = "SELECT idCliente, razonSocial, direccion, correo, rfc, telefono, tipo FROM cliente";
             PreparedStatement sentencia = conexionBD.prepareStatement(consulta);
             ResultSet resultado = sentencia.executeQuery();
             while(resultado.next()){
-                bebidas.add(convertirRegistroBebida(resultado));
+                bebidas.add(convertirRegistroCliente(resultado));
             }
             sentencia.close();
             resultado.close();
@@ -37,15 +38,17 @@ public class BebidaDAO {
         return bebidas;
     }
     
-    private static Bebida convertirRegistroBebida(ResultSet resultado) throws SQLException{
-        Bebida bebida = new Bebida();
-        bebida.setIdProducto(resultado.getInt("idProducto"));
-        bebida.setNombre(resultado.getString("nombre"));
-        bebida.setExistencia(resultado.getInt("existencia"));
-        bebida.setPrecio(resultado.getFloat("precio"));
-        bebida.setStockMinimo(resultado.getInt("stockMinimo"));
-        bebida.setDescripcion(resultado.getString("descripcion"));
+    private static Cliente convertirRegistroCliente(ResultSet resultado) throws SQLException{
+        Cliente cliente = new Cliente();
+        cliente.setIdCliente(resultado.getInt("idCliente"));
+        cliente.setRazonSocial(resultado.getString("razonSocial"));
+        cliente.setDireccion(resultado.getString("direccion"));
+        cliente.setCorreo(resultado.getString("correo"));
+        cliente.setRfc(resultado.getString("rfc"));
+        cliente.setTelefono(resultado.getString("telefono"));
+        cliente.setTipo(resultado.getString("tipo"));
         
-        return bebida;
+        return cliente;
     }
+    
 }
