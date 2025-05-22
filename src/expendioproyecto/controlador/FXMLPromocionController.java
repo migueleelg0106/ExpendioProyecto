@@ -60,6 +60,7 @@ public class FXMLPromocionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         configurarTabla();
         cargarInformacionTabla();
+        configurarBuscador();
     }    
     
     private void configurarTabla(){
@@ -91,15 +92,48 @@ public class FXMLPromocionController implements Initializable {
 
     @FXML
     private void btnClicEliminar(ActionEvent event) {
+        Promoción seleccionada = tvPromocion.getSelectionModel().getSelectedItem();
+        if (seleccionada == null) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Sin selección", "Selecciona una promoción para eliminar.");
+            return;
+        }
+
+        boolean confirmado = Utilidad.mostrarConfirmacion(
+                "Confirmar eliminación",
+                "¿Deseas eliminar la promoción seleccionada?",
+                "Esta acción no se puede deshacer.");
+
+        if (confirmado) {
+            try {
+                boolean exito = PromocionDAO.eliminarPromocion(seleccionada.getIdPromocion());
+                if (exito) {
+                    Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Promoción eliminada correctamente.");
+                    cargarInformacionTabla();
+                } else {
+                    Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo eliminar la promoción.");
+                }
+            } catch (SQLException e) {
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error crítico", "Ocurrió un error al eliminar la promoción.");
+                e.printStackTrace();
+            }
+        }
     }
+
 
     @FXML
     private void btnClicModificar(ActionEvent event) {
+        Promoción seleccionada = tvPromocion.getSelectionModel().getSelectedItem();
+        if (seleccionada == null) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Sin selección", "Selecciona una promoción para modificar.");
+            return;
+        }
+
+        irFormularioPromocion(seleccionada);
     }
 
     @FXML
     private void btnClicAgregar(ActionEvent event) {
-        irFormularioPromocion();
+        irFormularioPromocion(null);
     }
 
     @FXML
@@ -111,26 +145,50 @@ public class FXMLPromocionController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Menú Principal");
-            escenarioBase.showAndWait();
+            escenarioBase.show();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
     
-    private void irFormularioPromocion() {
+    private void irFormularioPromocion(Promoción promocionEditar) {
         try {
-            Stage escenarioFormulario = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            Parent vista = loader.load(ExpendioProyecto.class.getResource("vista/FXMLFormularioPromocion.fxml"));
-            //TODO paso de parametros
-            Scene escena = new Scene(vista);
-            escenarioFormulario.setScene(escena);
-            escenarioFormulario.setTitle("Formulario Promoción");
-            escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
-            escenarioFormulario.showAndWait();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            FXMLLoader loader = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLFormularioPromocion.fxml"));
+            Parent vista = loader.load();
+
+            FXMLFormularioPromocionController controlador = loader.getController();
+            controlador.inicializarFormulario(promocionEditar);
+
+            Stage ventana = new Stage();
+            ventana.setScene(new Scene(vista));
+            ventana.setTitle(promocionEditar == null ? "Agregar Promoción" : "Modificar Promoción");
+            ventana.initModality(Modality.APPLICATION_MODAL);
+            ventana.showAndWait();
+
+            cargarInformacionTabla();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+    
+    private void configurarBuscador() {
+        tfBuscar.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (promociones != null) {
+                ObservableList<Promoción> filtradas = FXCollections.observableArrayList();
+                String filtro = newValue.toLowerCase();
+
+                for (Promoción p : promociones) {
+                    String bebida = p.getProducto() != null ? p.getProducto().toLowerCase() : "";
+                    if (bebida.contains(filtro)) {
+                        filtradas.add(p);
+                    }
+                }
+
+                tvPromocion.setItems(filtradas);
+            }
+        });
+    }
+
+
     
 }

@@ -58,6 +58,7 @@ public class FXMLProveedorController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         configurarTabla();
         cargarInformacionTabla();
+        configurarBuscador();
     }    
     
     private void configurarTabla(){
@@ -87,15 +88,46 @@ public class FXMLProveedorController implements Initializable {
 
     @FXML
     private void btnClicEliminar(ActionEvent event) {
+        Proveedor seleccionado = tvProveedor.getSelectionModel().getSelectedItem();
+        if (seleccionado == null) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Sin selección", "Selecciona un proveedor para eliminar.");
+            return;
+        }
+
+        boolean confirmado = Utilidad.mostrarConfirmacion(
+                "Confirmar eliminación",
+                "¿Deseas eliminar el proveedor seleccionado?",
+                "Esta acción no se puede deshacer.");
+
+        if (confirmado) {
+            try {
+                boolean exito = ProveedorDAO.eliminarProveedor(seleccionado.getIdProveedor());
+                if (exito) {
+                    Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Proveedor eliminado correctamente.");
+                    cargarInformacionTabla();
+                } else {
+                    Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo eliminar el proveedor.");
+                }
+            } catch (SQLException e) {
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error crítico", "Ocurrió un error al eliminar el proveedor.");
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
     private void btnClicModificar(ActionEvent event) {
+        Proveedor seleccionado = tvProveedor.getSelectionModel().getSelectedItem();
+        if (seleccionado == null) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Sin selección", "Selecciona un proveedor para modificar.");
+            return;
+        }
+        irFormularioProveedor(seleccionado);
     }
 
     @FXML
     private void btnClicAgregar(ActionEvent event) {
-        irFormularioProveedor();
+        irFormularioProveedor(null);
     }
 
     @FXML
@@ -113,20 +145,42 @@ public class FXMLProveedorController implements Initializable {
         }
     }
     
-    private void irFormularioProveedor() {
+    private void irFormularioProveedor(Proveedor proveedorEditar) {
         try {
-            Stage escenarioFormulario = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            Parent vista = loader.load(ExpendioProyecto.class.getResource("vista/FXMLFormularioProveedor.fxml"));
-            //TODO paso de parametros
-            Scene escena = new Scene(vista);
-            escenarioFormulario.setScene(escena);
-            escenarioFormulario.setTitle("Formulario Proveedor");
-            escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
-            escenarioFormulario.showAndWait();
+            FXMLLoader loader = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLFormularioProveedor.fxml"));
+            Parent vista = loader.load();
+
+            FXMLFormularioProveedorController controlador = loader.getController();
+            controlador.inicializarFormulario(proveedorEditar);
+
+            Stage ventana = new Stage();
+            ventana.setScene(new Scene(vista));
+            ventana.setTitle(proveedorEditar == null ? "Agregar Proveedor" : "Modificar Proveedor");
+            ventana.initModality(Modality.APPLICATION_MODAL);
+            ventana.showAndWait();
+
+            cargarInformacionTabla();
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
     
+    private void configurarBuscador() {
+        tfBuscar.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (proveedores != null) {
+                ObservableList<Proveedor> filtrados = FXCollections.observableArrayList();
+                String filtro = newValue.toLowerCase();
+
+                for (Proveedor p : proveedores) {
+                    if (p.getRazonSocial().toLowerCase().contains(filtro)){
+                        filtrados.add(p);
+                    }
+                }
+
+                tvProveedor.setItems(filtrados);
+            }
+        });
+    }
+
 }

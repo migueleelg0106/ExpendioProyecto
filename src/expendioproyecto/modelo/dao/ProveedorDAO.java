@@ -48,4 +48,44 @@ public class ProveedorDAO {
         return proveedor;
     }
     
+    public static boolean insertarProveedor(Proveedor proveedor) throws SQLException {
+        String sql = "INSERT INTO proveedor (razonSocial, direccion, correo, telefono) VALUES (?, ?, ?, ?)";
+        try (Connection conexion = ConexionBD.abrirConexion();
+             PreparedStatement sentencia = conexion.prepareStatement(sql)) {
+
+            sentencia.setString(1, proveedor.getRazonSocial());
+            sentencia.setString(2, proveedor.getDireccion());
+            sentencia.setString(3, proveedor.getCorreo());
+            sentencia.setString(4, proveedor.getTelefono());
+
+            return sentencia.executeUpdate() > 0;
+        }
+    }
+
+    public static boolean modificarProveedor(Proveedor proveedor) throws SQLException {
+        String sql = "UPDATE proveedor SET razonSocial=?, direccion=?, correo=?, telefono=? WHERE idProveedor=?";
+        try (Connection conexion = ConexionBD.abrirConexion();
+             PreparedStatement sentencia = conexion.prepareStatement(sql)) {
+
+            sentencia.setString(1, proveedor.getRazonSocial());
+            sentencia.setString(2, proveedor.getDireccion());
+            sentencia.setString(3, proveedor.getCorreo());
+            sentencia.setString(4, proveedor.getTelefono());
+            sentencia.setInt(5, proveedor.getIdProveedor());
+
+            return sentencia.executeUpdate() > 0;
+        }
+    }
+
+    public static boolean eliminarProveedor(int idProveedor) throws SQLException {
+        String sql = "DELETE FROM proveedor WHERE idProveedor=?";
+        try (Connection conexion = ConexionBD.abrirConexion();
+             PreparedStatement sentencia = conexion.prepareStatement(sql)) {
+
+            sentencia.setInt(1, idProveedor);
+            return sentencia.executeUpdate() > 0;
+        }
+    }
+
+    
 }
