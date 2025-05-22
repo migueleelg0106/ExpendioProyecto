@@ -17,11 +17,7 @@ public class ConexionBD {
     private static final String PUERTO = "3306";
     private static final String NOMBRE_BD = "expendio";
     private static final String USUARIO = "root";
-<<<<<<< HEAD
     private static final String PASSWORD = "UrieLCD42024";
-=======
-    private static final String PASSWORD = "Rani0106@";
->>>>>>> 6e5cb37a106e0ce517f00053c764e98311f4faa1
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
             
     public static Connection abrirConexion(){
