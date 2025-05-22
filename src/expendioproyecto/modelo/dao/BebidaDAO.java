@@ -48,4 +48,61 @@ public class BebidaDAO {
         
         return bebida;
     }
+    
+    public static boolean insertarBebida(Bebida bebida) throws SQLException {
+        boolean resultado = false;
+        String query = "INSERT INTO producto(nombre, existencia, precio, stockMinimo, descripcion) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conexion = ConexionBD.abrirConexion();
+            PreparedStatement sentencia = conexion.prepareStatement(query)) {
+
+            sentencia.setString(1, bebida.getNombre());
+            sentencia.setInt(2, bebida.getExistencia());
+            sentencia.setFloat(3, bebida.getPrecio());
+            sentencia.setInt(4, bebida.getStockMinimo());
+            sentencia.setString(5, bebida.getDescripcion());
+
+            resultado = sentencia.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            throw new SQLException("Error al insertar bebida: " + e.getMessage(), e);
+        }
+
+        return resultado;
+    }
+
+    public static boolean modificarBebida(Bebida bebida) throws SQLException {
+        String query = "UPDATE producto SET nombre=?, existencia=?, precio=?, stockMinimo=?, descripcion=? WHERE idProducto=?";
+        try (Connection conexion = ConexionBD.abrirConexion();
+            PreparedStatement sentencia = conexion.prepareStatement(query)) {
+
+            sentencia.setString(1, bebida.getNombre());
+            sentencia.setInt(2, bebida.getExistencia());
+            sentencia.setFloat(3, bebida.getPrecio());
+            sentencia.setInt(4, bebida.getStockMinimo());
+            sentencia.setString(5, bebida.getDescripcion());
+            sentencia.setInt(6, bebida.getIdProducto());
+
+            return sentencia.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new SQLException("Error al modificar bebida: " + e.getMessage(), e);
+        }
+    }
+
+    public static boolean eliminarBebida(int idProducto) throws SQLException {
+        String query = "DELETE FROM producto WHERE idProducto = ?";
+        try (Connection conexion = ConexionBD.abrirConexion();
+             PreparedStatement sentencia = conexion.prepareStatement(query)) {
+
+            sentencia.setInt(1, idProducto);
+            return sentencia.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            throw new SQLException("Error al eliminar bebida: " + e.getMessage(), e);
+        }
+    }
+
+    
+    
+    
 }

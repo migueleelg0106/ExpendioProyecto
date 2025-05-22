@@ -23,7 +23,7 @@
       <TextField fx:id="tfExistencia" layoutX="25.0" layoutY="191.0" promptText="Existencia" />
       <TextField fx:id="tfPrecio" layoutX="243.0" layoutY="120.0" promptText="Precio" />
       <TextField fx:id="tfNombre" layoutX="25.0" layoutY="120.0" promptText="Nombre" />
-      <Label prefHeight="81.0" prefWidth="457.0" style="-fx-background-color: #ffa333;" text="    Agregar Bebida">
+      <Label prefHeight="81.0" prefWidth="457.0" style="-fx-background-color: #ffa333;" text="    Datos de la Bebida">
          <font>
             <Font name="Arial Rounded MT Bold" size="23.0" />
          </font>

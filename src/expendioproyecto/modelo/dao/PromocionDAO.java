@@ -55,4 +55,47 @@ public class PromocionDAO {
         return promocion;
     }
     
+    public static boolean insertarPromocion(Promoción promocion) throws SQLException {
+        String sql = "INSERT INTO promocion (fechaInicio, fechaVencimiento, descuento, descripcion, Producto_idProducto) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn = ConexionBD.abrirConexion();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, promocion.getFechaInicio());
+            stmt.setString(2, promocion.getFechaVencimiento());
+            stmt.setInt(3, promocion.getDescuento());
+            stmt.setString(4, promocion.getDescripcion());
+            stmt.setInt(5, promocion.getIdProducto());
+
+            return stmt.executeUpdate() > 0;
+        }
+    }
+
+    public static boolean modificarPromocion(Promoción promocion) throws SQLException {
+        String sql = "UPDATE promocion SET fechaInicio=?, fechaVencimiento=?, descuento=?, descripcion=?, Producto_idProducto=? WHERE idPromocion=?";
+        try (Connection conn = ConexionBD.abrirConexion();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, promocion.getFechaInicio());
+            stmt.setString(2, promocion.getFechaVencimiento());
+            stmt.setInt(3, promocion.getDescuento());
+            stmt.setString(4, promocion.getDescripcion());
+            stmt.setInt(5, promocion.getIdProducto());
+            stmt.setInt(6, promocion.getIdPromocion());
+
+            return stmt.executeUpdate() > 0;
+        }
+    }
+    
+    public static boolean eliminarPromocion(int idPromocion) throws SQLException {
+        String sql = "DELETE FROM promocion WHERE idPromocion=?";
+        try (Connection conn = ConexionBD.abrirConexion();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, idPromocion);
+            return stmt.executeUpdate() > 0;
+        }
+    }
+
+
+    
 }

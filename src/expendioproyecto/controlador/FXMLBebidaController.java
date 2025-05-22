@@ -60,6 +60,8 @@ public class FXMLBebidaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         configurarTabla();
         cargarInformacionTabla();
+        configurarBuscador();
+        configurarBuscador();
     }    
     
     private void configurarTabla(){
@@ -89,16 +91,57 @@ public class FXMLBebidaController implements Initializable {
     }
     
     @FXML
-    private void btnClicEliminar(ActionEvent event) {
+    private void btnClicEliminar(ActionEvent event) {        
+        //ver la validacion de si esta en una venta compra o pedido ya que si es el caso no se deberia poder elmininar etc
+        Bebida bebidaSeleccionada = tvBebidas.getSelectionModel().getSelectedItem();
+
+        if (bebidaSeleccionada == null) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Sin selección",
+                    "Selecciona una bebida para eliminar.");
+            return;
+        }
+
+        boolean confirmado = Utilidad.mostrarConfirmacion(
+                "Confirmar eliminación",
+                "¿Deseas eliminar la bebida seleccionada?",
+                "Esta acción no se puede deshacer.");
+
+        if (confirmado) {
+            try {
+                boolean exito = BebidaDAO.eliminarBebida(bebidaSeleccionada.getIdProducto());
+                if (exito) {
+                    Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito",
+                            "Bebida eliminada correctamente.");
+                    cargarInformacionTabla();
+                } else {
+                    Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error",
+                            "No se pudo eliminar la bebida.");
+                }
+            } catch (SQLException e) {
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error crítico",
+                        "Ocurrió un error al intentar eliminar la bebida.");
+                e.printStackTrace();
+            }
+        }
     }
+
 
     @FXML
     private void btnClicModificar(ActionEvent event) {
+        Bebida seleccionada = tvBebidas.getSelectionModel().getSelectedItem();
+        if (seleccionada == null) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Selección requerida", "Selecciona una bebida para modificar.");
+            return;
+        }
+        
+        irFormularioBebida(seleccionada);
+
     }
+
 
     @FXML
     private void btnClicAgregar(ActionEvent event) {
-        irFormularioBebida();
+        irFormularioBebida(null);
     }
 
     @FXML
@@ -110,26 +153,46 @@ public class FXMLBebidaController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Menú Principal");
-            escenarioBase.showAndWait();
+            escenarioBase.show();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
-    private void irFormularioBebida() {
+    private void irFormularioBebida(Bebida bebidaEditar) {
         try {
-            Stage escenarioFormulario = new Stage();
-            FXMLLoader loader = new FXMLLoader();
-            Parent vista = loader.load(ExpendioProyecto.class.getResource("vista/FXMLFormularioBebida.fxml"));
-            //TODO paso de parametros
-            Scene escena = new Scene(vista);
-            escenarioFormulario.setScene(escena);
-            escenarioFormulario.setTitle("Formulario Bebida");
-            escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
-            escenarioFormulario.showAndWait();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+            FXMLLoader loader = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLFormularioBebida.fxml"));
+            Parent vista = loader.load();
+
+            FXMLFormularioBebidaController controlador = loader.getController();
+            controlador.inicializarFormulario(bebidaEditar);
+
+            Stage ventana = new Stage();
+            ventana.setScene(new Scene(vista));
+            ventana.setTitle(bebidaEditar == null ? "Agregar Bebida" : "Modificar Bebida");
+            ventana.initModality(Modality.APPLICATION_MODAL);
+            ventana.showAndWait();
+
+            cargarInformacionTabla(); // recarga la tabla al cerrar
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+    
+    private void configurarBuscador() {
+    tfBuscar.textProperty().addListener((observable, oldValue, newValue) -> {
+        if (bebidas != null) {
+            ObservableList<Bebida> bebidasFiltradas = FXCollections.observableArrayList();
+            for (Bebida b : bebidas) {
+                if (b.getNombre().toLowerCase().contains(newValue.toLowerCase())) {
+                    bebidasFiltradas.add(b);
+                }
+            }
+            tvBebidas.setItems(bebidasFiltradas);
+        }
+    });
+}
+
     
 }

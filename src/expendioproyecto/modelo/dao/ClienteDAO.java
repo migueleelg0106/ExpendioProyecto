@@ -51,4 +51,56 @@ public class ClienteDAO {
         return cliente;
     }
     
+    public static boolean insertarCliente(Cliente cliente) throws SQLException {
+        String query = "INSERT INTO cliente(direccion, correo, telefono, tipo, rfc, razonSocial) VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection conexion = ConexionBD.abrirConexion();
+             PreparedStatement sentencia = conexion.prepareStatement(query)) {
+
+            sentencia.setString(1, cliente.getDireccion());
+            sentencia.setString(2, cliente.getCorreo());
+            sentencia.setString(3, cliente.getTelefono());
+            sentencia.setString(4, cliente.getTipo());
+            sentencia.setString(5, cliente.getRfc());
+            sentencia.setString(6, cliente.getRazonSocial());
+
+            return sentencia.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            throw new SQLException("Error al insertar cliente: " + e.getMessage(), e);
+        }
+    }
+    
+    public static boolean modificarCliente(Cliente cliente) throws SQLException {
+        String query = "UPDATE cliente SET direccion=?, correo=?, telefono=?, tipo=?, rfc=?, razonSocial=? WHERE idCliente=?";
+        try (Connection conexion = ConexionBD.abrirConexion();
+             PreparedStatement sentencia = conexion.prepareStatement(query)) {
+
+            sentencia.setString(1, cliente.getDireccion());
+            sentencia.setString(2, cliente.getCorreo());
+            sentencia.setString(3, cliente.getTelefono());
+            sentencia.setString(4, cliente.getTipo());
+            sentencia.setString(5, cliente.getRfc());
+            sentencia.setString(6, cliente.getRazonSocial());
+            sentencia.setInt(7, cliente.getIdCliente());
+
+            return sentencia.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new SQLException("Error al modificar cliente: " + e.getMessage(), e);
+        }
+    }
+
+    public static boolean eliminarCliente(int idCliente) throws SQLException {
+        String query = "DELETE FROM cliente WHERE idCliente = ?";
+        try (Connection conexion = ConexionBD.abrirConexion();
+             PreparedStatement sentencia = conexion.prepareStatement(query)) {
+
+            sentencia.setInt(1, idCliente);
+            return sentencia.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            throw new SQLException("Error al eliminar cliente: " + e.getMessage(), e);
+        }
+    }
+
+    
 }

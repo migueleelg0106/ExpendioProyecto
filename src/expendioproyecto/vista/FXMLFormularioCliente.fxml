@@ -25,7 +25,7 @@
       <TextField fx:id="tfTipo" layoutX="25.0" layoutY="191.0" promptText="Tipo" />
       <TextField fx:id="tfTeléfono" layoutX="243.0" layoutY="120.0" promptText="Teléfono" />
       <TextField fx:id="tfRazonSocial" layoutX="25.0" layoutY="120.0" promptText="Razón social" />
-      <Label prefHeight="81.0" prefWidth="457.0" style="-fx-background-color: #ffa333;" text="    Agregar Cliente">
+      <Label prefHeight="81.0" prefWidth="457.0" style="-fx-background-color: #ffa333;" text="    Datos del Cliente">
          <font>
             <Font name="Arial Rounded MT Bold" size="23.0" />
          </font>

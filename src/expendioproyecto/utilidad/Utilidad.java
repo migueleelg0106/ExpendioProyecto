@@ -4,7 +4,9 @@
  */
 package expendioproyecto.utilidad;
 
+import java.util.Optional;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Control;
 import javafx.stage.Stage;
 
@@ -28,4 +30,16 @@ public class Utilidad {
     public static void cerrarVentanaComponente(Control componente){
         ((Stage) componente.getScene().getWindow()).close();
     }
+    
+    public static boolean mostrarConfirmacion(String titulo, String encabezado, String contenido) {
+        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(encabezado);
+        alerta.setContentText(contenido);
+
+        Optional<ButtonType> respuesta = alerta.showAndWait();
+        return respuesta.isPresent() && respuesta.get() == ButtonType.OK;
+    }
+    
+    
 }
