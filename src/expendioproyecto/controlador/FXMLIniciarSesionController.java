@@ -101,6 +101,7 @@ public class FXMLIniciarSesionController implements Initializable{
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Menú Principal");
+            escenarioBase.centerOnScreen();
             escenarioBase.show();
         } catch (IOException ex) {
             ex.printStackTrace();

@@ -30,6 +30,7 @@ public class ExpendioProyecto extends Application{
             Scene escenaInicioSesion = new Scene(vista);
             primaryStage.setScene(escenaInicioSesion);
             primaryStage.setTitle("Inicio de sesion");
+            primaryStage.centerOnScreen();
             primaryStage.show();
         } catch (IOException ex) {
             Logger.getLogger(ExpendioProyecto.class.getName()).log(Level.SEVERE, null, ex);

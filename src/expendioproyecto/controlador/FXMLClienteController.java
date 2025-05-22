@@ -155,6 +155,7 @@ public class FXMLClienteController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Menú Principal");
+            escenarioBase.centerOnScreen();
             escenarioBase.show();
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -171,6 +172,7 @@ public class FXMLClienteController implements Initializable {
             Stage ventana = new Stage();
             ventana.setScene(new Scene(vista));
             ventana.setTitle(clienteEditar == null ? "Agregar Cliente" : "Modificar Cliente");
+            ventana.centerOnScreen();
             ventana.initModality(Modality.APPLICATION_MODAL);
             ventana.showAndWait();
 

@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -45,6 +46,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Inventario");
+            escenarioBase.centerOnScreen();
             escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
@@ -60,6 +62,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Pedidos de Clientes");
+            escenarioBase.centerOnScreen();
             escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
@@ -75,6 +78,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Pedidos de Proveedores");
+            escenarioBase.centerOnScreen();
             escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
@@ -90,6 +94,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Ventas");
+            escenarioBase.centerOnScreen();
             escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
@@ -105,6 +110,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Bebidas");
+            escenarioBase.centerOnScreen();
             escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
@@ -120,6 +126,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Proveedores");
+            escenarioBase.centerOnScreen();
             escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
@@ -135,6 +142,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Promociones");
+            escenarioBase.centerOnScreen();
             escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
@@ -150,6 +158,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Reportes");
+            escenarioBase.centerOnScreen();
             escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
@@ -165,6 +174,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Compras");
+            escenarioBase.centerOnScreen();
             escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
@@ -180,6 +190,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Clientes");
+            escenarioBase.centerOnScreen();
             escenarioBase.show();
         }catch(IOException ex){
             ex.printStackTrace();
@@ -188,16 +199,25 @@ public class FXMLVentanaPrincipalController implements Initializable {
 
     @FXML
     private void clicCerrarSesión(ActionEvent event) {
-        try{
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
-            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLIniciarSesion.fxml"));
-            
-            Scene escenaPrincipal = new Scene(vista);
-            escenarioBase.setScene(escenaPrincipal);
-            escenarioBase.setTitle("Inicio Sesión");
-            escenarioBase.show();
-        }catch(IOException ex){
-            ex.printStackTrace();
+        boolean confirmado = Utilidad.mostrarConfirmacion(
+            "Confirmar cierre de sesión",
+            "¿Está seguro(a) de querer cerrar la sesión actual?",
+            "Se perderá el acceso a esta sesión.");
+
+        if (confirmado) {
+            try {
+                Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+                Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLIniciarSesion.fxml"));
+
+                Scene escenaPrincipal = new Scene(vista);
+                escenarioBase.setScene(escenaPrincipal);
+                escenarioBase.setTitle("Inicio Sesión");
+                escenarioBase.centerOnScreen();
+                escenarioBase.show();
+            } catch (IOException ex) {
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo cerrar sesión.");
+                ex.printStackTrace();
+            }
         }
     }
     

@@ -145,6 +145,7 @@ public class FXMLPromocionController implements Initializable {
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Menú Principal");
+            escenarioBase.centerOnScreen();
             escenarioBase.show();
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -162,6 +163,7 @@ public class FXMLPromocionController implements Initializable {
             Stage ventana = new Stage();
             ventana.setScene(new Scene(vista));
             ventana.setTitle(promocionEditar == null ? "Agregar Promoción" : "Modificar Promoción");
+            ventana.centerOnScreen();
             ventana.initModality(Modality.APPLICATION_MODAL);
             ventana.showAndWait();
 
