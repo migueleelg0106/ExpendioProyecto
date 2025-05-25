@@ -10,9 +10,9 @@
 
 .table-view .column-header,
 .table-view .column-header-background .filler {
-    -fx-background-color: #cca160;
+    -fx-background-color: #ffc978;
     -fx-text-fill: black;
-    -fx-border-color: #b38a50;
+    -fx-border-color: #ffc978;
 }
 
 /* Estilo para el texto de los encabezados */
