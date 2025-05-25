@@ -23,7 +23,7 @@
 }
 
 .table-view .table-cell {
-    -fx-background-color: #ffe87b; /* Color del contenido */
+    -fx-background-color: #ffee9f; /* Color del contenido */
     -fx-text-fill: black;
     -fx-border-color: transparent;
 }
