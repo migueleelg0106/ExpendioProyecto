@@ -32,3 +32,26 @@
     -fx-border-width: 2px;
     -fx-background-color: transparent; /* Fondo transparente para que se vea el AnchorPane */
 }
+
+/* Estilo para la fila seleccionada */
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: #b1ff66;
+    -fx-table-cell-border-color: #b1ff66;
+}
+
+/* Estilo para las celdas de la fila seleccionada */
+.table-view:focused .table-row-cell:filled:focused:selected .table-cell {
+    -fx-background-color: #b1ff66;
+    -fx-text-fill: black;
+}
+
+/* Estilo para cuando el TableView no tiene el foco */
+.table-row-cell:filled:selected {
+    -fx-background-color: #b1ff66;
+    -fx-table-cell-border-color: #b1ff66;
+}
+
+.table-row-cell:filled:selected .table-cell {
+    -fx-background-color: #b1ff66;
+    -fx-text-fill: black;
+}
