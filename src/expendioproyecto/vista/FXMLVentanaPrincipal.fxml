@@ -32,11 +32,11 @@
             <Image url="@../recurso/logoExpendioBlancoNegro.png" />
          </image>
       </ImageView>
-      <MenuBar layoutX="41.0" layoutY="142.0" prefHeight="32.0" prefWidth="701.0" style="-fx-background-color: #ffa333;">
+      <MenuBar layoutX="41.0" layoutY="142.0" prefHeight="32.0" prefWidth="701.0" style="-fx-background-color: #ffa333; -fx-border-color: #ffca79;">
         <menus>
-          <Menu mnemonicParsing="false" text="De inventario">
+          <Menu mnemonicParsing="false" text="De inventario" style="-fx-background-color: #ffca79;">
                <items>
-                  <CustomMenuItem>
+                  <CustomMenuItem style="-fx-background-color: #ffca79;">
                      <content>
                         <VBox>
                            <Button mnemonicParsing="false" onAction="#clicManejarInventario"
@@ -49,7 +49,7 @@
                         </VBox>
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem>
+                  <CustomMenuItem style="-fx-background-color: #ffca79;">
                      <content>
                         <VBox>
                            <Button mnemonicParsing="false" onAction="#clicCompras" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Compras">
@@ -60,7 +60,7 @@
                         </VBox>
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem>
+                  <CustomMenuItem style="-fx-background-color: #ffca79;">
                      <content>
                         <VBox>
                            <Button mnemonicParsing="false" onAction="#clicVentas" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Ventas">
@@ -73,9 +73,9 @@
                   </CustomMenuItem>
                </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="De pedidos">
+          <Menu mnemonicParsing="false" text="De pedidos" style="-fx-background-color: #ffca79;">
                <items>
-                  <CustomMenuItem>
+                  <CustomMenuItem style="-fx-background-color: #ffca79;">
                      <content>
                         <VBox>
                            <Button mnemonicParsing="false" onAction="#clicPedidosDeClientes" prefHeight="33.0" prefWidth="173.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Pedidos de clientes">
@@ -86,7 +86,7 @@
                         </VBox>
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem>
+                  <CustomMenuItem style="-fx-background-color: #ffca79;">
                      <content>
                         <VBox>
                            <Button mnemonicParsing="false" onAction="#clicPedidosDeProveedor" prefHeight="33.0" prefWidth="173.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Pedidos a proveedor">
@@ -99,9 +99,9 @@
                   </CustomMenuItem>
                </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="De gestión">
+          <Menu mnemonicParsing="false" text="De gestión" style="-fx-background-color: #ffca79;">
                <items>
-                  <CustomMenuItem>
+                  <CustomMenuItem style="-fx-background-color: #ffca79;">
                      <content>
                         <VBox>
                            <Button mnemonicParsing="false" onAction="#clicBebidas" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebidas">
@@ -112,7 +112,7 @@
                         </VBox>
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem>
+                  <CustomMenuItem style="-fx-background-color: #ffca79;">
                      <content>
                         <VBox>
                            <Button mnemonicParsing="false" onAction="#clicProveedores" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Proveedores">
@@ -123,7 +123,7 @@
                         </VBox>
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem>
+                  <CustomMenuItem style="-fx-background-color: #ffca79;">
                      <content>
                         <VBox>
                            <Button mnemonicParsing="false" onAction="#clicPromociones" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Promociones">
@@ -134,7 +134,7 @@
                         </VBox>
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem>
+                  <CustomMenuItem style="-fx-background-color: #ffca79;">
                      <content>
                         <VBox>
                            <Button mnemonicParsing="false" onAction="#clicClientes" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Clientes">
@@ -147,9 +147,9 @@
                   </CustomMenuItem>
                </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="De información">
+          <Menu mnemonicParsing="false" text="De información" style="-fx-background-color: #ffca79;">
                <items>
-                  <CustomMenuItem>
+                  <CustomMenuItem style="-fx-background-color: #ffca79;">
                      <content>
                         <VBox>
                            <Button mnemonicParsing="false" onAction="#clicReportes" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Reportes">
