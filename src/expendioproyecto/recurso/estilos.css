@@ -32,16 +32,3 @@
     -fx-border-width: 2px;
     -fx-background-color: transparent; /* Fondo transparente para que se vea el AnchorPane */
 }
-
-.table-view .table-row-cell:selected,
-.table-view .table-row-cell:selected:hover,
-.table-view .table-row-cell:focused:selected {
-    -fx-background-color: #b1ff66;
-    -fx-text-fill: black;
-}
-
-.table-view .table-cell:selected,
-.table-view .table-cell:focused:selected {
-    -fx-background-color: #b1ff66;
-    -fx-text-fill: black;
-}
