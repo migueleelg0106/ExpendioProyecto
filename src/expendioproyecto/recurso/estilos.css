@@ -1,6 +1,5 @@
 .menu-item {
     -fx-background-color: #cca160;
-    -fx-text-fill: white;
 }
 
 .menu-item:hover {
@@ -11,3 +10,4 @@
     -fx-background-color: #cca160;
     -fx-text-fill: black;
 }
+
