@@ -2,10 +2,6 @@
     -fx-background-color: #cca160;
 }
 
-.menu-item:hover {
-    -fx-background-color: #5a5a5a;
-}
-
 .celda-dorada {
     -fx-background-color: #cca160;
     -fx-text-fill: black;
