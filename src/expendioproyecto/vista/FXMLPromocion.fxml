@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLPromocionController">
+<AnchorPane stylesheets="@../recurso/estilos.css" id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLPromocionController">
    <children>
       <Label prefHeight="77.0" prefWidth="800.0" style="-fx-background-color: #ffa333;" text="    Administración de Promociones">
          <font>
@@ -22,11 +22,11 @@
       </ImageView>
       <TableView fx:id="tvPromocion" layoutX="28.0" layoutY="178.0" prefHeight="354.0" prefWidth="744.0" style="-fx-background-color: ffca79;">
          <columns>
-            <TableColumn fx:id="colBebida" prefWidth="138.0" text="Bebida" />
-            <TableColumn fx:id="colDescuento" prefWidth="98.0" text="Descuento" />
-            <TableColumn fx:id="colFechaInicio" minWidth="0.0" prefWidth="147.0" text="Fecha de inicio" />
-            <TableColumn fx:id="colFechaVencimiento" minWidth="0.0" prefWidth="198.0" text="Fecha de vencimiento" />
-            <TableColumn fx:id="colDescripcion" minWidth="0.0" prefWidth="162.0" text="Descripción" />
+            <TableColumn fx:id="colBebida" prefWidth="138.0" style="-fx-cursor: hand;" text="Bebida" />
+            <TableColumn fx:id="colDescuento" prefWidth="98.0" style="-fx-cursor: hand;" text="Descuento" />
+            <TableColumn fx:id="colFechaInicio" minWidth="0.0" prefWidth="147.0" style="-fx-cursor: hand;" text="Fecha de inicio" />
+            <TableColumn fx:id="colFechaVencimiento" minWidth="0.0" prefWidth="198.0" style="-fx-cursor: hand;" text="Fecha de vencimiento" />
+            <TableColumn fx:id="colDescripcion" minWidth="0.0" prefWidth="162.0" style="-fx-cursor: hand;" text="Descripción" />
          </columns>
       </TableView>
       <TextField fx:id="tfBuscar" layoutX="28.0" layoutY="106.0" prefHeight="39.0" prefWidth="393.0" promptText="Buscar promoción" style="-fx-background-color: FFFFFF; -fx-cursor: text;" />

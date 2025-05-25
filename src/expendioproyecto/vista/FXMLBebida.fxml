@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane stylesheets="@../recurso/estilos.css" id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLBebidaController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLBebidaController">
    <children>
       <Label prefHeight="77.0" prefWidth="800.0" style="-fx-background-color: #ffa333;" text="    Administración de Bebidas">
          <font>
@@ -21,13 +21,13 @@
             <Image url="@../recurso/logoExpendioBlancoNegro.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tvBebidas" layoutX="28.0" layoutY="178.0" prefHeight="354.0" prefWidth="744.0" style="-fx-background-color: ffca79;">
+      <TableView fx:id="tvBebidas" layoutX="28.0" layoutY="178.0" prefHeight="354.0" prefWidth="744.0">
         <columns>
-          <TableColumn fx:id="colNombre" prefWidth="135.0" text="Nombre" />
-          <TableColumn fx:id="colExistencia" prefWidth="101.0" text="Existencia" />
-            <TableColumn fx:id="colPrecio" minWidth="0.0" prefWidth="82.0" text="Precio" />
-            <TableColumn fx:id="colStockMin" minWidth="0.0" prefWidth="139.0" text="Stock Mínimo" />
-            <TableColumn fx:id="colDescripcion" minWidth="0.0" prefWidth="286.0" text="Descripción" />
+          <TableColumn fx:id="colNombre" prefWidth="135.0" style="-fx-cursor: hand;" text="Nombre" />
+          <TableColumn fx:id="colExistencia" prefWidth="101.0" style="-fx-cursor: hand;" text="Existencia" />
+            <TableColumn fx:id="colPrecio" minWidth="0.0" prefWidth="82.0" style="-fx-cursor: hand;" text="Precio" />
+            <TableColumn fx:id="colStockMin" minWidth="0.0" prefWidth="139.0" style="-fx-cursor: hand;" text="Stock Mínimo" />
+            <TableColumn fx:id="colDescripcion" minWidth="0.0" prefWidth="286.0" style="-fx-cursor: hand;" text="Descripción" />
         </columns>
       </TableView>
       <TextField fx:id="tfBuscar" layoutX="28.0" layoutY="106.0" prefHeight="39.0" prefWidth="393.0" promptText="Buscar bebida" style="-fx-background-color: FFFFFF; -fx-cursor: text;" />
