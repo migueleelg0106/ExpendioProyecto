@@ -32,11 +32,11 @@
             <Image url="@../recurso/logoExpendioBlancoNegro.png" />
          </image>
       </ImageView>
-      <MenuBar layoutX="41.0" layoutY="142.0" prefHeight="32.0" prefWidth="701.0" style="-fx-background-color: #ffa333;">
+      <MenuBar layoutX="30.0" layoutY="142.0" prefHeight="32.0" prefWidth="701.0" style="-fx-background-color: #f1e5d0;">
         <menus>
-          <Menu mnemonicParsing="false" style="-fx-background-color: #ffca79;" text="De inventario">
+          <Menu mnemonicParsing="false" style="-fx-background-color: #ffa333;" text="De inventario">
                <items>
-                  <CustomMenuItem style="-fx-background-color: #ffca79;">
+                  <CustomMenuItem styleClass="custom-menu-item">
                      <content>
                         <VBox>
                            <children>
@@ -49,7 +49,7 @@
                         </VBox>
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem style="-fx-background-color: #ffca79;">
+                  <CustomMenuItem styleClass="custom-menu-item">
                      <content>
                         <VBox>
                            <children>
@@ -62,7 +62,7 @@
                         </VBox>
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem style="-fx-background-color: #ffca79;">
+                  <CustomMenuItem styleClass="custom-menu-item">
                      <content>
                         <VBox>
                            <children>
@@ -77,9 +77,9 @@
                   </CustomMenuItem>
                </items>
           </Menu>
-          <Menu mnemonicParsing="false" style="-fx-background-color: #ffca79;" text="De pedidos">
+          <Menu mnemonicParsing="false" style="-fx-background-color: #ffa333;" text="De pedidos">
                <items>
-                  <CustomMenuItem style="-fx-background-color: #ffca79;">
+                  <CustomMenuItem styleClass="custom-menu-item">
                      <content>
                         <VBox>
                            <children>
@@ -92,7 +92,7 @@
                         </VBox>
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem style="-fx-background-color: #ffca79;">
+                  <CustomMenuItem styleClass="custom-menu-item">
                      <content>
                         <VBox>
                            <children>
@@ -107,9 +107,9 @@
                   </CustomMenuItem>
                </items>
           </Menu>
-          <Menu mnemonicParsing="false" style="-fx-background-color: #ffca79;" text="De gestión">
+          <Menu mnemonicParsing="false" style="-fx-background-color: #ffa333;" text="De gestión">
                <items>
-                  <CustomMenuItem style="-fx-background-color: #ffca79;">
+                  <CustomMenuItem styleClass="custom-menu-item">
                      <content>
                         <VBox>
                            <children>
@@ -122,7 +122,7 @@
                         </VBox>
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem style="-fx-background-color: #ffca79;">
+                  <CustomMenuItem styleClass="custom-menu-item">
                      <content>
                         <VBox>
                            <children>
@@ -135,7 +135,7 @@
                         </VBox>
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem style="-fx-background-color: #ffca79;">
+                  <CustomMenuItem styleClass="custom-menu-item">
                      <content>
                         <VBox>
                            <children>
@@ -148,7 +148,7 @@
                         </VBox>
                      </content>
                   </CustomMenuItem>
-                  <CustomMenuItem style="-fx-background-color: #ffca79;">
+                  <CustomMenuItem styleClass="custom-menu-item">
                      <content>
                         <VBox>
                            <children>
@@ -163,9 +163,9 @@
                   </CustomMenuItem>
                </items>
           </Menu>
-          <Menu mnemonicParsing="false" style="-fx-background-color: #ffca79;" text="De información">
+          <Menu mnemonicParsing="false" style="-fx-background-color: #ffa333;" text="De información">
                <items>
-                  <CustomMenuItem style="-fx-background-color: #ffca79;">
+                  <CustomMenuItem styleClass="custom-menu-item">
                      <content>
                         <VBox>
                            <children>
