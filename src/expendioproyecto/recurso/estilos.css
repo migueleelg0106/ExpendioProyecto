@@ -33,13 +33,6 @@
     -fx-background-color: transparent; /* Fondo transparente para que se vea el AnchorPane */
 }
 
-.table-view .column-header-background {
-    -fx-background-color: transparent;
-}
-.table-view .virtual-flow {
-    -fx-background-color: transparent;
-}
-
 .table-view .table-row-cell:selected,
 .table-view .table-row-cell:selected:hover,
 .table-view .table-row-cell:focused:selected {
