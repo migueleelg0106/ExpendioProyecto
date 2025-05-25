@@ -1,5 +1,22 @@
-.menu-item {
+.menu {
+    -fx-background-color: #ffca79; /* Mismo color que los items */
+    -fx-border-color: #ffca79;     /* Elimina el borde blanco o lo hace del mismo color */
+}
+
+/* Opcional: Si el menú está dentro de un MenuBar */
+.menu-bar {
     -fx-background-color: #ffca79;
+}
+
+/* Estilo para los CustomMenuItem (si es necesario) */
+.custom-menu-item {
+    -fx-background-color: #ffca79;
+}
+
+/* Estilo para el popup del menú (si hay un submenú) */
+.context-menu {
+    -fx-background-color: #ffca79;
+    -fx-border-color: #ffca79;
 }
 
 .celda-dorada {
