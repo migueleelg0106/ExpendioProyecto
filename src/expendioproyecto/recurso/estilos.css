@@ -35,23 +35,23 @@
 
 /* Estilo para la fila seleccionada */
 .table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: #7cff00;
-    -fx-table-cell-border-color: #7cff00;
+    -fx-background-color: #ffb032;
+    -fx-table-cell-border-color: #ffb032;
 }
 
 /* Estilo para las celdas de la fila seleccionada */
 .table-view:focused .table-row-cell:filled:focused:selected .table-cell {
-    -fx-background-color: #7cff00;
+    -fx-background-color: #ffb032;
     -fx-text-fill: black;
 }
 
 /* Estilo para cuando el TableView no tiene el foco */
 .table-row-cell:filled:selected {
-    -fx-background-color: #7cff00;
-    -fx-table-cell-border-color: #7cff00;
+    -fx-background-color: #ffb032;
+    -fx-table-cell-border-color: #ffb032;
 }
 
 .table-row-cell:filled:selected .table-cell {
-    -fx-background-color: #7cff00;
+    -fx-background-color: #ffb032;
     -fx-text-fill: black;
 }
