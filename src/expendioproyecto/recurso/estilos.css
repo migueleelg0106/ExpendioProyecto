@@ -22,3 +22,21 @@
     -fx-alignment: CENTER;
 }
 
+.table-view .table-cell {
+    -fx-background-color: #ffca79; /* Color del contenido */
+    -fx-text-fill: black;
+    -fx-border-color: transparent;
+}
+
+.table-view {
+    -fx-border-color: #f1e5d0;
+    -fx-border-width: 2px;
+    -fx-background-color: transparent; /* Fondo transparente para que se vea el AnchorPane */
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+.table-view .virtual-flow {
+    -fx-background-color: transparent;
+}
