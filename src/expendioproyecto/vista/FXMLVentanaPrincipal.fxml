@@ -22,56 +22,6 @@
          </font>
       </Label>
       <Line endX="600.0" layoutX="141.0" layoutY="141.0" startX="-100.0" stroke="#390000" />
-      <Button layoutX="47.0" layoutY="191.0" mnemonicParsing="false" onAction="#clicManejarInventario" prefHeight="53.0" prefWidth="171.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Manejar Inventario">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="306.0" layoutY="191.0" mnemonicParsing="false" onAction="#clicPedidosDeClientes" prefHeight="53.0" prefWidth="171.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Pedidos de clientes">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="559.0" layoutY="191.0" mnemonicParsing="false" onAction="#clicPedidosDeProveedor" prefHeight="53.0" prefWidth="183.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Pedidos a proveedor">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="315.0" layoutY="288.0" mnemonicParsing="false" onAction="#clicVentas" prefHeight="53.0" prefWidth="156.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Ventas">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="572.0" layoutY="288.0" mnemonicParsing="false" onAction="#clicBebidas" prefHeight="53.0" prefWidth="156.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebidas">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="54.0" layoutY="387.0" mnemonicParsing="false" onAction="#clicProveedores" prefHeight="53.0" prefWidth="156.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Proveedores">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="315.0" layoutY="387.0" mnemonicParsing="false" onAction="#clicPromociones" prefHeight="53.0" prefWidth="156.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Promociones">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="572.0" layoutY="387.0" mnemonicParsing="false" onAction="#clicReportes" prefHeight="53.0" prefWidth="156.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Reportes">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="54.0" layoutY="288.0" mnemonicParsing="false" onAction="#clicCompras" prefHeight="53.0" prefWidth="156.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Compras">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </Button>
-      <Button layoutX="315.0" layoutY="490.0" mnemonicParsing="false" onAction="#clicClientes" prefHeight="53.0" prefWidth="156.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Clientes">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font>
-      </Button>
       <Button layoutX="667.0" layoutY="553.0" mnemonicParsing="false" onAction="#clicCerrarSesión" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Cerrar Sesión">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
@@ -82,5 +32,111 @@
             <Image url="@../recurso/logoExpendioBlancoNegro.png" />
          </image>
       </ImageView>
+      <MenuBar layoutX="41.0" layoutY="142.0" prefHeight="32.0" prefWidth="701.0" style="-fx-background-color: #ffa333;">
+        <menus>
+          <Menu mnemonicParsing="false" text="De inventario">
+               <items>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button mnemonicParsing="false" onAction="#clicManejarInventario" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Inventario">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button mnemonicParsing="false" onAction="#clicCompras" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Compras">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button mnemonicParsing="false" onAction="#clicVentas" prefHeight="33.0" prefWidth="110.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Ventas">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </graphic></MenuItem>
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="De pedidos">
+               <items>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button mnemonicParsing="false" onAction="#clicPedidosDeClientes" prefHeight="33.0" prefWidth="173.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Pedidos de clientes">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button mnemonicParsing="false" onAction="#clicPedidosDeProveedor" prefHeight="33.0" prefWidth="173.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Pedidos a proveedor">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </MenuItem>
+               </items></Menu>
+          <Menu mnemonicParsing="false" text="De gestión">
+               <items>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button mnemonicParsing="false" onAction="#clicBebidas" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebidas">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button mnemonicParsing="false" onAction="#clicProveedores" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Proveedores">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button mnemonicParsing="false" onAction="#clicPromociones" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Promociones">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button mnemonicParsing="false" onAction="#clicClientes" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Clientes">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </MenuItem>
+               </items></Menu>
+            <Menu mnemonicParsing="false" text="De información">
+               <items>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button mnemonicParsing="false" onAction="#clicReportes" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Reportes">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </MenuItem>
+               </items></Menu>
+        </menus>
+      </MenuBar>
    </children>
 </AnchorPane>
