@@ -26,7 +26,7 @@ public class ExpendioProyecto extends Application{
     @Override
     public void start(Stage primaryStage){
         try {
-            Parent vista = FXMLLoader.load(getClass().getResource("vista/FXMLVentanaPrincipal.fxml"));
+            Parent vista = FXMLLoader.load(getClass().getResource("vista/FXMLIniciarSesion.fxml"));
             Scene escenaInicioSesion = new Scene(vista);
             primaryStage.setScene(escenaInicioSesion);
             primaryStage.setTitle("Inicio de sesion");
