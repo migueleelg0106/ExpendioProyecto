@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="404.0" prefWidth="457.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLFormularioBebidaController">
    <children>
-      <Label layoutX="25.0" layoutY="164.0" text="Ingrese la existencia:">
+      <Label fx:id="lbExistencia" layoutX="25.0" layoutY="164.0" text="Ingrese la existencia:">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font></Label>
@@ -47,7 +47,7 @@
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="243.0" layoutY="164.0" text="Ingrese el stock mínimo:">
+      <Label fx:id="lbStockMinimo" layoutX="243.0" layoutY="164.0" text="Ingrese el stock mínimo:">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>

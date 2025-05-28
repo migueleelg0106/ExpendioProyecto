@@ -49,7 +49,7 @@
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="25.0" layoutY="234.0" text="Ingrese el RFC:">
+      <Label fx:id="lbRFC" layoutX="25.0" layoutY="234.0" text="Ingrese el RFC:">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>

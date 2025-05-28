@@ -16,6 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -27,13 +30,29 @@ public class FXMLPedidosClientesController implements Initializable {
 
     @FXML
     private Button btnRegresar;
+    @FXML
+    private TableView<?> tvInventario;
+    @FXML
+    private TableColumn<?, ?> colNombre;
+    @FXML
+    private TableColumn<?, ?> colExistencia;
+    @FXML
+    private TableColumn<?, ?> colPrecio;
+    @FXML
+    private TextField tfBuscar;
+    @FXML
+    private TableView<?> tvProductos;
+    @FXML
+    private TableColumn<?, ?> colProductosVenta;
+    @FXML
+    private TableColumn<?, ?> colCantidad;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        tvProductos.getStylesheets().add(getClass().getResource("/expendioproyecto/recurso/productos.css").toExternalForm());
     }    
 
     @FXML
@@ -50,6 +69,18 @@ public class FXMLPedidosClientesController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void btnClicAgregar(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnClicFinalizarPedido(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnClicEliminar(ActionEvent event) {
     }
     
 }

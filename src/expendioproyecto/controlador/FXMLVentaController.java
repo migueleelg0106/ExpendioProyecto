@@ -37,13 +37,19 @@ public class FXMLVentaController implements Initializable {
     @FXML
     private TableColumn<?, ?> colExistencia;
     @FXML
-    private TableColumn<?, ?> colPrecio;
-    @FXML
     private TextField tfBuscar;
     @FXML
     private TableView<?> tvProductos;
     @FXML
     private TableColumn<?, ?> colProductosVenta;
+    @FXML
+    private TableColumn<?, ?> colClientePrecio;
+    @FXML
+    private TableColumn<?, ?> colProductoPrecio;
+    @FXML
+    private TableColumn<?, ?> colPromocion;
+    @FXML
+    private TableColumn<?, ?> colCantidad;
 
     /**
      * Initializes the controller class.

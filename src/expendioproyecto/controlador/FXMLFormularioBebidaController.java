@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -34,6 +35,10 @@ public class FXMLFormularioBebidaController implements Initializable {
     private TextField tfNombre;
     
     private Bebida bebidaEnEdicion = null;
+    @FXML
+    private Label lbExistencia;
+    @FXML
+    private Label lbStockMinimo;
 
 
     /**
@@ -145,6 +150,12 @@ public class FXMLFormularioBebidaController implements Initializable {
             tfExistencia.setText(String.valueOf(bebida.getExistencia()));
             tfPrecio.setText(String.valueOf(bebida.getPrecio()));
             tfStockMinimo.setText(String.valueOf(bebida.getStockMinimo()));
+            lbExistencia.setText("Existencia:");
+            lbStockMinimo.setText("Stock mínimo:");
+
+            // Deshabilitar los campos al editar
+            tfExistencia.setDisable(true);
+            tfStockMinimo.setDisable(true);
         }
     }
 

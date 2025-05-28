@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLPedidosProveedorController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLPedidosProveedorController">
    <children>
       <Label prefHeight="77.0" prefWidth="800.0" style="-fx-background-color: #ffa333;" text="    Pedidos a proveedor">
          <font>
@@ -21,5 +21,19 @@
          </image>
       </ImageView>
       <Button fx:id="btnRegresar" layoutX="28.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
+      <TableView fx:id="tvBebidas" layoutX="28.0" layoutY="163.0" prefHeight="354.0" prefWidth="744.0">
+         <columns>
+            <TableColumn fx:id="colNombre" prefWidth="216.0" style="-fx-cursor: hand;" text="Nombre" />
+            <TableColumn fx:id="colDescripcion" minWidth="0.0" prefWidth="404.0" style="-fx-cursor: hand;" text="Descripción" />
+            <TableColumn fx:id="colCantidad" prefWidth="121.0" style="-fx-cursor: hand;" text="Cantidad" />
+         </columns>
+      </TableView>
+      <Label layoutX="28.0" layoutY="120.0" text="Productos con stock bajo y agregados para solicitarle a un proveedor:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+      </Label>
+      <Button layoutX="447.0" layoutY="536.0" mnemonicParsing="false" onAction="#btnCliAgregarBebida" prefHeight="49.0" prefWidth="145.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Agregar Bebida" />
+      <Button layoutX="627.0" layoutY="536.0" mnemonicParsing="false" onAction="#btnClicExportarExcel" prefHeight="49.0" prefWidth="145.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar a Excel" />
    </children>
 </AnchorPane>

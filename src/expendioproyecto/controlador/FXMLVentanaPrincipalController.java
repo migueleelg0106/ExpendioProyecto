@@ -169,7 +169,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     private void clicCompras(ActionEvent event) {
         try{
             Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
-            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLCompras.fxml"));
+            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLCompra.fxml"));
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);

@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class FXMLFormularioClienteController implements Initializable {
@@ -29,6 +30,8 @@ public class FXMLFormularioClienteController implements Initializable {
     private TextField tfCorreo;
 
     private Cliente clienteEnEdicion = null;
+    @FXML
+    private Label lbRFC;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -38,8 +41,10 @@ public class FXMLFormularioClienteController implements Initializable {
             if ("ocasional".equalsIgnoreCase(newValue)) {
                 tfRFC.clear();              // limpia el campo si hay algo
                 tfRFC.setDisable(true);    // desactiva el TextField
+                lbRFC.setText("Sin RFC");
             } else {
                 tfRFC.setDisable(false);   // lo vuelve editable
+                lbRFC.setText("Ingrese el RFC:");
             }
         });
     }

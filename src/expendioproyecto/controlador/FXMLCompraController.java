@@ -18,7 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.stage.Modality;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -26,25 +26,37 @@ import javafx.stage.Stage;
  *
  * @author uriel
  */
-public class FXMLPedidosProveedorController implements Initializable {
+public class FXMLCompraController implements Initializable {
 
     @FXML
     private Button btnRegresar;
     @FXML
-    private TableView<?> tvBebidas;
+    private TableView<?> tvInventario;
     @FXML
     private TableColumn<?, ?> colNombre;
     @FXML
-    private TableColumn<?, ?> colDescripcion;
+    private TableColumn<?, ?> colExistencia;
+    @FXML
+    private TableColumn<?, ?> colStockMinimo;
+    @FXML
+    private TextField tfBuscar;
+    @FXML
+    private TableView<?> tvProductos;
+    @FXML
+    private TableColumn<?, ?> colProductosCompra;
+    @FXML
+    private TableColumn<?, ?> colPrecioCompra;
     @FXML
     private TableColumn<?, ?> colCantidad;
+    @FXML
+    private TextField tfFolio;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        tvProductos.getStylesheets().add(getClass().getResource("/expendioproyecto/recurso/productos.css").toExternalForm());
     }    
 
     @FXML
@@ -64,28 +76,15 @@ public class FXMLPedidosProveedorController implements Initializable {
     }
 
     @FXML
-    private void btnCliAgregarBebida(ActionEvent event) {
-        try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(btnRegresar);
-            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLPedidosProveedorAgregar.fxml"));
-            Parent vista = cargador.load();
-            Scene escenaPrincipal = new Scene(vista);
-            escenarioBase.setScene(escenaPrincipal);
-            escenarioBase.setTitle("Agregar Bebidas en Pedidos");
-            escenarioBase.centerOnScreen();
-            
-            escenarioBase.show();
-
-            // cargarInformacionTabla(); // recarga la tabla al cerrar
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
+    private void btnClicAgregar(ActionEvent event) {
     }
 
     @FXML
-    private void btnClicExportarExcel(ActionEvent event) {
+    private void btnClicFinalizarVenta(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnClicEliminar(ActionEvent event) {
     }
     
 }

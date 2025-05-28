@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1054.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLPedidosProveedorAgregarController">
+   <children>
+      <Label prefHeight="77.0" prefWidth="1109.0" style="-fx-background-color: #ffa333;" text="    Agregar Bebidas para Pedidos">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="34.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="77.0" fitWidth="175.0" layoutX="1032.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recurso/logoExpendioBlancoNegro.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnRegresar" layoutX="28.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Cancelar" />
+      <Label layoutX="28.0" layoutY="110.0" text="Seleccione productos a agregar:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+      </Label>
+      <Button layoutX="503.0" layoutY="105.0" mnemonicParsing="false" onAction="#btnClicAgregarBebida" prefHeight="31.0" prefWidth="145.0" style="-fx-background-color: #ffc978; -fx-cursor: hand;" text="Agregar Bebida" />
+      <TableView fx:id="tvBebidas" layoutX="28.0" layoutY="161.0" prefHeight="354.0" prefWidth="744.0">
+         <columns>
+            <TableColumn fx:id="colNombre" prefWidth="135.0" style="-fx-cursor: hand;" text="Nombre" />
+            <TableColumn fx:id="colExistencia" prefWidth="101.0" style="-fx-cursor: hand;" text="Existencia" />
+            <TableColumn fx:id="colProductosCantidad" minWidth="0.0" prefWidth="82.0" style="-fx-cursor: hand;" text="Cantidad" />
+            <TableColumn fx:id="colStockMin" minWidth="0.0" prefWidth="139.0" style="-fx-cursor: hand;" text="Stock Mínimo" />
+            <TableColumn fx:id="colDescripcion" minWidth="0.0" prefWidth="286.0" style="-fx-cursor: hand;" text="Descripción" />
+         </columns>
+      </TableView>
+      <TextField fx:id="tfBuscar" layoutX="694.0" layoutY="101.0" prefHeight="39.0" prefWidth="393.0" promptText="Buscar bebida" style="-fx-background-color: FFFFFF; -fx-border-color: 000000; -fx-cursor: text;" />
+      <ImageView fitHeight="39.0" fitWidth="51.0" layoutX="1047.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recurso/icons8-buscar-50.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tvProductos" layoutX="794.0" layoutY="161.0" prefHeight="354.0" prefWidth="293.0" styleClass="custom-productos">
+         <columns>
+            <TableColumn fx:id="colProductosVenta" prefWidth="192.0" style="-fx-cursor: hand;" text="Productos agregados" />
+            <TableColumn fx:id="colAgregadosCantidad" prefWidth="93.0" style="-fx-cursor: hand;" text="Cantidad" />
+         </columns>
+      </TableView>
+      <Button layoutX="941.0" layoutY="526.0" mnemonicParsing="false" onAction="#btnClicIncluirPedido" prefHeight="55.0" prefWidth="145.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Incuir en pedido" />
+   </children>
+</AnchorPane>

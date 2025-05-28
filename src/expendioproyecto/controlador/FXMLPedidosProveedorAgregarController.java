@@ -16,6 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -23,33 +26,61 @@ import javafx.stage.Stage;
  *
  * @author uriel
  */
-public class FXMLComprasController implements Initializable {
+public class FXMLPedidosProveedorAgregarController implements Initializable {
 
     @FXML
     private Button btnRegresar;
+    @FXML
+    private TableView<?> tvBebidas;
+    @FXML
+    private TableColumn<?, ?> colNombre;
+    @FXML
+    private TableColumn<?, ?> colExistencia;
+    @FXML
+    private TableColumn<?, ?> colProductosCantidad;
+    @FXML
+    private TableColumn<?, ?> colStockMin;
+    @FXML
+    private TableColumn<?, ?> colDescripcion;
+    @FXML
+    private TextField tfBuscar;
+    @FXML
+    private TableView<?> tvProductos;
+    @FXML
+    private TableColumn<?, ?> colProductosVenta;
+    @FXML
+    private TableColumn<?, ?> colAgregadosCantidad;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        tvProductos.getStylesheets().add(getClass().getResource("/expendioproyecto/recurso/productos.css").toExternalForm());
     }    
 
     @FXML
     private void btnClicRegresar(ActionEvent event) {
         try {
             Stage escenarioBase = Utilidad.gestEscenarioComponente(btnRegresar);
-            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLPedidosProveedor.fxml"));
             Parent vista = cargador.load();
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
-            escenarioBase.setTitle("Menú Principal");
+            escenarioBase.setTitle("Pedidos al proveedor");
             escenarioBase.centerOnScreen();
             escenarioBase.show();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void btnClicAgregarBebida(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnClicIncluirPedido(ActionEvent event) {
     }
     
 }
