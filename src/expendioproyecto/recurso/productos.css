@@ -1,0 +1,44 @@
+.table-view.custom-productos .column-header,
+.table-view.custom-productos .column-header-background .filler {
+    -fx-background-color: #ffeb42; /* color encabezado */
+    -fx-text-fill: black;
+    -fx-border-color: #ffeb42;
+}
+
+.table-view.custom-productos .column-header .label {
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+
+.table-view.custom-productos .table-cell {
+    -fx-background-color: #fff390; /* color contenido */
+    -fx-text-fill: black;
+    -fx-border-color: transparent;
+}
+
+.table-view.custom-productos {
+    -fx-border-color: #fce8ab;
+    -fx-border-width: 2px;
+    -fx-background-color: transparent;
+}
+
+.table-view.custom-productos:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: #dfd500;
+    -fx-table-cell-border-color: #dfd500;
+}
+
+.table-view.custom-productos:focused .table-row-cell:filled:focused:selected .table-cell {
+    -fx-background-color: #dfd500;
+    -fx-text-fill: black;
+}
+
+.table-row-cell:filled:selected.custom-productos {
+    -fx-background-color: #dfd500;
+    -fx-table-cell-border-color: #dfd500;
+}
+
+.table-row-cell:filled:selected.custom-productos .table-cell {
+    -fx-background-color: #dfd500;
+    -fx-text-fill: black;
+}
