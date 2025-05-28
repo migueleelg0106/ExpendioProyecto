@@ -14,6 +14,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/**
+ * FXML Controller class
+ *
+ * @author uriel
+ */
 public class FXMLFormularioClienteController implements Initializable {
 
     @FXML
