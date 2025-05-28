@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package expendioproyecto.controlador;
 
 import expendioproyecto.modelo.dao.ClienteDAO;
@@ -9,17 +5,14 @@ import expendioproyecto.modelo.pojo.Cliente;
 import expendioproyecto.utilidad.Utilidad;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-/**
- * FXML Controller class
- *
- * @author uriel
- */
 public class FXMLFormularioClienteController implements Initializable {
 
     @FXML
@@ -27,25 +20,29 @@ public class FXMLFormularioClienteController implements Initializable {
     @FXML
     private TextField tfRFC;
     @FXML
-    private TextField tfTipo;
+    private ComboBox<String> cbTipo;
     @FXML
     private TextField tfTeléfono;
     @FXML
     private TextField tfRazonSocial;
     @FXML
     private TextField tfCorreo;
-    
+
     private Cliente clienteEnEdicion = null;
 
-
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        cbTipo.setItems(FXCollections.observableArrayList("ocasional", "frecuente"));
 
+        cbTipo.valueProperty().addListener((obs, oldValue, newValue) -> {
+            if ("ocasional".equalsIgnoreCase(newValue)) {
+                tfRFC.clear();              // limpia el campo si hay algo
+                tfRFC.setDisable(true);    // desactiva el TextField
+            } else {
+                tfRFC.setDisable(false);   // lo vuelve editable
+            }
+        });
+    }
 
     @FXML
     private void clicGuardar(ActionEvent event) {
@@ -53,17 +50,17 @@ public class FXMLFormularioClienteController implements Initializable {
         String direccion = tfDirección.getText().trim();
         String correo = tfCorreo.getText().trim();
         String telefono = tfTeléfono.getText().trim();
-        String tipo = tfTipo.getText().trim();
+        String tipo = cbTipo.getValue();
         String rfc = tfRFC.getText().trim();
 
-        if (direccion.isEmpty() || correo.isEmpty() || telefono.isEmpty() || tipo.isEmpty() ) {
+        if (razonSocial.isEmpty() || direccion.isEmpty() || correo.isEmpty() || telefono.isEmpty() || tipo == null) {
             Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos incompletos",
-                    "Rellenar al menos los campos obligatorios: tipo, dirección, correo y teléfono.");
+                "Rellenar todos los campos obligatorios: razón social, tipo, dirección, correo y teléfono.");
             return;
         }
 
         Cliente cliente = (clienteEnEdicion == null) ? new Cliente() : clienteEnEdicion;
-        cliente.setRazonSocial(razonSocial.isEmpty() ? null : razonSocial);
+        cliente.setRazonSocial(razonSocial);
         cliente.setDireccion(direccion);
         cliente.setCorreo(correo);
         cliente.setTelefono(telefono);
@@ -98,11 +95,11 @@ public class FXMLFormularioClienteController implements Initializable {
     private void clicCancelar(ActionEvent event) {
         cerrarVentana();
     }
-    
-    private void cerrarVentana(){
+
+    private void cerrarVentana() {
         Utilidad.cerrarVentanaComponente(tfDirección);
     }
-    
+
     public void inicializarFormulario(Cliente cliente) {
         if (cliente != null) {
             this.clienteEnEdicion = cliente;
@@ -110,9 +107,9 @@ public class FXMLFormularioClienteController implements Initializable {
             tfDirección.setText(cliente.getDireccion());
             tfCorreo.setText(cliente.getCorreo());
             tfTeléfono.setText(cliente.getTelefono());
-            tfTipo.setText(cliente.getTipo());
+            cbTipo.setValue(cliente.getTipo());
             tfRFC.setText(cliente.getRfc());
+            tfRFC.setDisable("ocasional".equalsIgnoreCase(cliente.getTipo()));
         }
     }
-    
 }

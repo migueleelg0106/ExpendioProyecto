@@ -8,18 +8,63 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLVentaController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1004.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLVentaController">
    <children>
-      <Label prefHeight="77.0" prefWidth="800.0" style="-fx-background-color: #ffa333;" text="    Ventas">
+      <Label prefHeight="77.0" prefWidth="1004.0" style="-fx-background-color: #ffa333;" text="    Ventas">
          <font>
             <Font name="Arial Rounded MT Bold" size="34.0" />
          </font>
       </Label>
-      <ImageView fitHeight="77.0" fitWidth="82.0" layoutX="715.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="77.0" fitWidth="82.0" layoutX="927.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../recurso/logoExpendioBlancoNegro.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnRegresar" layoutX="28.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
+      <Button fx:id="btnRegresar" layoutX="28.0" layoutY="691.0" mnemonicParsing="false" onAction="#btnClicRegresar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
+      <Label layoutX="28.0" layoutY="105.0" text="Seleccione un cliente:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="27.0" layoutY="130.0" prefHeight="31.0" prefWidth="234.0" promptText="Cliente" style="-fx-cursor: hand;" />
+      <Label layoutX="690.0" layoutY="145.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Fecha" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="690.0" layoutY="97.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Total de la venta" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvInventario" layoutX="36.0" layoutY="282.0" prefHeight="365.0" prefWidth="462.0">
+         <columns>
+            <TableColumn fx:id="colNombre" prefWidth="184.0" style="-fx-cursor: hand;" text="Nombre" />
+            <TableColumn fx:id="colExistencia" prefWidth="150.0" style="-fx-cursor: hand;" text="Existencia" />
+            <TableColumn fx:id="colPrecio" minWidth="0.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Precio" />
+         </columns>
+      </TableView>
+      <TextField fx:id="tfBuscar" layoutX="276.0" layoutY="129.0" prefHeight="31.0" prefWidth="393.0" promptText="Buscar bebida" style="-fx-background-color: FFFFFF; -fx-cursor: text;" />
+      <ImageView fitHeight="31.0" fitWidth="29.0" layoutX="638.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recurso/icons8-buscar-50.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="36.0" layoutY="203.0" mnemonicParsing="false" onAction="#btnClicAgregar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Agregar" />
+      <Button layoutX="796.0" layoutY="672.0" mnemonicParsing="false" onAction="#btnClicFinalizarVenta" prefHeight="58.0" prefWidth="170.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Finalizar Venta" />
+      <Button layoutX="858.0" layoutY="203.0" mnemonicParsing="false" onAction="#btnClicEliminar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Eliminar" />
+      <TableView fx:id="tvProductos" layoutX="528.0" layoutY="276.0" prefHeight="365.0" prefWidth="440.0">
+         <columns>
+            <TableColumn fx:id="colProductosVenta" prefWidth="192.0" style="-fx-cursor: hand;" text="Productos de la venta" />
+            <TableColumn prefWidth="65.0" text="Precio" />
+            <TableColumn prefWidth="86.0" text="Promoción" />
+            <TableColumn prefWidth="93.0" text="Cantidad" />
+         </columns>
+      </TableView>
+      <Label layoutX="276.0" layoutY="105.0" text="Busque una bebida para seleccionarla:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

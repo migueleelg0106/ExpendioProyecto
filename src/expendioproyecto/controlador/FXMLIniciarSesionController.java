@@ -26,7 +26,6 @@ import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.ConexionBD;
 import expendioproyecto.modelo.dao.IniciarSesionDAO;
 import expendioproyecto.modelo.pojo.Usuario;
-//import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 
 /**
@@ -75,13 +74,10 @@ public class FXMLIniciarSesionController implements Initializable{
     
     private void validarCredenciales(String username, String password){
         try{
-            Usuario usuarioSesion = IniciarSesionDAO.verificarCredenciales
-            (username, password);
-            if (usuarioSesion != null){
-                //Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, 
-                        //"Credenciales correctas", "Bienvenido(a) " 
-                        //+ usuarioSesion.toString() + " al sistema.");
-                irPantallaPrincipal(usuarioSesion);
+            boolean exito = new IniciarSesionDAO().iniciarSesion
+                (username, password);
+            if (exito){
+                irPantallaPrincipal();
             }else{
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, 
                         "Credenciales incorrectas", "Usuario y/o contraseña "
@@ -93,7 +89,7 @@ public class FXMLIniciarSesionController implements Initializable{
         }
     }
     
-    private void irPantallaPrincipal(Usuario usuario){
+    private void irPantallaPrincipal(){
         try {
             Stage escenarioBase = Utilidad.gestEscenarioComponente(tfUsername);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
@@ -105,6 +101,9 @@ public class FXMLIniciarSesionController implements Initializable{
             escenarioBase.show();
         } catch (IOException ex) {
             ex.printStackTrace();
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR,
+                    "Error al cargar la vista principal",
+                    "No se pudo cargar la interfaz de la pantalla principal.");
         }
     }
 }

@@ -4,11 +4,14 @@
  */
 package expendioproyecto.utilidad;
 
+import java.util.Base64;
 import java.util.Optional;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Control;
 import javafx.stage.Stage;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  *

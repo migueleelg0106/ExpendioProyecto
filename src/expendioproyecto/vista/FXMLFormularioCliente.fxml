@@ -22,7 +22,6 @@
       </Label>
       <TextField fx:id="tfDirección" layoutX="25.0" layoutY="334.0" prefHeight="31.0" prefWidth="407.0" promptText="Dirección" />
       <TextField fx:id="tfRFC" layoutX="25.0" layoutY="261.0" prefHeight="31.0" prefWidth="407.0" promptText="RFC" />
-      <TextField fx:id="tfTipo" layoutX="25.0" layoutY="191.0" promptText="Tipo" />
       <TextField fx:id="tfTeléfono" layoutX="243.0" layoutY="120.0" promptText="Teléfono" />
       <TextField fx:id="tfRazonSocial" layoutX="25.0" layoutY="120.0" promptText="Razón social" />
       <Label prefHeight="81.0" prefWidth="457.0" style="-fx-background-color: #ffa333;" text="    Datos del Cliente">
@@ -66,5 +65,6 @@
          </font>
       </Label>
       <TextField fx:id="tfCorreo" layoutX="25.0" layoutY="402.0" prefHeight="31.0" prefWidth="407.0" promptText="Correo electrónico" />
+      <ComboBox fx:id="cbTipo" layoutX="25.0" layoutY="194.0" prefHeight="31.0" prefWidth="407.0" promptText="Tipo" style="-fx-cursor: hand;" />
    </children>
 </AnchorPane>
