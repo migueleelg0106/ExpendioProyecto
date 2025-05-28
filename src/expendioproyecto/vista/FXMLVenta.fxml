@@ -52,13 +52,16 @@
       </ImageView>
       <Button layoutX="36.0" layoutY="203.0" mnemonicParsing="false" onAction="#btnClicAgregar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Agregar" />
       <Button layoutX="796.0" layoutY="672.0" mnemonicParsing="false" onAction="#btnClicFinalizarVenta" prefHeight="58.0" prefWidth="170.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Finalizar Venta" />
-      <Button layoutX="858.0" layoutY="203.0" mnemonicParsing="false" onAction="#btnClicEliminar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Eliminar" />
-      <TableView fx:id="tvProductos" layoutX="528.0" layoutY="276.0" prefHeight="365.0" prefWidth="440.0">
+      <Button layoutX="858.0" layoutY="203.0" mnemonicParsing="false" onAction="#btnClicEliminar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffeb42; -fx-border-color: #a6992b; -fx-cursor: hand;" text="Eliminar" />
+      <TableView fx:id="tvProductos" layoutX="527.0" layoutY="282.0" prefHeight="365.0" prefWidth="440.0">
+          <styleClass>
+            <String fx:value="custom-productos" />
+          </styleClass>
          <columns>
             <TableColumn fx:id="colProductosVenta" prefWidth="192.0" style="-fx-cursor: hand;" text="Productos de la venta" />
-            <TableColumn prefWidth="65.0" text="Precio" />
-            <TableColumn prefWidth="86.0" text="Promoción" />
-            <TableColumn prefWidth="93.0" text="Cantidad" />
+            <TableColumn prefWidth="65.0" style="-fx-cursor: hand;" text="Precio" />
+            <TableColumn prefWidth="86.0" style="-fx-cursor: hand;" text="Promoción" />
+            <TableColumn prefWidth="93.0" style="-fx-cursor: hand;" text="Cantidad" />
          </columns>
       </TableView>
       <Label layoutX="276.0" layoutY="105.0" text="Busque una bebida para seleccionarla:">
