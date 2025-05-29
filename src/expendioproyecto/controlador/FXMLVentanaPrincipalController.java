@@ -149,7 +149,6 @@ public class FXMLVentanaPrincipalController implements Initializable {
         }
     }
 
-    @FXML
     private void clicReportes(ActionEvent event) {
         try{
             Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
@@ -219,6 +218,30 @@ public class FXMLVentanaPrincipalController implements Initializable {
                 ex.printStackTrace();
             }
         }
+    }
+
+    @FXML
+    private void clicMasVendido(ActionEvent event) {
+    }
+
+    @FXML
+    private void clicMenosVendido(ActionEvent event) {
+    }
+
+    @FXML
+    private void clicMasVendidoACliente(ActionEvent event) {
+    }
+
+    @FXML
+    private void clicNoVendidoACliente(ActionEvent event) {
+    }
+
+    @FXML
+    private void clicProductoStockMinimo(ActionEvent event) {
+    }
+
+    @FXML
+    private void clicVentasOrganizadas(ActionEvent event) {
     }
     
 }

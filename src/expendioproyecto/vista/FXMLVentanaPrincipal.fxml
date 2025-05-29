@@ -169,7 +169,85 @@
                      <content>
                         <VBox>
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicReportes" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Reportes">
+                              <Button mnemonicParsing="false" onAction="#clicMasVendido" prefHeight="33.0" prefWidth="350.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Producto más vendido">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </content>
+                  </CustomMenuItem>
+                  <CustomMenuItem styleClass="custom-menu-item">
+                     <content>
+                        <VBox>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#clicMenosVendido" prefHeight="33.0" prefWidth="350.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Producto menos vendido">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </content>
+                  </CustomMenuItem>
+                  <CustomMenuItem styleClass="custom-menu-item">
+                     <content>
+                        <VBox>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#clicMasVendidoACliente" prefHeight="33.0" prefWidth="350.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Producto más vendido a un cliente">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </content>
+                  </CustomMenuItem>
+                  <CustomMenuItem styleClass="custom-menu-item">
+                     <content>
+                        <VBox>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#clicNoVendidoACliente" prefHeight="33.0" prefWidth="350.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Producto que no se ha vendido a un cliente">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </content>
+                  </CustomMenuItem>
+                  <CustomMenuItem styleClass="custom-menu-item">
+                     <content>
+                        <VBox>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#clicVentasPorFecha" prefHeight="33.0" prefWidth="350.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Producto con el stock mínimo">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </content>
+                  </CustomMenuItem>
+                  <CustomMenuItem styleClass="custom-menu-item">
+                     <content>
+                        <VBox>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#clicVentasPorProducto" prefHeight="33.0" prefWidth="350.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Ventas por producto">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </content>
+                  </CustomMenuItem>
+                  <CustomMenuItem styleClass="custom-menu-item">
+                     <content>
+                        <VBox>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#clicMasVendido" prefHeight="33.0" prefWidth="350.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Ventas por fechas">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
