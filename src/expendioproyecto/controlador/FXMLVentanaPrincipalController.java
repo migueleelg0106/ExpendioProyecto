@@ -220,5 +220,9 @@ public class FXMLVentanaPrincipalController implements Initializable {
             }
         }
     }
+
+    @FXML
+    private void clicAgregarEmpleados(ActionEvent event) {
+    }
     
 }

@@ -161,6 +161,19 @@
                         </VBox>
                      </content>
                   </CustomMenuItem>
+                  <CustomMenuItem styleClass="custom-menu-item">
+                     <content>
+                        <VBox>
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#clicAgregarEmpleados" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Agregar Empleados">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </content>
+                  </CustomMenuItem>
                </items>
           </Menu>
           <Menu mnemonicParsing="false" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="De información">
