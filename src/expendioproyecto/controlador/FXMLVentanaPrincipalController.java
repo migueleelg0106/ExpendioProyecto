@@ -249,8 +249,5 @@ public class FXMLVentanaPrincipalController implements Initializable {
     private void clicVentasPorProducto(ActionEvent event) {
     }
 
-    @FXML
-    private void clicAgregarEmpleado(ActionEvent event) {
-    }
     
 }
