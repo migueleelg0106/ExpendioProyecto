@@ -8,9 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLReporteController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLReporteVentasPorFechaController">
    <children>
-      <Label prefHeight="77.0" prefWidth="800.0" style="-fx-background-color: #ffa333;" text="    Reportes">
+      <Label prefHeight="77.0" prefWidth="800.0" style="-fx-background-color: #ffa333;" text="    Ventas según fechas">
          <font>
             <Font name="Arial Rounded MT Bold" size="34.0" />
          </font>

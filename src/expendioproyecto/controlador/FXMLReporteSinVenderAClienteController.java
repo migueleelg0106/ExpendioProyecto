@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  *
  * @author uriel
  */
-public class FXMLReporteController implements Initializable {
+public class FXMLReporteSinVenderAClienteController implements Initializable {
 
     @FXML
     private Button btnRegresar;

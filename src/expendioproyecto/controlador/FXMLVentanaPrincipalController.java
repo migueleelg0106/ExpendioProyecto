@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -222,31 +223,132 @@ public class FXMLVentanaPrincipalController implements Initializable {
 
     @FXML
     private void clicMasVendido(ActionEvent event) {
+        try{
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteMasVendido.fxml"));
+            
+            Scene escenaPrincipal = new Scene(vista);
+            escenarioBase.setScene(escenaPrincipal);
+            escenarioBase.setTitle("Bebida Más Vendida");
+            escenarioBase.centerOnScreen();
+            escenarioBase.show();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 
     @FXML
     private void clicMenosVendido(ActionEvent event) {
+        try{
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteMenosVendido.fxml"));
+            
+            Scene escenaPrincipal = new Scene(vista);
+            escenarioBase.setScene(escenaPrincipal);
+            escenarioBase.setTitle("Bebida Menos Vendida");
+            escenarioBase.centerOnScreen();
+            escenarioBase.show();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 
     @FXML
     private void clicMasVendidoACliente(ActionEvent event) {
+        try{
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteMasVendidoACliente.fxml"));
+            
+            Scene escenaPrincipal = new Scene(vista);
+            escenarioBase.setScene(escenaPrincipal);
+            escenarioBase.setTitle("Bebida Más Vendida A Un Cliente");
+            escenarioBase.centerOnScreen();
+            escenarioBase.show();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 
     @FXML
     private void clicNoVendidoACliente(ActionEvent event) {
+        try{
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteSinVenderACliente.fxml"));
+            
+            Scene escenaPrincipal = new Scene(vista);
+            escenarioBase.setScene(escenaPrincipal);
+            escenarioBase.setTitle("Bebida Sin Vender A Un Cliente");
+            escenarioBase.centerOnScreen();
+            escenarioBase.show();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 
 
     @FXML
     private void clicAgregarEmpleados(ActionEvent event) {
+        try{
+            FXMLLoader loader = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLAgregarEmpleado.fxml"));
+            Parent vista = loader.load();
+
+            Stage ventana = new Stage();
+            ventana.setScene(new Scene(vista));
+            ventana.setTitle ("Agregar Empleado");
+            ventana.centerOnScreen();
+            ventana.initModality(Modality.APPLICATION_MODAL);
+            ventana.showAndWait();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 
     @FXML
     private void clicVentasPorFecha(ActionEvent event) {
+        try{
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteVentasPorFecha.fxml"));
+            
+            Scene escenaPrincipal = new Scene(vista);
+            escenarioBase.setScene(escenaPrincipal);
+            escenarioBase.setTitle("Ventas Por Fecha");
+            escenarioBase.centerOnScreen();
+            escenarioBase.show();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 
     @FXML
     private void clicVentasPorProducto(ActionEvent event) {
+        try{
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteVentasPorBebida.fxml"));
+            
+            Scene escenaPrincipal = new Scene(vista);
+            escenarioBase.setScene(escenaPrincipal);
+            escenarioBase.setTitle("Ventas Por Producto");
+            escenarioBase.centerOnScreen();
+            escenarioBase.show();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void clicConStockMinimo(ActionEvent event) {
+        try{
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteConStockMinimo.fxml"));
+            
+            Scene escenaPrincipal = new Scene(vista);
+            escenarioBase.setScene(escenaPrincipal);
+            escenarioBase.setTitle("Bebidas Con Stock Mínimo");
+            escenarioBase.centerOnScreen();
+            escenarioBase.show();
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 
     
