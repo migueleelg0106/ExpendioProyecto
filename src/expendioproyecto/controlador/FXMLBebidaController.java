@@ -61,7 +61,6 @@ public class FXMLBebidaController implements Initializable {
         configurarTabla();
         cargarInformacionTabla();
         configurarBuscador();
-        configurarBuscador();
     }    
     
     private void configurarTabla(){
@@ -194,7 +193,7 @@ public class FXMLBebidaController implements Initializable {
             tvBebidas.setItems(bebidasFiltradas);
         }
     });
-}
+    }
 
     
 }

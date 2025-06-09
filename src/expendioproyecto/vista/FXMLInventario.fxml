@@ -21,5 +21,20 @@
          </image>
       </ImageView>
       <Button fx:id="btnRegresar" layoutX="28.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
+      <TableView fx:id="tvBebidas" layoutX="28.0" layoutY="145.0" prefHeight="389.0" prefWidth="744.0">
+         <columns>
+            <TableColumn fx:id="colNombre" prefWidth="135.0" style="-fx-cursor: hand;" text="Nombre" />
+            <TableColumn fx:id="colExistencia" prefWidth="101.0" style="-fx-cursor: hand;" text="Existencia" />
+            <TableColumn fx:id="colPrecio" minWidth="0.0" prefWidth="82.0" style="-fx-cursor: hand;" text="Precio" />
+            <TableColumn fx:id="colStockMin" minWidth="0.0" prefWidth="139.0" style="-fx-cursor: hand;" text="Stock Mínimo" />
+            <TableColumn fx:id="colDescripcion" minWidth="0.0" prefWidth="286.0" style="-fx-cursor: hand;" text="Descripción" />
+         </columns>
+      </TableView>
+      <TextField fx:id="tfBuscar" layoutX="28.0" layoutY="94.0" prefHeight="39.0" prefWidth="393.0" promptText="Buscar bebida" style="-fx-background-color: FFFFFF; -fx-border-color: 000000; -fx-cursor: text;" />
+      <ImageView fitHeight="39.0" fitWidth="51.0" layoutX="381.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recurso/icons8-buscar-50.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
