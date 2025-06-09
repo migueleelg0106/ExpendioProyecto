@@ -7,7 +7,7 @@ package expendioproyecto.controlador;
 import expendioproyecto.modelo.dao.BebidaDAO;
 import expendioproyecto.modelo.dao.PromocionDAO;
 import expendioproyecto.modelo.pojo.Bebida;
-import expendioproyecto.modelo.pojo.Promoción;
+import expendioproyecto.modelo.pojo.Promocion;
 import expendioproyecto.utilidad.Utilidad;
 import java.net.URL;
 import java.sql.SQLException;
@@ -43,7 +43,7 @@ public class FXMLFormularioPromocionController implements Initializable {
     
     private ObservableList<Bebida> bebidas;
 
-    private Promoción promocionEnEdicion = null;
+    private Promocion promocionEnEdicion = null;
 
 
     /**
@@ -79,7 +79,7 @@ public class FXMLFormularioPromocionController implements Initializable {
             return;
         }
 
-        Promoción promocion = (promocionEnEdicion == null) ? new Promoción() : promocionEnEdicion;
+        Promocion promocion = (promocionEnEdicion == null) ? new Promocion() : promocionEnEdicion;
         promocion.setDescripcion(descripcion);
         promocion.setDescuento(descuento);
         promocion.setFechaInicio(fechaInicio.toString());
@@ -131,7 +131,7 @@ public class FXMLFormularioPromocionController implements Initializable {
         }
     }
     
-    public void inicializarFormulario(Promoción promocion) {
+    public void inicializarFormulario(Promocion promocion) {
         if (promocion != null) {
             this.promocionEnEdicion = promocion;
             tfDescripcion.setText(promocion.getDescripcion());

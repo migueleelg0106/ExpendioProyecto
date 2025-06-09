@@ -6,7 +6,7 @@ package expendioproyecto.controlador;
 
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.PromocionDAO;
-import expendioproyecto.modelo.pojo.Promoción;
+import expendioproyecto.modelo.pojo.Promocion;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
@@ -49,9 +49,9 @@ public class FXMLPromocionController implements Initializable {
     @FXML
     private TextField tfBuscar;
     @FXML
-    private TableView<Promoción> tvPromocion;
+    private TableView<Promocion> tvPromocion;
     
-    private ObservableList<Promoción> promociones;
+    private ObservableList<Promocion> promociones;
 
     /**
      * Initializes the controller class.
@@ -74,7 +74,7 @@ public class FXMLPromocionController implements Initializable {
     private void cargarInformacionTabla(){
         try {
             promociones = FXCollections.observableArrayList();
-            ArrayList<Promoción> promocionDAO = PromocionDAO.obtenerPromociones();
+            ArrayList<Promocion> promocionDAO = PromocionDAO.obtenerPromociones();
             promociones.addAll(promocionDAO);
             tvPromocion.setItems(promociones);
         } catch (SQLException ex) {
@@ -92,7 +92,7 @@ public class FXMLPromocionController implements Initializable {
 
     @FXML
     private void btnClicEliminar(ActionEvent event) {
-        Promoción seleccionada = tvPromocion.getSelectionModel().getSelectedItem();
+        Promocion seleccionada = tvPromocion.getSelectionModel().getSelectedItem();
         if (seleccionada == null) {
             Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Sin selección", "Selecciona una promoción para eliminar.");
             return;
@@ -122,7 +122,7 @@ public class FXMLPromocionController implements Initializable {
 
     @FXML
     private void btnClicModificar(ActionEvent event) {
-        Promoción seleccionada = tvPromocion.getSelectionModel().getSelectedItem();
+        Promocion seleccionada = tvPromocion.getSelectionModel().getSelectedItem();
         if (seleccionada == null) {
             Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Sin selección", "Selecciona una promoción para modificar.");
             return;
@@ -152,7 +152,7 @@ public class FXMLPromocionController implements Initializable {
         }
     }
     
-    private void irFormularioPromocion(Promoción promocionEditar) {
+    private void irFormularioPromocion(Promocion promocionEditar) {
         try {
             FXMLLoader loader = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLFormularioPromocion.fxml"));
             Parent vista = loader.load();
@@ -176,10 +176,10 @@ public class FXMLPromocionController implements Initializable {
     private void configurarBuscador() {
         tfBuscar.textProperty().addListener((observable, oldValue, newValue) -> {
             if (promociones != null) {
-                ObservableList<Promoción> filtradas = FXCollections.observableArrayList();
+                ObservableList<Promocion> filtradas = FXCollections.observableArrayList();
                 String filtro = newValue.toLowerCase();
 
-                for (Promoción p : promociones) {
+                for (Promocion p : promociones) {
                     String bebida = p.getProducto() != null ? p.getProducto().toLowerCase() : "";
                     if (bebida.contains(filtro)) {
                         filtradas.add(p);

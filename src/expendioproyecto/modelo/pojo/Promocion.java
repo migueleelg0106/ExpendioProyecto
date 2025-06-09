@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  *
  * @author uriel
  */
-public class Promoción {
+public class Promocion {
     
     private int idPromocion;
     private String fechaInicio;
@@ -20,10 +20,10 @@ public class Promoción {
     private int idProducto;
     private String producto;
 
-    public Promoción() {
+    public Promocion() {
     }
 
-    public Promoción(int idPromocion, String fechaInicio, String fechaVencimiento, int descuento, String descripcion, int idProducto, String producto) {
+    public Promocion(int idPromocion, String fechaInicio, String fechaVencimiento, int descuento, String descripcion, int idProducto, String producto) {
         this.idPromocion = idPromocion;
         this.fechaInicio = fechaInicio;
         this.fechaVencimiento = fechaVencimiento;

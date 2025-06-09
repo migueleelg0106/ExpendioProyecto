@@ -5,7 +5,7 @@
 package expendioproyecto.modelo.dao;
 
 import expendioproyecto.modelo.ConexionBD;
-import expendioproyecto.modelo.pojo.Promoción;
+import expendioproyecto.modelo.pojo.Promocion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,8 +17,8 @@ import java.util.ArrayList;
  * @author uriel
  */
 public class PromocionDAO {
-    public static ArrayList<Promoción> obtenerPromociones() throws SQLException{
-        ArrayList<Promoción> promociones = new ArrayList<Promoción>();
+    public static ArrayList<Promocion> obtenerPromociones() throws SQLException{
+        ArrayList<Promocion> promociones = new ArrayList<Promocion>();
         Connection conexionBD = ConexionBD.abrirConexion();
         
         if(conexionBD != null){
@@ -42,8 +42,8 @@ public class PromocionDAO {
         return promociones;
     }
     
-    private static Promoción convertirRegistroPromocion(ResultSet resultado) throws SQLException{
-        Promoción promocion = new Promoción();
+    private static Promocion convertirRegistroPromocion(ResultSet resultado) throws SQLException{
+        Promocion promocion = new Promocion();
         promocion.setIdPromocion(resultado.getInt("idPromocion"));
         promocion.setFechaInicio(resultado.getString("fechaInicio"));
         promocion.setFechaVencimiento(resultado.getString("fechaVencimiento"));
@@ -55,7 +55,7 @@ public class PromocionDAO {
         return promocion;
     }
     
-    public static boolean insertarPromocion(Promoción promocion) throws SQLException {
+    public static boolean insertarPromocion(Promocion promocion) throws SQLException {
         String sql = "INSERT INTO promocion (fechaInicio, fechaVencimiento, descuento, descripcion, Producto_idProducto) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = ConexionBD.abrirConexion();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -70,7 +70,7 @@ public class PromocionDAO {
         }
     }
 
-    public static boolean modificarPromocion(Promoción promocion) throws SQLException {
+    public static boolean modificarPromocion(Promocion promocion) throws SQLException {
         String sql = "UPDATE promocion SET fechaInicio=?, fechaVencimiento=?, descuento=?, descripcion=?, Producto_idProducto=? WHERE idPromocion=?";
         try (Connection conn = ConexionBD.abrirConexion();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
