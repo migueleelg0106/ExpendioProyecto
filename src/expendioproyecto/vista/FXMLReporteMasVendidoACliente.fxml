@@ -8,18 +8,42 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLReporteMasVendidoAClienteController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1042.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLReporteMasVendidoAClienteController">
    <children>
-      <Label prefHeight="77.0" prefWidth="800.0" style="-fx-background-color: #ffa333;" text="    Bebida más vendida a un cliente">
+      <Label prefHeight="77.0" prefWidth="1042.0" style="-fx-background-color: #ffa333;" text="    Bebida más vendida a un cliente">
          <font>
             <Font name="Arial Rounded MT Bold" size="34.0" />
          </font>
       </Label>
-      <ImageView fitHeight="77.0" fitWidth="82.0" layoutX="715.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="77.0" fitWidth="82.0" layoutX="959.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../recurso/logoExpendioBlancoNegro.png" />
          </image>
       </ImageView>
       <Button fx:id="btnRegresar" layoutX="28.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
+      <TableView fx:id="tvClientes" layoutX="50.0" layoutY="141.0" prefHeight="365.0" prefWidth="598.0">
+         <columns>
+            <TableColumn fx:id="colRazonSocial" prefWidth="159.0" style="-fx-cursor: hand;" text="Razón Social" />
+            <TableColumn fx:id="colTelefono" prefWidth="103.0" style="-fx-cursor: hand;" text="Telefono" />
+            <TableColumn fx:id="colCorreo" prefWidth="177.0" style="-fx-cursor: hand;" text="Correo" />
+            <TableColumn fx:id="colDireccion" prefWidth="158.0" style="-fx-cursor: hand;" text="Direccion" />
+         </columns>
+      </TableView>
+      <TableView fx:id="tvProductosMasVendidos" layoutX="683.0" layoutY="141.0" prefHeight="365.0" prefWidth="335.0">
+          <styleClass>
+            <String fx:value="custom-productos" />
+          </styleClass>
+         <columns>
+            <TableColumn fx:id="colNombreProducto" prefWidth="184.0" style="-fx-cursor: hand;" text="Nombre" />
+            <TableColumn fx:id="colCantidadCompra" prefWidth="150.0" style="-fx-cursor: hand;" text="Cantidad" />
+         </columns>
+      </TableView>
+      <TextField fx:id="tfBuscarRazon" layoutX="59.0" layoutY="95.0" prefHeight="31.0" prefWidth="393.0" promptText="Buscar razón social" style="-fx-background-color: FFFFFF; -fx-cursor: text;" />
+      <ImageView fitHeight="31.0" fitWidth="29.0" layoutX="421.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../recurso/icons8-buscar-50.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnExportar" layoutX="900.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicExportar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar a PDF" />
    </children>
 </AnchorPane>

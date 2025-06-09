@@ -10,7 +10,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
@@ -21,39 +23,89 @@ import javafx.scene.control.TextField;
 public class FXMLAgregarEmpleadoController implements Initializable {
 
     @FXML
-    private Label lbExistencia;
+    private TextField tfUsuario;
     @FXML
-    private TextField tfDescripcion;
+    private PasswordField pfPassword;
     @FXML
-    private TextField tfStockMinimo;
+    private Button btnMostrarContraseña;
     @FXML
-    private TextField tfExistencia;
-    @FXML
-    private TextField tfPrecio;
-    @FXML
-    private TextField tfNombre;
-    @FXML
-    private Label lbStockMinimo;
+    private TextField tfPasswordVisible;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        configurarListeners();
     }    
 
     @FXML
     private void clicGuardar(ActionEvent event) {
     }
 
+    private boolean validarCampos(String username, String password){
+        boolean camposValidos = true;
+        if(username.isEmpty()){
+            camposValidos = false;
+        }
+        if(password.isEmpty()){
+            camposValidos = false;
+        }
+        return camposValidos;
+    }
+    
+    private void guardarEmpleado(String username, String password){
+        
+    }
+    
     @FXML
     private void clicCancelar(ActionEvent event) {
         cerrarVentana();
     }
     
     private void cerrarVentana(){
-        Utilidad.cerrarVentanaComponente(tfExistencia);
+        Utilidad.cerrarVentanaComponente(tfUsuario);
+    }
+
+    private void mostrarContrasenaVisible() {
+        tfPasswordVisible.setText(pfPassword.getText());
+        tfPasswordVisible.setVisible(true);
+        tfPasswordVisible.setManaged(true);
+
+        pfPassword.setVisible(false);
+        pfPassword.setManaged(false);
+    }
+
+    private void ocultarContrasenaVisible() {
+        pfPassword.setText(tfPasswordVisible.getText());
+        pfPassword.setVisible(true);
+        pfPassword.setManaged(true);
+
+        tfPasswordVisible.setVisible(false);
+        tfPasswordVisible.setManaged(false);
+    }
+    
+    private void configurarListeners() {
+        pfPassword.textProperty().addListener((obs, oldText, newText) -> {
+            tfPasswordVisible.setText(newText);
+        });
+
+        tfPasswordVisible.textProperty().addListener((obs, oldText, newText) -> {
+            pfPassword.setText(newText);
+        });
+    }
+    
+    private String obtenerContrasenaActual() {
+        return pfPassword.isVisible() ? pfPassword.getText() : tfPasswordVisible.getText();
+    }
+
+    @FXML
+    private void btnClicMostrarContraseña(ActionEvent event) {
+        if (tfPasswordVisible.isVisible()) {
+            ocultarContrasenaVisible();
+        } else {
+            mostrarContrasenaVisible();
+        }
     }
     
 }

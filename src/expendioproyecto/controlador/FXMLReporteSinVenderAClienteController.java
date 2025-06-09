@@ -16,6 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -27,13 +30,33 @@ public class FXMLReporteSinVenderAClienteController implements Initializable {
 
     @FXML
     private Button btnRegresar;
+    @FXML
+    private TableView<?> tvProductosMenosVendidos;
+    @FXML
+    private TableColumn<?, ?> colNombreProducto;
+    @FXML
+    private TableColumn<?, ?> colCantidadCompra;
+    @FXML
+    private TableView<?> tvClientes;
+    @FXML
+    private TableColumn<?, ?> colRazonSocial;
+    @FXML
+    private TableColumn<?, ?> colTelefono;
+    @FXML
+    private TableColumn<?, ?> colCorreo;
+    @FXML
+    private TableColumn<?, ?> colDireccion;
+    @FXML
+    private TextField tfBuscarRazon;
+    @FXML
+    private Button btnExportar;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        tvProductosMenosVendidos.getStylesheets().add(getClass().getResource("/expendioproyecto/recurso/productos.css").toExternalForm());
     }    
 
     @FXML
@@ -50,6 +73,10 @@ public class FXMLReporteSinVenderAClienteController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void btnClicExportar(ActionEvent event) {
     }
     
 }

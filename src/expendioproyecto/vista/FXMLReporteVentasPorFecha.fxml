@@ -8,18 +8,36 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLReporteVentasPorFechaController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1008.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLReporteVentasPorFechaController">
    <children>
-      <Label prefHeight="77.0" prefWidth="800.0" style="-fx-background-color: #ffa333;" text="    Ventas según fechas">
+      <Label prefHeight="77.0" prefWidth="1008.0" style="-fx-background-color: #ffa333;" text="    Ventas según fechas">
          <font>
             <Font name="Arial Rounded MT Bold" size="34.0" />
          </font>
       </Label>
-      <ImageView fitHeight="77.0" fitWidth="82.0" layoutX="715.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="77.0" fitWidth="82.0" layoutX="931.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../recurso/logoExpendioBlancoNegro.png" />
          </image>
       </ImageView>
       <Button fx:id="btnRegresar" layoutX="28.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
+      <Button fx:id="btnExportar" layoutX="828.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicExportar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar a PDF" />
+      <Label layoutX="53.0" layoutY="103.0" text="Seleccione el rango para el cual deseé visualizar las ventas:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="102.0" layoutY="401.0" mnemonicParsing="false" onAction="#btnClicPorAño" prefHeight="31.0" prefWidth="152.0" style="-fx-background-color: #ffc978; -fx-cursor: hand;" text="Ventas por año" />
+      <Button layoutX="102.0" layoutY="313.0" mnemonicParsing="false" onAction="#btnClicPorMes" prefHeight="31.0" prefWidth="152.0" style="-fx-background-color: #ffc978; -fx-cursor: hand;" text="Ventas por mes" />
+      <Button layoutX="102.0" layoutY="230.0" mnemonicParsing="false" onAction="#btnClicPorSemana" prefHeight="31.0" prefWidth="152.0" style="-fx-background-color: #ffc978; -fx-cursor: hand;" text="Ventas por semana" />
+      <TableView fx:id="tvVentas" layoutX="348.0" layoutY="141.0" prefHeight="365.0" prefWidth="598.0">
+         <columns>
+            <TableColumn fx:id="colSemana" prefWidth="93.0" style="-fx-cursor: hand;" text="Semana" />
+            <TableColumn fx:id="colMes" prefWidth="117.0" style="-fx-cursor: hand;" text="Mes" />
+            <TableColumn fx:id="colAño" prefWidth="128.0" style="-fx-cursor: hand;" text="Año" />
+            <TableColumn prefWidth="127.0" style="-fx-cursor: hand;" text="Total de ventas" />
+            <TableColumn prefWidth="132.0" style="-fx-cursor: hand;" text="Total recaudado" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

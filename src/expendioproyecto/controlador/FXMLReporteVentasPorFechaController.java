@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 /**
@@ -27,6 +29,16 @@ public class FXMLReporteVentasPorFechaController implements Initializable {
 
     @FXML
     private Button btnRegresar;
+    @FXML
+    private Button btnExportar;
+    @FXML
+    private TableView<?> tvVentas;
+    @FXML
+    private TableColumn<?, ?> colSemana;
+    @FXML
+    private TableColumn<?, ?> colMes;
+    @FXML
+    private TableColumn<?, ?> colAño;
 
     /**
      * Initializes the controller class.
@@ -50,6 +62,22 @@ public class FXMLReporteVentasPorFechaController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void btnClicExportar(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnClicPorAño(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnClicPorMes(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnClicPorSemana(ActionEvent event) {
     }
     
 }

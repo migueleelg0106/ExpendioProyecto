@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 /**
@@ -27,6 +29,16 @@ public class FXMLReporteConStockMinimoController implements Initializable {
 
     @FXML
     private Button btnRegresar;
+    @FXML
+    private TableView<?> tvProductoMasVendido;
+    @FXML
+    private TableColumn<?, ?> colIdProducto;
+    @FXML
+    private TableColumn<?, ?> colNombre;
+    @FXML
+    private TableColumn<?, ?> colStock;
+    @FXML
+    private Button btnExportar;
 
     /**
      * Initializes the controller class.
@@ -50,6 +62,10 @@ public class FXMLReporteConStockMinimoController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void btnClicExportar(ActionEvent event) {
     }
     
 }

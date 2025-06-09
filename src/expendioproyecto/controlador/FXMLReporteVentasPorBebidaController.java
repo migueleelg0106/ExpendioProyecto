@@ -16,6 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -27,13 +30,33 @@ public class FXMLReporteVentasPorBebidaController implements Initializable {
 
     @FXML
     private Button btnRegresar;
+    @FXML
+    private TableView<?> tvProductos;
+    @FXML
+    private TableColumn<?, ?> colNombreProducto;
+    @FXML
+    private TableColumn<?, ?> colDescripcion;
+    @FXML
+    private Button btnExportar;
+    @FXML
+    private TextField tfBuscar;
+    @FXML
+    private TableView<?> tvVentas;
+    @FXML
+    private TableColumn<?, ?> colIdVenta;
+    @FXML
+    private TableColumn<?, ?> colCantidadVenta;
+    @FXML
+    private TableColumn<?, ?> colPrecioVenta;
+    @FXML
+    private TableColumn<?, ?> colSubtotal;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        tvVentas.getStylesheets().add(getClass().getResource("/expendioproyecto/recurso/productos.css").toExternalForm());
     }    
 
     @FXML
@@ -50,6 +73,10 @@ public class FXMLReporteVentasPorBebidaController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    private void btnClicExportar(ActionEvent event) {
     }
     
 }

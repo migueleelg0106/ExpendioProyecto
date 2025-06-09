@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLReporteMenosVendidoController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLReporteMenosVendidoController">
    <children>
       <Label prefHeight="77.0" prefWidth="800.0" style="-fx-background-color: #ffa333;" text="    Bebida menos vendida">
          <font>
@@ -21,5 +21,13 @@
          </image>
       </ImageView>
       <Button fx:id="btnRegresar" layoutX="28.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
+      <TableView fx:id="tvProductoMenosVendido" layoutX="101.0" layoutY="118.0" prefHeight="365.0" prefWidth="598.0">
+         <columns>
+            <TableColumn fx:id="colIdProducto" prefWidth="159.0" style="-fx-cursor: hand;" text="Id" />
+            <TableColumn fx:id="colNombre" prefWidth="211.0" style="-fx-cursor: hand;" text="Bebida" />
+            <TableColumn fx:id="colTotal" prefWidth="227.0" style="-fx-cursor: hand;" text="Total" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnExportar" layoutX="656.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicExportar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar a PDF" />
    </children>
 </AnchorPane>
