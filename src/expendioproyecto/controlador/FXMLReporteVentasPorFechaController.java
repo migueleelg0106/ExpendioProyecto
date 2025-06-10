@@ -39,6 +39,8 @@ public class FXMLReporteVentasPorFechaController implements Initializable {
     private TableColumn<?, ?> colMes;
     @FXML
     private TableColumn<?, ?> colAño;
+    @FXML
+    private TableColumn<?, ?> colTotal;
 
     /**
      * Initializes the controller class.

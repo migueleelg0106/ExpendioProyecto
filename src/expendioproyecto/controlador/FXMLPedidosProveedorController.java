@@ -85,7 +85,7 @@ public class FXMLPedidosProveedorController implements Initializable {
     }
 
     @FXML
-    private void btnClicExportarExcel(ActionEvent event) {
+    private void btnClicExportarPDF(ActionEvent event) {
     }
     
 }

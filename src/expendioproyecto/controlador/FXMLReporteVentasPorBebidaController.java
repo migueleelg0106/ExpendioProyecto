@@ -35,21 +35,14 @@ public class FXMLReporteVentasPorBebidaController implements Initializable {
     @FXML
     private TableColumn<?, ?> colNombreProducto;
     @FXML
-    private TableColumn<?, ?> colDescripcion;
-    @FXML
     private Button btnExportar;
     @FXML
     private TextField tfBuscar;
-    @FXML
     private TableView<?> tvVentas;
     @FXML
-    private TableColumn<?, ?> colIdVenta;
-    @FXML
-    private TableColumn<?, ?> colCantidadVenta;
-    @FXML
-    private TableColumn<?, ?> colPrecioVenta;
-    @FXML
     private TableColumn<?, ?> colSubtotal;
+    @FXML
+    private TableColumn<?, ?> colCantidad;
 
     /**
      * Initializes the controller class.
