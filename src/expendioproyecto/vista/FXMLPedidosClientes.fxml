@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1004.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLPedidosClientesController">
+<AnchorPane id="AnchorPane" prefHeight="832.0" prefWidth="1004.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLPedidosClientesController">
    <children>
       <Label prefHeight="77.0" prefWidth="1004.0" style="-fx-background-color: #ffa333;" text="    Pedidos de Cliente">
          <font>
@@ -20,21 +20,21 @@
             <Image url="@../recurso/logoExpendioBlancoNegro.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnRegresar" layoutX="28.0" layoutY="691.0" mnemonicParsing="false" onAction="#btnClicRegresar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
+      <Button fx:id="btnRegresar" layoutX="28.0" layoutY="752.0" mnemonicParsing="false" onAction="#btnClicRegresar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
       <Label layoutX="28.0" layoutY="105.0" text="Seleccione un cliente:">
          <font>
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </Label>
       <ComboBox fx:id="cbCliente" layoutX="27.0" layoutY="130.0" prefHeight="31.0" prefWidth="234.0" promptText="Cliente" style="-fx-cursor: hand;" />
-      <Label fx:id="tfFecha" layoutX="707.0" layoutY="90.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Fecha" textAlignment="CENTER">
+      <Label fx:id="tfFecha" layoutX="707.0" layoutY="109.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Fecha" textAlignment="CENTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <TableView fx:id="tvInventario" layoutX="36.0" layoutY="282.0" prefHeight="365.0" prefWidth="462.0">
          <columns>
-            <TableColumn fx:id="colNombreBebida" prefWidth="184.0" style="-fx-cursor: hand;" text="Nombre" />
+            <TableColumn fx:id="colNombreBebida" prefWidth="184.0" style="-fx-cursor: hand;" text="Bebida" />
             <TableColumn fx:id="colExistenciaBebida" prefWidth="150.0" style="-fx-cursor: hand;" text="Existencia" />
             <TableColumn fx:id="colPrecioBebida" minWidth="0.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Precio" />
          </columns>
@@ -46,7 +46,7 @@
          </image>
       </ImageView>
       <Button layoutX="390.0" layoutY="203.0" mnemonicParsing="false" onAction="#btnClicAgregar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffc978; -fx-cursor: hand;" text="Agregar" />
-      <Button layoutX="814.0" layoutY="708.0" mnemonicParsing="false" onAction="#btnClicFinalizarPedido" prefHeight="21.0" prefWidth="170.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Finalizar Pedido" />
+      <Button layoutX="814.0" layoutY="769.0" mnemonicParsing="false" onAction="#btnClicFinalizarPedido" prefHeight="21.0" prefWidth="170.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Finalizar Pedido" />
       <Button layoutX="858.0" layoutY="203.0" mnemonicParsing="false" onAction="#btnClicEliminar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffeb42; -fx-border-color: #a6992b; -fx-cursor: hand;" text="Eliminar" />
       <TableView fx:id="tvProductos" layoutX="527.0" layoutY="282.0" prefHeight="365.0" prefWidth="440.0" styleClass="custom-productos">
          <columns>
@@ -59,7 +59,17 @@
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="tfSubtotal" layoutX="707.0" layoutY="666.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Subtotal" textAlignment="CENTER">
+      <Label fx:id="tfSubtotal" layoutX="707.0" layoutY="712.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="707.0" layoutY="689.0" text="Subtotal del pedido: ">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="707.0" layoutY="88.0" text="Fecha de realización: ">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>

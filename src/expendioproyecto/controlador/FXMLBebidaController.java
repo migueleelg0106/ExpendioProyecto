@@ -7,6 +7,7 @@ package expendioproyecto.controlador;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.BebidaDAO;
 import expendioproyecto.modelo.pojo.Bebida;
+import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -67,6 +69,17 @@ public class FXMLBebidaController implements Initializable {
         colExistencia.setCellValueFactory(new PropertyValueFactory("existencia"));
         colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
         colPrecio.setCellValueFactory(new PropertyValueFactory("precio"));
+        colPrecio.setCellFactory(column -> new TableCell<Bebida, Float>() {
+            @Override
+            protected void updateItem(Float item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(String.format("$%.2f", item));  // Mantiene 2 decimales con símbolo $
+                }
+            }
+        });
         colStockMin.setCellValueFactory(new PropertyValueFactory("stockMinimo"));
         colDescripcion.setCellValueFactory(new PropertyValueFactory("descripcion"));
     }
@@ -149,6 +162,9 @@ public class FXMLBebidaController implements Initializable {
             Stage escenarioBase = Utilidad.gestEscenarioComponente(tfBuscar);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();
+
+            FXMLVentanaPrincipalController controlador = cargador.getController();
+            controlador.configurarVistaSegunTipo(usuario);
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Menú Principal");
@@ -195,5 +211,9 @@ public class FXMLBebidaController implements Initializable {
         });
     }
 
-    
+    private Usuario usuario;
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

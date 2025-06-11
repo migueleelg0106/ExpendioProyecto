@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1004.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLCompraController">
+<AnchorPane id="AnchorPane" prefHeight="815.0" prefWidth="1004.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLCompraController">
    <children>
       <Label prefHeight="77.0" prefWidth="1004.0" style="-fx-background-color: #ffa333;" text="    Compras">
          <font>
@@ -20,19 +20,19 @@
             <Image url="@../recurso/logoExpendioBlancoNegro.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnRegresar" layoutX="28.0" layoutY="691.0" mnemonicParsing="false" onAction="#btnClicRegresar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
+      <Button fx:id="btnRegresar" layoutX="27.0" layoutY="744.0" mnemonicParsing="false" onAction="#btnClicRegresar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
       <Label layoutX="28.0" layoutY="105.0" text="Seleccione un proveedor:">
          <font>
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </Label>
       <ComboBox fx:id="cbProveedor" layoutX="27.0" layoutY="134.0" prefHeight="31.0" prefWidth="234.0" promptText="Proveedor" style="-fx-cursor: hand;" />
-      <Label fx:id="tfFecha" layoutX="690.0" layoutY="145.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Fecha" textAlignment="CENTER">
+      <Label fx:id="tfFecha" layoutX="690.0" layoutY="111.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" textAlignment="CENTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="tfTotalCompra" layoutX="690.0" layoutY="97.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Total de la compra" textAlignment="CENTER">
+      <Label fx:id="tfTotalCompra" layoutX="705.0" layoutY="693.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" textAlignment="CENTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
@@ -51,7 +51,7 @@
          </image>
       </ImageView>
       <Button layoutX="390.0" layoutY="219.0" mnemonicParsing="false" onAction="#btnClicAgregar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffc978; -fx-cursor: hand;" text="Agregar" />
-      <Button layoutX="796.0" layoutY="672.0" mnemonicParsing="false" onAction="#btnClicFinalizarCompra" prefHeight="58.0" prefWidth="170.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Finalizar Compra" />
+      <Button layoutX="812.0" layoutY="739.0" mnemonicParsing="false" onAction="#btnClicFinalizarCompra" prefHeight="58.0" prefWidth="170.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Finalizar Compra" />
       <Button layoutX="859.0" layoutY="219.0" mnemonicParsing="false" onAction="#btnClicEliminar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffeb42; -fx-border-color: #a6992b; -fx-cursor: hand;" text="Eliminar" />
       <TableView fx:id="tvProductos" layoutX="527.0" layoutY="282.0" prefHeight="365.0" prefWidth="440.0" styleClass="custom-productos">
          <columns>
@@ -69,6 +69,16 @@
       <Label layoutX="27.0" layoutY="176.0" text="Ingrese un folio para la compra:">
          <font>
             <Font name="Arial Rounded MT Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="705.0" layoutY="670.0" text="Total de la compra: ">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="690.0" layoutY="88.0" text="Fecha de realización: ">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
    </children>

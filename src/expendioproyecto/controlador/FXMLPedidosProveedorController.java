@@ -4,15 +4,21 @@
  */
 package expendioproyecto.controlador;
 
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Font;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.BebidaDAO;
 import expendioproyecto.modelo.pojo.Bebida;
 import expendioproyecto.modelo.pojo.BebidaAgregarPedido;
 import expendioproyecto.modelo.pojo.BebidaPedidoProveedor;
 import expendioproyecto.modelo.pojo.Usuario;
+import expendioproyecto.utilidad.ExportarAPDF;
+import expendioproyecto.utilidad.ExportarAXLSX;
 import expendioproyecto.utilidad.Utilidad;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -30,7 +36,9 @@ import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.util.stream.Collectors;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.FileChooser;
 import javafx.util.converter.IntegerStringConverter;
 
 
@@ -53,6 +61,12 @@ public class FXMLPedidosProveedorController implements Initializable {
     private TableView<BebidaPedidoProveedor> tvBebidasAPedir;
 
     private ObservableList<BebidaPedidoProveedor> listaPedidoAuto = FXCollections.observableArrayList();
+    @FXML
+    private MenuItem btnExportarXLSX;
+    @FXML
+    private MenuItem btnExportarPDF;
+    @FXML
+    private Button btnAgregarBebida;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -90,7 +104,7 @@ public class FXMLPedidosProveedorController implements Initializable {
             Parent vista = cargador.load();
 
             FXMLVentanaPrincipalController controlador = cargador.getController();
-            controlador.configurarVistaSegunTipo(usuario);  // Pasa el usuario de vuelta
+            controlador.configurarVistaSegunTipo(usuario); 
 
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
@@ -110,12 +124,17 @@ public class FXMLPedidosProveedorController implements Initializable {
 
             FXMLPedidosProveedorAgregarController controlador = loader.getController();
 
+            // Pasar usuario
+            controlador.setUsuario(usuario);
+
+            // Pasar lista de IDs excluidos
             List<Integer> ids = listaPedidoAuto.stream()
                     .map(BebidaPedidoProveedor::getIdProducto)
-                    .collect(Collectors.toList()); 
+                    .collect(Collectors.toList());
+            controlador.setIdsExcluidos(ids);
 
-            controlador.setIdsExcluidos(ids);             // excluir existentes
-            controlador.setControladorPrincipal(this);    // referenciar controlador
+            // Pasar referencia al controlador principal
+            controlador.setControladorPrincipal(this);
 
             Stage escenario = new Stage();
             escenario.setScene(new Scene(vista));
@@ -127,12 +146,6 @@ public class FXMLPedidosProveedorController implements Initializable {
             e.printStackTrace();
         }
     }
-
-
-    @FXML
-    private void btnClicExportarPDF(ActionEvent event) {
-    }
-    
     
     private void cargarBebidasConStockMinimo() {
         try {
@@ -163,5 +176,64 @@ public class FXMLPedidosProveedorController implements Initializable {
             listaPedidoAuto.add(nuevo); 
         }
         tvBebidasAPedir.refresh(); // actualiza la tabla
+    }
+
+    @FXML
+    private void btnClicExportarXLSX(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Exportar a Excel");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivo Excel (*.xlsx)", "*.xlsx"));
+        File archivo = fileChooser.showSaveDialog(null);
+
+        if (archivo != null) {
+            try {
+                ExportarAXLSX.exportarAXLSX(
+                    archivo,
+                    "Bebidas a Pedir",
+                    listaPedidoAuto,
+                    Arrays.asList("Nombre", "Descripción", "Cantidad Sugerida"),
+                    Arrays.asList(
+                        bebida -> bebida.getNombre(),
+                        bebida -> bebida.getDescripcion(),
+                        bebida -> String.valueOf(bebida.getCantidadSugerida())
+                    )
+                );
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Excel exportado correctamente.");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "Error al exportar a Excel.");
+            }
+        } 
+    }
+    
+    @FXML
+    private void btnClicExportarPDF(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Exportar a PDF");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivo PDF (*.pdf)", "*.pdf"));
+        File archivo = fileChooser.showSaveDialog(null);
+
+        if (archivo != null) {
+            try {
+                ExportarAPDF.exportarAPDF(
+                    archivo,
+                    "Bebidas a Pedir",
+                    listaPedidoAuto,
+                    Arrays.asList("Nombre", "Descripción", "Cantidad Sugerida"),
+                    Arrays.asList(
+                        bebida -> bebida.getNombre(),
+                        bebida -> bebida.getDescripcion(),
+                        bebida -> String.valueOf(bebida.getCantidadSugerida())
+                    ),
+                    new Font(Font.HELVETICA, 12, Font.BOLD),
+                    new Font(Font.HELVETICA, 10, Font.NORMAL),
+                    true
+                );
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "PDF exportado correctamente.");
+            } catch (IOException | DocumentException ex) {
+                ex.printStackTrace();
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "Error al exportar a PDF.");
+            }
+        }
     }
 }

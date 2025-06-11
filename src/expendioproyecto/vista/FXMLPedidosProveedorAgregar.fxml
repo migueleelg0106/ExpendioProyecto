@@ -41,7 +41,10 @@
             <Image url="@../recurso/icons8-buscar-50.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tvProductosAAgregar" layoutX="794.0" layoutY="161.0" prefHeight="354.0" prefWidth="293.0" styleClass="custom-productos">
+      <TableView fx:id="tvProductosAAgregar" layoutX="754.0" layoutY="161.0" prefHeight="354.0" prefWidth="293.0" styleClass="custom-productos">
+          <styleClass>
+            <String fx:value="custom-productos" />
+          </styleClass>
          <columns>
             <TableColumn fx:id="colProductosPedidoAgregar" prefWidth="192.0" style="-fx-cursor: hand;" text="Productos agregados" />
             <TableColumn fx:id="colAgregadosCantidadPedidoAgregar" prefWidth="93.0" style="-fx-cursor: hand;" text="Cantidad" />

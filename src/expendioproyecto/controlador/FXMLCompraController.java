@@ -35,6 +35,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -89,6 +90,17 @@ public class FXMLCompraController implements Initializable {
         
         colProductosCompra.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getNombre()));
         colPrecioCompra.setCellValueFactory(cell -> new SimpleFloatProperty(cell.getValue().getPrecioCompra()).asObject());
+        colPrecioCompra.setCellFactory(column -> new TableCell<BebidaCompra, Float>() {
+            @Override
+            protected void updateItem(Float item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(String.format("$%.2f", item));  // Mantiene 2 decimales con símbolo $
+                }
+            }
+        });
         colCantidadCompra.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getCantidad()).asObject());
 
         tvProductos.setItems(listaCompra);

@@ -140,4 +140,9 @@ public class FXMLAgregarEmpleadoController implements Initializable {
         }
     }
     
+    private Usuario usuario;
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

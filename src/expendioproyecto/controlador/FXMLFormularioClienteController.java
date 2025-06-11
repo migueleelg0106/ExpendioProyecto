@@ -2,6 +2,7 @@ package expendioproyecto.controlador;
 
 import expendioproyecto.modelo.dao.ClienteDAO;
 import expendioproyecto.modelo.pojo.Cliente;
+import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -116,5 +117,11 @@ public class FXMLFormularioClienteController implements Initializable {
             tfRFC.setText(cliente.getRfc());
             tfRFC.setDisable("ocasional".equalsIgnoreCase(cliente.getTipo()));
         }
+    }
+    
+    private Usuario usuario;
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

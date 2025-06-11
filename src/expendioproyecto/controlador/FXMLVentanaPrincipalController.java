@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -162,7 +163,11 @@ public class FXMLVentanaPrincipalController implements Initializable {
     private void clicBebidas(ActionEvent event) {
         try{
             Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
-            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLBebida.fxml"));
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLBebida.fxml"));
+            Parent vista = cargador.load();
+
+            FXMLBebidaController controlador = cargador.getController();
+            controlador.setUsuario(usuarioActual);
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
@@ -178,7 +183,11 @@ public class FXMLVentanaPrincipalController implements Initializable {
     private void clicProveedores(ActionEvent event) {
         try{
             Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
-            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLProveedor.fxml"));
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLProveedor.fxml"));
+            Parent vista = cargador.load();
+
+            FXMLProveedorController controlador = cargador.getController();
+            controlador.setUsuario(usuarioActual);
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
@@ -194,26 +203,15 @@ public class FXMLVentanaPrincipalController implements Initializable {
     private void clicPromociones(ActionEvent event) {
         try{
             Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
-            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLPromocion.fxml"));
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLPromocion.fxml"));
+            Parent vista = cargador.load();
+
+            FXMLPromocionController controlador = cargador.getController();
+            controlador.setUsuario(usuarioActual);
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Promociones");
-            escenarioBase.centerOnScreen();
-            escenarioBase.show();
-        }catch(IOException ex){
-            ex.printStackTrace();
-        }
-    }
-
-    private void clicReportes(ActionEvent event) {
-        try{
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
-            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporte.fxml"));
-            
-            Scene escenaPrincipal = new Scene(vista);
-            escenarioBase.setScene(escenaPrincipal);
-            escenarioBase.setTitle("Reportes");
             escenarioBase.centerOnScreen();
             escenarioBase.show();
         }catch(IOException ex){
@@ -250,7 +248,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
             Parent vista = cargador.load();
 
             FXMLClienteController controlador = cargador.getController();
-            controlador.setUsuario(usuarioActual); // ✅ Pasa el usuario al controlador
+            controlador.setUsuario(usuarioActual);
 
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
@@ -292,7 +290,11 @@ public class FXMLVentanaPrincipalController implements Initializable {
     private void clicMasVendido(ActionEvent event) {
         try{
             Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
-            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteMasVendido.fxml"));
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteMasVendido.fxml"));
+            Parent vista = cargador.load();
+
+            FXMLReporteMasVendidoController controlador = cargador.getController();
+            controlador.setUsuario(usuarioActual);
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
@@ -308,7 +310,11 @@ public class FXMLVentanaPrincipalController implements Initializable {
     private void clicMenosVendido(ActionEvent event) {
         try{
             Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
-            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteMenosVendido.fxml"));
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteMenosVendido.fxml"));
+            Parent vista = cargador.load();
+
+            FXMLReporteMenosVendidoController controlador = cargador.getController();
+            controlador.setUsuario(usuarioActual);
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
@@ -324,7 +330,11 @@ public class FXMLVentanaPrincipalController implements Initializable {
     private void clicMasVendidoACliente(ActionEvent event) {
         try{
             Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
-            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteMasVendidoACliente.fxml"));
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteMasVendidoACliente.fxml"));
+            Parent vista = cargador.load();
+
+            FXMLReporteMasVendidoAClienteController controlador = cargador.getController();
+            controlador.setUsuario(usuarioActual);
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
@@ -340,7 +350,11 @@ public class FXMLVentanaPrincipalController implements Initializable {
     private void clicNoVendidoACliente(ActionEvent event) {
         try{
             Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
-            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteSinVenderACliente.fxml"));
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteSinVenderACliente.fxml"));
+            Parent vista = cargador.load();
+
+            FXMLReporteSinVenderAClienteController controlador = cargador.getController();
+            controlador.setUsuario(usuarioActual);
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
@@ -356,8 +370,12 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicAgregarEmpleados(ActionEvent event) {
         try{
-            FXMLLoader loader = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLAgregarEmpleado.fxml"));
-            Parent vista = loader.load();
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLAgregarEmpleado.fxml"));
+            Parent vista = cargador.load();
+
+            FXMLAgregarEmpleadoController controlador = cargador.getController();
+            controlador.setUsuario(usuarioActual);
 
             Stage ventana = new Stage();
             ventana.setScene(new Scene(vista));
@@ -374,7 +392,11 @@ public class FXMLVentanaPrincipalController implements Initializable {
     private void clicVentasPorFecha(ActionEvent event) {
         try{
             Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
-            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteVentasPorFecha.fxml"));
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteVentasPorFecha.fxml"));
+            Parent vista = cargador.load();
+
+            FXMLReporteVentasPorFechaController controlador = cargador.getController();
+            controlador.setUsuario(usuarioActual);
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
@@ -390,7 +412,11 @@ public class FXMLVentanaPrincipalController implements Initializable {
     private void clicVentasPorProducto(ActionEvent event) {
         try{
             Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
-            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteVentasPorBebida.fxml"));
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteVentasPorBebida.fxml"));
+            Parent vista = cargador.load();
+
+            FXMLReporteVentasPorBebidaController controlador = cargador.getController();
+            controlador.setUsuario(usuarioActual);
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
@@ -406,7 +432,11 @@ public class FXMLVentanaPrincipalController implements Initializable {
     private void clicConStockMinimo(ActionEvent event) {
         try{
             Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
-            Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLReporteConStockMinimo.fxml"));
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteConStockMinimo.fxml"));
+            Parent vista = cargador.load();
+
+            FXMLReporteConStockMinimoController controlador = cargador.getController();
+            controlador.setUsuario(usuarioActual);
             
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
@@ -428,17 +458,30 @@ public class FXMLVentanaPrincipalController implements Initializable {
             ocultarNodo(BtnAgregarEmpleados);
 
             ocultarMenu(mnDeInformacion);
+        } else if ("administrador".equalsIgnoreCase(usuario.getTipo())) {
+        mostrarNodo(btnBebidas);
+        mostrarNodo(btnProveedores);
+        mostrarNodo(btnPromociones);
+        mostrarNodo(BtnAgregarEmpleados);
+        mostrarMenu(mnDeInformacion);
         }
     }
 
-    private void ocultarNodo(javafx.scene.Node nodo) {
+    private void ocultarNodo(Node nodo) {
         nodo.setVisible(false);
         nodo.setManaged(false);
     }
 
     private void ocultarMenu(Menu menu) {
-        menu.setVisible(false); // Oculta visualmente
+        menu.setVisible(false);
+    }
+    
+    private void mostrarNodo(Node nodo) {
+        nodo.setVisible(true);
+        nodo.setManaged(true);
     }
 
-    
+    private void mostrarMenu(Menu menu) {
+        menu.setVisible(true);
+    }
 }

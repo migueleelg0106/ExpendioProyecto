@@ -7,6 +7,7 @@ package expendioproyecto.controlador;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.PromocionDAO;
 import expendioproyecto.modelo.pojo.Promocion;
+import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -66,6 +68,17 @@ public class FXMLPromocionController implements Initializable {
     private void configurarTabla(){
         colBebida.setCellValueFactory(new PropertyValueFactory("producto"));
         colDescuento.setCellValueFactory(new PropertyValueFactory("descuento"));
+        colDescuento.setCellFactory(column -> new TableCell<Promocion, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item + "%");
+                }
+            }
+        });
         colFechaInicio.setCellValueFactory(new PropertyValueFactory("fechaInicio"));
         colFechaVencimiento.setCellValueFactory(new PropertyValueFactory("fechaVencimiento"));
         colDescripcion.setCellValueFactory(new PropertyValueFactory("descripcion"));
@@ -142,6 +155,9 @@ public class FXMLPromocionController implements Initializable {
             Stage escenarioBase = Utilidad.gestEscenarioComponente(tfBuscar);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();
+
+            FXMLVentanaPrincipalController controlador = cargador.getController();
+            controlador.configurarVistaSegunTipo(usuario);
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Menú Principal");
@@ -191,6 +207,10 @@ public class FXMLPromocionController implements Initializable {
         });
     }
 
+    private Usuario usuario;
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
     
 }

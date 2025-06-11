@@ -6,6 +6,7 @@ package expendioproyecto.controlador;
 
 import expendioproyecto.modelo.dao.ProveedorDAO;
 import expendioproyecto.modelo.pojo.Proveedor;
+import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 import java.net.URL;
 import java.sql.SQLException;
@@ -105,5 +106,9 @@ public class FXMLFormularioProveedorController implements Initializable {
         }
     }
 
-    
+    private Usuario usuario;
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

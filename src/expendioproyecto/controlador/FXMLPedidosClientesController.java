@@ -38,6 +38,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -69,7 +70,7 @@ private ComboBox<Cliente> cbCliente;
     @FXML
     private TableColumn<?, ?> colExistenciaBebida;
     @FXML
-    private TableColumn<?, ?> colPrecioBebida;
+    private TableColumn<Bebida, Float> colPrecioBebida;
     @FXML
     private TableColumn<BebidaPedido, String> colProductosPedido;
     @FXML
@@ -151,7 +152,6 @@ private ComboBox<Cliente> cbCliente;
             BebidaPedido pedido = new BebidaPedido(bebidaSeleccionada, cantidad);
             listaPedido.add(pedido);
 
-            // Opcional: actualizar subtotal estimado (basado en precio actual)
             float subtotalActual = Float.parseFloat(tfSubtotal.getText().replace("$", "").trim());
             subtotalActual += bebidaSeleccionada.getPrecio() * cantidad;
             tfSubtotal.setText(String.format("$ %.2f", subtotalActual));
@@ -255,6 +255,17 @@ private ComboBox<Cliente> cbCliente;
             colNombreBebida.setCellValueFactory(new PropertyValueFactory<>("nombre"));
             colExistenciaBebida.setCellValueFactory(new PropertyValueFactory<>("existencia"));
             colPrecioBebida.setCellValueFactory(new PropertyValueFactory<>("precio"));
+            colPrecioBebida.setCellFactory(column -> new TableCell<Bebida, Float>() {
+            @Override
+            protected void updateItem(Float item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(String.format("$%.2f", item));  // Mantiene 2 decimales con símbolo $
+                }
+            }
+        });
 
             tvInventario.setItems(listaBebidas);
         } catch (SQLException e) {

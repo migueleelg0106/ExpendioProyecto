@@ -33,7 +33,12 @@
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </Label>
-      <Button layoutX="447.0" layoutY="536.0" mnemonicParsing="false" onAction="#btnCliAgregarBebida" prefHeight="49.0" prefWidth="145.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Agregar Bebida" />
-      <Button layoutX="627.0" layoutY="536.0" mnemonicParsing="false" onAction="#btnClicExportarPDF" prefHeight="49.0" prefWidth="145.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar a PDF" />
+      <Button fx:id="btnAgregarBebida" layoutX="431.0" layoutY="536.0" mnemonicParsing="false" onAction="#btnCliAgregarBebida" prefHeight="49.0" prefWidth="145.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Agregar Bebida" />
+      <MenuButton layoutX="600.0" layoutY="545.0" mnemonicParsing="false" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar Infromación">
+         <items>
+            <MenuItem fx:id="btnExportarXLSX" mnemonicParsing="false" onAction="#btnClicExportarXLSX" text="EXCEL (XLSX)" />
+            <MenuItem fx:id="btnExportarPDF" mnemonicParsing="false" onAction="#btnClicExportarPDF" text="PDF" />
+         </items>
+      </MenuButton>
    </children>
 </AnchorPane>

@@ -9,6 +9,7 @@ import com.lowagie.text.Font;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.ReporteVentaFechaDAO;
 import expendioproyecto.modelo.pojo.ReporteVentaFecha;
+import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.ExportarAPDF;
 import expendioproyecto.utilidad.ExportarAXLSX;
 import expendioproyecto.utilidad.Utilidad;
@@ -115,6 +116,9 @@ public class FXMLReporteVentasPorFechaController implements Initializable {
             Stage escenarioBase = Utilidad.gestEscenarioComponente(btnRegresar);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();
+
+            FXMLVentanaPrincipalController controlador = cargador.getController();
+            controlador.configurarVistaSegunTipo(usuario);
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Menú Principal");
@@ -215,5 +219,11 @@ public class FXMLReporteVentasPorFechaController implements Initializable {
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "Error al exportar a PDF.");
             }
         }
+    }
+    
+    private Usuario usuario;
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

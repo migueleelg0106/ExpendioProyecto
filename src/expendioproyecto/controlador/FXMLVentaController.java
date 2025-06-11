@@ -46,6 +46,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -113,10 +114,37 @@ public class FXMLVentaController implements Initializable {
         
         colProductosVenta.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getNombre()));
         colPrecioVenta.setCellValueFactory(cell -> new SimpleFloatProperty(cell.getValue().getPrecioVenta()).asObject());
+        colPrecioVenta.setCellFactory(column -> new TableCell<BebidaVenta, Float>() {
+            @Override
+            protected void updateItem(Float item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(String.format("$%.2f", item));  // Mantiene 2 decimales con símbolo $
+                }
+            }
+        });
         colCantidadVenta.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getCantidad()).asObject());
         colPromocionVenta.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getPromocion()).asObject());
+        colPromocionVenta.setCellFactory(column -> new TableCell<BebidaVenta, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else if (item < 1) {
+                    setText("0");
+                } else {
+                    setText(item + "%");
+                }
+            }
+        });
 
         tvProductos.setItems(listaVenta);
+        
+        tfTotal.setText("$ 0.00");
+        
         cargarClientes();
 
     }    

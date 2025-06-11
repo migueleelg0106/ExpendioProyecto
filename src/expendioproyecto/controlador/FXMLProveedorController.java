@@ -7,6 +7,7 @@ package expendioproyecto.controlador;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.ProveedorDAO;
 import expendioproyecto.modelo.pojo.Proveedor;
+import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
@@ -136,6 +137,9 @@ public class FXMLProveedorController implements Initializable {
             Stage escenarioBase = Utilidad.gestEscenarioComponente(tfBuscar);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();
+
+            FXMLVentanaPrincipalController controlador = cargador.getController();
+            controlador.configurarVistaSegunTipo(usuario);
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Menú Principal");
@@ -183,6 +187,12 @@ public class FXMLProveedorController implements Initializable {
                 tvProveedor.setItems(filtrados);
             }
         });
+    }
+    
+    private Usuario usuario;
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }

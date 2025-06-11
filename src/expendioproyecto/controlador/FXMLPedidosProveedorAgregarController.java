@@ -3,6 +3,7 @@ package expendioproyecto.controlador;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.pojo.Bebida;
 import expendioproyecto.modelo.pojo.BebidaAgregarPedido;
+import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
@@ -67,25 +68,15 @@ public class FXMLPedidosProveedorAgregarController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        tvBebidas.getStylesheets().add(getClass().getResource("/expendioproyecto/recurso/productos.css").toExternalForm());
+        tvProductosAAgregar.getStylesheets().add(getClass().getResource("/expendioproyecto/recurso/productos.css").toExternalForm());
         cargarBebidasDisponibles();
         
     }    
 
     @FXML
     private void btnClicRegresar(ActionEvent event) {
-        try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(btnRegresar);
-            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLPedidosProveedor.fxml"));
-            Parent vista = cargador.load();
-            Scene escenaPrincipal = new Scene(vista);
-            escenarioBase.setScene(escenaPrincipal);
-            escenarioBase.setTitle("Pedidos al proveedor");
-            escenarioBase.centerOnScreen();
-            escenarioBase.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        Stage stage = (Stage) btnRegresar.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -194,5 +185,11 @@ public class FXMLPedidosProveedorAgregarController implements Initializable {
         SortedList<Bebida> ordenado = new SortedList<>(filtrado);
         ordenado.comparatorProperty().bind(tvBebidas.comparatorProperty());
         tvBebidas.setItems(ordenado); 
+    }
+    
+    private Usuario usuario;
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
