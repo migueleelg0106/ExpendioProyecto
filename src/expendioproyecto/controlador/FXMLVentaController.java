@@ -13,6 +13,7 @@ import expendioproyecto.modelo.pojo.Bebida;
 import expendioproyecto.modelo.pojo.BebidaVenta;
 import expendioproyecto.modelo.pojo.Cliente;
 import expendioproyecto.modelo.pojo.Promocion;
+import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
@@ -120,12 +121,23 @@ public class FXMLVentaController implements Initializable {
 
     }    
 
+    private Usuario usuario;
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    
     @FXML
     private void btnClicRegresar(ActionEvent event) {
         try {
             Stage escenarioBase = Utilidad.gestEscenarioComponente(btnRegresar);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();
+
+            FXMLVentanaPrincipalController controlador = cargador.getController();
+            controlador.configurarVistaSegunTipo(usuario);  // Pasa el usuario de vuelta
+
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Menú Principal");
@@ -200,6 +212,7 @@ public class FXMLVentaController implements Initializable {
 
             Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Venta registrada", "Folio: " + folio);
             limpiarFormularioVenta();
+            cargarBebidas();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -237,14 +250,14 @@ public class FXMLVentaController implements Initializable {
     }
     
     private void configurarFiltroBusqueda() {
-            FilteredList<Bebida> filtro = new FilteredList<>(listaBebidas, p -> true);
-            tfBuscar.textProperty().addListener((obs, oldVal, newVal) -> {
-                filtro.setPredicate(bebida -> bebida.getNombre().toLowerCase().contains(newVal.toLowerCase()));
-            });
-            SortedList<Bebida> ordenado = new SortedList<>(filtro);
-            ordenado.comparatorProperty().bind(tvInventario.comparatorProperty());
-            tvInventario.setItems(ordenado);
-        }
+        FilteredList<Bebida> filtro = new FilteredList<>(listaBebidas, p -> true);
+        tfBuscar.textProperty().addListener((obs, oldVal, newVal) -> {
+            filtro.setPredicate(bebida -> bebida.getNombre().toLowerCase().contains(newVal.toLowerCase()));
+        });
+        SortedList<Bebida> ordenado = new SortedList<>(filtro);
+        ordenado.comparatorProperty().bind(tvInventario.comparatorProperty());
+        tvInventario.setItems(ordenado);
+    }
 
         private int obtenerPromocion(int idProducto) {
         try {
