@@ -23,9 +23,9 @@
       <Button fx:id="btnRegresar" layoutX="28.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
       <TableView fx:id="tvProductoMasVendido" layoutX="101.0" layoutY="125.0" prefHeight="365.0" prefWidth="598.0">
          <columns>
-            <TableColumn fx:id="colIdProducto" prefWidth="159.0" style="-fx-cursor: hand;" text="Id" />
-            <TableColumn fx:id="colNombre" prefWidth="211.0" style="-fx-cursor: hand;" text="Bebida" />
-            <TableColumn fx:id="colStock" prefWidth="227.0" style="-fx-cursor: hand;" text="Stock" />
+            <TableColumn fx:id="colNombre" prefWidth="250.0" style="-fx-cursor: hand;" text="Bebida" />
+            <TableColumn fx:id="colExistencia" prefWidth="178.0" style="-fx-cursor: hand;" text="Existencia" />
+            <TableColumn fx:id="colStock" prefWidth="167.0" style="-fx-cursor: hand;" text="Stock Mínimo" />
          </columns>
       </TableView>
       <Button fx:id="btnExportar" layoutX="656.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicExportar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar a PDF" />

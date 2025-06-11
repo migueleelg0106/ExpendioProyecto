@@ -4,12 +4,15 @@
  */
 package expendioproyecto.controlador;
 
+import expendioproyecto.modelo.dao.EmpleadoDAO;
+import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -41,6 +44,16 @@ public class FXMLAgregarEmpleadoController implements Initializable {
 
     @FXML
     private void clicGuardar(ActionEvent event) {
+        String username = tfUsuario.getText().trim();
+        String password = obtenerContrasenaActual().trim();
+
+        if (!validarCampos(username, password)) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos incompletos", 
+                "Por favor completa todos los campos obligatorios.");
+            return;
+    }
+
+    guardarEmpleado(username, password);
     }
 
     private boolean validarCampos(String username, String password){
@@ -55,7 +68,26 @@ public class FXMLAgregarEmpleadoController implements Initializable {
     }
     
     private void guardarEmpleado(String username, String password){
-        
+        Usuario empleado = new Usuario();
+        empleado.setUsername(username);
+        empleado.setPassword(password);
+
+        try {
+            boolean exito = EmpleadoDAO.insertarEmpleado(empleado);
+
+            if (exito) {
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", 
+                    "Empleado registrado correctamente.");
+                cerrarVentana();
+            } else {
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", 
+                    "No se pudo registrar el empleado.");
+            }
+        } catch (Exception e) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error crítico", 
+                "Ocurrió un error al registrar el empleado.");
+            e.printStackTrace();
+        }
     }
     
     @FXML

@@ -38,7 +38,6 @@ public class FXMLReporteVentasPorBebidaController implements Initializable {
     private Button btnExportar;
     @FXML
     private TextField tfBuscar;
-    private TableView<?> tvVentas;
     @FXML
     private TableColumn<?, ?> colSubtotal;
     @FXML
@@ -49,7 +48,7 @@ public class FXMLReporteVentasPorBebidaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        tvVentas.getStylesheets().add(getClass().getResource("/expendioproyecto/recurso/productos.css").toExternalForm());
+    
     }    
 
     @FXML

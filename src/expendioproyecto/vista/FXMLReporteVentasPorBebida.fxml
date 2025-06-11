@@ -21,7 +21,7 @@
          </image>
       </ImageView>
       <Button fx:id="btnRegresar" layoutX="33.0" layoutY="586.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
-      <TableView fx:id="tvProductos" layoutX="61.0" layoutY="168.0" prefHeight="365.0" prefWidth="608.0">
+      <TableView fx:id="tvProductos" layoutX="48.0" layoutY="166.0" prefHeight="365.0" prefWidth="608.0">
          <columns>
             <TableColumn fx:id="colNombreProducto" prefWidth="236.0" style="-fx-cursor: hand;" text="Producto" />
             <TableColumn fx:id="colCantidad" prefWidth="192.0" style="-fx-cursor: hand;" text="Cantidades vendidas" />
