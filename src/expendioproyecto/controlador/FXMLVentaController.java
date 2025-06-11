@@ -126,6 +126,18 @@ public class FXMLVentaController implements Initializable {
             }
         });
         colCantidadVenta.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getCantidad()).asObject());
+        colCantidadVenta.setCellFactory(column -> new TableCell<BebidaVenta, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(String.valueOf(item));
+                    setStyle("-fx-alignment: CENTER;");  // Mantiene 2 decimales con símbolo $
+                }
+            }
+        });
         colPromocionVenta.setCellValueFactory(cell -> new SimpleIntegerProperty(cell.getValue().getPromocion()).asObject());
         colPromocionVenta.setCellFactory(column -> new TableCell<BebidaVenta, Integer>() {
             @Override
@@ -134,9 +146,11 @@ public class FXMLVentaController implements Initializable {
                 if (empty || item == null) {
                     setText(null);
                 } else if (item < 1) {
-                    setText("0");
+                    setText("N/A");
+                    setStyle("-fx-alignment: CENTER;");
                 } else {
                     setText(item + "%");
+                    setStyle("-fx-alignment: CENTER;");
                 }
             }
         });
