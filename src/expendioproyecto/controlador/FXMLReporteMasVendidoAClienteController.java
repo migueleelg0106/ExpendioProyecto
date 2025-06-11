@@ -4,16 +4,23 @@
  */
 package expendioproyecto.controlador;
 
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Font;
+import com.lowagie.text.FontFactory;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.ClienteDAO;
 import expendioproyecto.modelo.dao.ReporteMasVendidoAClienteDAO;
 import expendioproyecto.modelo.pojo.Cliente;
 import expendioproyecto.modelo.pojo.ReporteProductoVendido;
+import expendioproyecto.utilidad.ExportarAPDF;
+import expendioproyecto.utilidad.ExportarAXLSX;
 import expendioproyecto.utilidad.Utilidad;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,13 +30,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -59,11 +69,13 @@ public class FXMLReporteMasVendidoAClienteController implements Initializable {
     private TableColumn<ReporteProductoVendido, Long> colCantidadCompra;
     @FXML
     private TextField tfBuscarRazon;
-    @FXML
-    private Button btnExportar;
     
     private ObservableList<Cliente> listaClientes;
     private ObservableList<ReporteProductoVendido> listaProductos;
+    @FXML
+    private MenuItem btnExportarXLSX;
+    @FXML
+    private MenuItem btnExportarPDF;
 
     /**
      * Initializes the controller class.
@@ -167,7 +179,95 @@ public class FXMLReporteMasVendidoAClienteController implements Initializable {
     }
 
     @FXML
-    private void btnClicExportar(ActionEvent event) {
+    private void btnClicExportarXLSX(ActionEvent event) {
+        Cliente clienteSeleccionado = tvClientes.getSelectionModel().getSelectedItem();
+
+        if (clienteSeleccionado == null) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Advertencia", "Seleccione un cliente primero.");
+            return;
+        }
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Guardar Reporte Excel");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivo Excel (*.xlsx)", "*.xlsx"));
+        File archivo = fileChooser.showSaveDialog(btnExportarXLSX.getParentPopup().getScene().getWindow());
+
+        if (archivo != null) {
+            try {
+                ExportarAXLSX.exportarAXLSXConCliente(
+                    archivo,
+                    "Producto Más Vendido A Un Cliente",
+                    clienteSeleccionado,
+                    Arrays.asList("Razón Social", "Correo", "Teléfono", "Dirección"),
+                    Arrays.asList(
+                        c -> c.getRazonSocial(),
+                        c -> c.getCorreo(),
+                        c -> c.getTelefono(),
+                        c -> c.getDireccion()
+                    ),
+                    listaProductos,
+                    Arrays.asList("Producto", "Cantidad Vendida"),
+                    Arrays.asList(
+                        p -> p.getNombre(),
+                        p -> String.valueOf(p.getTotalVendido())
+                    )
+                );
+
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "El archivo se ha exportado correctamente.");
+            } catch (IOException e) {
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo exportar el archivo.");
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    @FXML
+    private void btnClicExportarPDF(ActionEvent event) {
+        Cliente clienteSeleccionado = tvClientes.getSelectionModel().getSelectedItem();
+
+        if (clienteSeleccionado == null) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Advertencia", "Seleccione un cliente primero.");
+            return;
+        }
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Guardar Reporte PDF");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivo PDF (*.pdf)", "*.pdf"));
+        File archivo = fileChooser.showSaveDialog(btnExportarPDF.getParentPopup().getScene().getWindow());
+
+        if (archivo != null) {
+            try {
+                Font fontTitulo = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14);
+                Font fontCelda = FontFactory.getFont(FontFactory.HELVETICA, 12);
+
+                ExportarAPDF.exportarAPDFConCliente(
+                    archivo,
+                    "Producto Más Vendido A Un Cliente",
+                    clienteSeleccionado,
+                    Arrays.asList("Razón Social", "Correo", "Teléfono", "Dirección"),
+                    Arrays.asList(
+                        c -> c.getRazonSocial(),
+                        c -> c.getCorreo(),
+                        c -> c.getTelefono(),
+                        c -> c.getDireccion()
+                    ),
+                    listaProductos,
+                    Arrays.asList("Producto", "Cantidad Vendida"),
+                    Arrays.asList(
+                        p -> p.getNombre(),
+                        p -> String.valueOf(p.getTotalVendido())
+                    ),
+                    fontTitulo,
+                    fontCelda,
+                    true
+                );
+
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "El archivo se ha exportado correctamente.");
+            } catch (IOException | DocumentException e) {
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo exportar el archivo.");
+                e.printStackTrace();
+            }
+        }
     }
     
 }

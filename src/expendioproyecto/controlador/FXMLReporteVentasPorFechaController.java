@@ -4,12 +4,18 @@
  */
 package expendioproyecto.controlador;
 
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Font;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.ReporteVentaFechaDAO;
 import expendioproyecto.modelo.pojo.ReporteVentaFecha;
+import expendioproyecto.utilidad.ExportarAPDF;
+import expendioproyecto.utilidad.ExportarAXLSX;
 import expendioproyecto.utilidad.Utilidad;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -18,11 +24,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -35,8 +44,6 @@ public class FXMLReporteVentasPorFechaController implements Initializable {
     @FXML
     private Button btnRegresar;
     @FXML
-    private Button btnExportar;
-    @FXML
     private TableView<ReporteVentaFecha> tvVentas;
     @FXML
     private TableColumn<ReporteVentaFecha, Integer> colSemana;
@@ -46,6 +53,10 @@ public class FXMLReporteVentasPorFechaController implements Initializable {
     private TableColumn<ReporteVentaFecha, Integer> colAño;
     @FXML
     private TableColumn<ReporteVentaFecha, Double> colTotal;
+    @FXML
+    private MenuItem btnExportarXLSX;
+    @FXML
+    private MenuItem btnExportarPDF;
 
     /**
      * Initializes the controller class.
@@ -114,9 +125,6 @@ public class FXMLReporteVentasPorFechaController implements Initializable {
         }
     }
 
-    @FXML
-    private void btnClicExportar(ActionEvent event) {
-    }
 
     @FXML
     private void btnClicPorAño(ActionEvent event) {
@@ -135,5 +143,77 @@ public class FXMLReporteVentasPorFechaController implements Initializable {
         List<ReporteVentaFecha> lista = ReporteVentaFechaDAO.obtenerVentasPorSemana();
         tvVentas.getItems().setAll(lista);
     }
-    
+
+    @FXML
+    private void btnClicExportarXLSX(ActionEvent event) {
+        if (tvVentas.getItems().isEmpty()) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Advertencia", "Seleccione un tipo de venta primero.");
+            return;
+        }
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Exportar a Excel");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivo Excel (*.xlsx)", "*.xlsx"));
+        File archivo = fileChooser.showSaveDialog(null);
+
+        if (archivo != null) {
+            try {
+                List<ReporteVentaFecha> listaVentas = tvVentas.getItems();
+
+                ExportarAXLSX.exportarAXLSX(
+                    archivo,
+                    "Reporte de Ventas por Fecha",
+                    listaVentas,
+                    Arrays.asList("Año", "Mes", "Semana", "Total de Ventas"),
+                    Arrays.asList(
+                        venta -> String.valueOf(venta.getAño()),
+                        venta -> venta.getMes() != null ? String.valueOf(venta.getMes()) : "",
+                        venta -> venta.getSemana() != null ? String.valueOf(venta.getSemana()) : "",
+                        venta -> String.format("$%.2f", venta.getTotalVentas())
+                    )
+                );
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Excel exportado correctamente.");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "Error al exportar a Excel.");
+            }
+        }
+    }
+
+    @FXML
+    private void btnClicExportarPDF(ActionEvent event) {
+        if (tvVentas.getItems().isEmpty()) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Advertencia", "Seleccione un tipo de venta primero.");
+            return;
+        }
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Exportar a PDF");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivo PDF (*.pdf)", "*.pdf"));
+        File archivo = fileChooser.showSaveDialog(null);
+
+        if (archivo != null) {
+            try {
+                List<ReporteVentaFecha> listaVentas = tvVentas.getItems();
+
+                ExportarAPDF.exportarAPDF(
+                    archivo,
+                    "Reporte de Ventas por Fecha",
+                    listaVentas,
+                    Arrays.asList("Año", "Mes", "Semana", "Total de Ventas"),
+                    Arrays.asList(
+                        venta -> String.valueOf(venta.getAño()),
+                        venta -> venta.getMes() != null ? String.valueOf(venta.getMes()) : "",
+                        venta -> venta.getSemana() != null ? String.valueOf(venta.getSemana()) : "",
+                        venta -> String.format("$%.2f", venta.getTotalVentas())
+                    ),
+                    new Font(Font.HELVETICA, 12, Font.BOLD),
+                    new Font(Font.HELVETICA, 10, Font.NORMAL),
+                    true
+                );
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "PDF exportado correctamente.");
+            } catch (IOException | DocumentException ex) {
+                ex.printStackTrace();
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "Error al exportar a PDF.");
+            }
+        }
+    }
 }

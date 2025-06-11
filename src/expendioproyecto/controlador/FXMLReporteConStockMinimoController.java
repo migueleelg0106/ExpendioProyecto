@@ -7,22 +7,16 @@ package expendioproyecto.controlador;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.ReporteProductoStockMinimoDAO;
 import expendioproyecto.modelo.pojo.ReporteProductoVendido;
-import expendioproyecto.utilidad.Utilidad;
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -30,8 +24,22 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.stage.FileChooser;
+
+import java.io.File;
+import java.io.IOException;
+
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Font;
+import expendioproyecto.utilidad.ExportarAPDF;
+import expendioproyecto.utilidad.ExportarAXLSX;
+
+import expendioproyecto.utilidad.Utilidad;
+import java.util.Arrays;
 
 /**
  * FXML Controller class
@@ -130,13 +138,61 @@ public class FXMLReporteConStockMinimoController implements Initializable {
 
     @FXML
     private void btnClicExportarXLSX(ActionEvent event) {
-        //exportarArchivoConExtension("Excel Workbook (*.xlsx)", "*.xlsx"); 
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Exportar a Excel");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivo Excel (*.xlsx)", "*.xlsx"));
+        File archivo = fileChooser.showSaveDialog(null);
+
+        if (archivo != null) {
+            try {
+                ExportarAXLSX.exportarAXLSX(
+                    archivo,
+                    "Stock Mínimo",
+                    listaProductos,
+                    Arrays.asList("Nombre", "Existencia", "Stock Mínimo"),
+                    Arrays.asList(
+                        producto -> producto.getNombre(),
+                        producto -> String.valueOf((int) producto.getExistencia()),
+                        producto -> String.valueOf((int) producto.getStock())
+                    )
+                );
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Excel exportado correctamente.");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "Error al exportar a Excel.");
+            }
+        } 
     }
 
     @FXML
     private void btnClicExportarPDF(ActionEvent event) {
-        //exportarArchivoConExtension("PDF files (*.pdf)", "*.pdf");
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Exportar a PDF");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivo PDF (*.pdf)", "*.pdf"));
+        File archivo = fileChooser.showSaveDialog(null);
+
+        if (archivo != null) {
+            try {
+                ExportarAPDF.exportarAPDF(
+                    archivo,
+                    "Reporte de Productos con Stock Mínimo",
+                    listaProductos,
+                    Arrays.asList("Nombre", "Existencia", "Stock Mínimo"),
+                    Arrays.asList(
+                        producto -> producto.getNombre(),
+                        producto -> String.valueOf((int) producto.getExistencia()),
+                        producto -> String.valueOf((int) producto.getStock())
+                    ),
+                    new Font(Font.HELVETICA, 12, Font.BOLD),
+                    new Font(Font.HELVETICA, 10, Font.NORMAL),
+                    true
+                );
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "PDF exportado correctamente.");
+            } catch (IOException | DocumentException ex) {
+                ex.printStackTrace();
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "Error al exportar a PDF.");
+            }
+        }
     }
-    
     
 }

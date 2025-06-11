@@ -21,7 +21,6 @@
          </image>
       </ImageView>
       <Button fx:id="btnRegresar" layoutX="28.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
-      <Button fx:id="btnExportar" layoutX="828.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicExportar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar a PDF" />
       <Label layoutX="53.0" layoutY="103.0" text="Seleccione el rango para el cual deseé visualizar las ventas:">
          <font>
             <Font name="Arial Rounded MT Bold" size="18.0" />
@@ -38,5 +37,11 @@
             <TableColumn fx:id="colTotal" editable="false" prefWidth="224.0" sortable="false" style="-fx-cursor: hand;" text="Total de ventas" />
          </columns>
       </TableView>
+      <MenuButton layoutX="791.0" layoutY="545.0" mnemonicParsing="false" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar Infromación">
+         <items>
+            <MenuItem fx:id="btnExportarXLSX" mnemonicParsing="false" onAction="#btnClicExportarXLSX" text="EXCEL (XLSX)" />
+            <MenuItem fx:id="btnExportarPDF" mnemonicParsing="false" onAction="#btnClicExportarPDF" text="PDF" />
+         </items>
+      </MenuButton>
    </children>
 </AnchorPane>

@@ -27,6 +27,11 @@
             <TableColumn fx:id="colTotal" prefWidth="213.0" sortable="false" style="-fx-cursor: hand;" text="Total" />
          </columns>
       </TableView>
-      <Button fx:id="btnExportar" layoutX="666.0" layoutY="555.0" mnemonicParsing="false" onAction="#btnClicExportar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar a PDF" />
+      <MenuButton layoutX="590.0" layoutY="545.0" mnemonicParsing="false" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar Infromación">
+         <items>
+            <MenuItem fx:id="btnExportarXLSX" mnemonicParsing="false" onAction="#btnClicExportarXLSX" text="EXCEL (XLSX)" />
+            <MenuItem fx:id="btnExportarPDF" mnemonicParsing="false" onAction="#btnClicExportarPDF" text="PDF" />
+         </items>
+      </MenuButton>
    </children>
 </AnchorPane>
