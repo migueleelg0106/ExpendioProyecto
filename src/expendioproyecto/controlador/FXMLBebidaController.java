@@ -182,17 +182,17 @@ public class FXMLBebidaController implements Initializable {
     }
     
     private void configurarBuscador() {
-    tfBuscar.textProperty().addListener((observable, oldValue, newValue) -> {
-        if (bebidas != null) {
-            ObservableList<Bebida> bebidasFiltradas = FXCollections.observableArrayList();
-            for (Bebida b : bebidas) {
-                if (b.getNombre().toLowerCase().contains(newValue.toLowerCase())) {
-                    bebidasFiltradas.add(b);
+        tfBuscar.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (bebidas != null) {
+                ObservableList<Bebida> bebidasFiltradas = FXCollections.observableArrayList();
+                for (Bebida b : bebidas) {
+                    if (b.getNombre().toLowerCase().contains(newValue.toLowerCase())) {
+                        bebidasFiltradas.add(b);
+                    }
                 }
+                tvBebidas.setItems(bebidasFiltradas);
             }
-            tvBebidas.setItems(bebidasFiltradas);
-        }
-    });
+        });
     }
 
     

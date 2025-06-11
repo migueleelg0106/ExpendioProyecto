@@ -35,8 +35,6 @@ public class FXMLReporteSinVenderAClienteController implements Initializable {
     @FXML
     private TableColumn<?, ?> colNombreProducto;
     @FXML
-    private TableColumn<?, ?> colCantidadCompra;
-    @FXML
     private TableView<?> tvClientes;
     @FXML
     private TableColumn<?, ?> colRazonSocial;

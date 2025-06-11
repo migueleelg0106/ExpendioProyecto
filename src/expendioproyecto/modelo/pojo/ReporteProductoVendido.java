@@ -13,7 +13,12 @@ public class ReporteProductoVendido {
     private long totalVendido;
     private double existencia;
     private double stock;
+    private double totalVentasPrecio;
 
+    public ReporteProductoVendido(String nombre) {
+        this.nombre = nombre;
+    }   
+    
     public ReporteProductoVendido(String nombre, long totalVendido) {
         this.nombre = nombre;
         this.totalVendido = totalVendido;
@@ -23,6 +28,12 @@ public class ReporteProductoVendido {
         this.nombre = nombre;
         this.existencia = existencia;
         this.stock = stock;
+    }
+    
+    public ReporteProductoVendido (String nombre, long totalVendido, double totalVentasPrecio){
+        this.nombre = nombre;
+        this.totalVendido = totalVendido;
+        this.totalVentasPrecio = totalVentasPrecio;
     }
 
     public String getNombre() {
@@ -55,5 +66,13 @@ public class ReporteProductoVendido {
 
     public void setStock(double stock) {
         this.stock = stock;
+    }
+
+    public double getTotalVentasPrecio() {
+        return totalVentasPrecio;
+    }
+
+    public void setTotalVentasPrecio(double totalVentasPrecio) {
+        this.totalVentasPrecio = totalVentasPrecio;
     }
 }

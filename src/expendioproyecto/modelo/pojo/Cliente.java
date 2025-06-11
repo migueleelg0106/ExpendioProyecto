@@ -31,6 +31,14 @@ public class Cliente {
         this.rfc = rfc;
     }
 
+    public Cliente(int idCliente, String razonSocial, String direccion, String correo, String telefono) {
+        this.idCliente = idCliente;
+        this.razonSocial = razonSocial;
+        this.direccion = direccion;
+        this.correo = correo;
+        this.telefono = telefono;
+    }
+
     public int getIdCliente() {
         return idCliente;
     }

@@ -32,10 +32,10 @@
       <Button layoutX="102.0" layoutY="230.0" mnemonicParsing="false" onAction="#btnClicPorAño" prefHeight="31.0" prefWidth="152.0" style="-fx-background-color: #ffc978; -fx-cursor: hand;" text="Ventas por año" />
       <TableView fx:id="tvVentas" layoutX="348.0" layoutY="141.0" prefHeight="365.0" prefWidth="598.0">
          <columns>
-            <TableColumn fx:id="colAño" prefWidth="132.0" style="-fx-cursor: hand;" text="Año" />
-            <TableColumn fx:id="colMes" prefWidth="116.0" style="-fx-cursor: hand;" text="Mes" />
-            <TableColumn fx:id="colSemana" prefWidth="123.0" style="-fx-cursor: hand;" text="Semana" />
-            <TableColumn fx:id="colTotal" prefWidth="224.0" style="-fx-cursor: hand;" text="Total de ventas" />
+            <TableColumn fx:id="colAño" editable="false" prefWidth="132.0" sortable="false" style="-fx-cursor: hand;" text="Año" />
+            <TableColumn fx:id="colMes" editable="false" prefWidth="116.0" sortable="false" style="-fx-cursor: hand;" text="Mes" />
+            <TableColumn fx:id="colSemana" editable="false" prefWidth="123.0" sortable="false" style="-fx-cursor: hand;" text="Semana" />
+            <TableColumn fx:id="colTotal" editable="false" prefWidth="224.0" sortable="false" style="-fx-cursor: hand;" text="Total de ventas" />
          </columns>
       </TableView>
    </children>

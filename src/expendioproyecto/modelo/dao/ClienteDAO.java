@@ -6,6 +6,8 @@ package expendioproyecto.modelo.dao;
 
 import expendioproyecto.modelo.ConexionBD;
 import expendioproyecto.modelo.pojo.Cliente;
+import expendioproyecto.modelo.pojo.ReporteProductoVendido;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -102,5 +104,45 @@ public class ClienteDAO {
         }
     }
 
+    public static ArrayList<Cliente> obtenerClientesReporte() throws SQLException {
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        String query = "SELECT idCliente, razonSocial, direccion, correo, telefono FROM cliente";
+        try (Connection conn = ConexionBD.abrirConexion();
+             PreparedStatement ps = conn.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                clientes.add(new Cliente(
+                    rs.getInt("idCliente"),
+                    rs.getString("razonSocial"),
+                    rs.getString("direccion"),
+                    rs.getString("correo"),
+                    rs.getString("telefono")
+                ));
+            }
+        }
+        return clientes;
+    }
     
+    public static ArrayList<ReporteProductoVendido> obtenerProductoMasVendido(int idCliente) throws SQLException {
+        ArrayList<ReporteProductoVendido> productos = new ArrayList<>();
+        String query = "{CALL producto_mas_vendido_a_cliente(?)}";
+
+        try (Connection conn = ConexionBD.abrirConexion();
+             CallableStatement cs = conn.prepareCall(query)) {
+
+            cs.setInt(1, idCliente);
+            try (ResultSet rs = cs.executeQuery()) {
+                while (rs.next()) {
+                    ReporteProductoVendido producto = new ReporteProductoVendido(
+                        rs.getString("nombre"),
+                        rs.getLong("total_vendido")
+                    );
+                    productos.add(producto);
+                }
+            }
+        }
+
+        return productos;
+    }
+
 }
