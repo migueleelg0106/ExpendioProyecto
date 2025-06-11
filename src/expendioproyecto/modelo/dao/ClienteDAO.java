@@ -122,27 +122,4 @@ public class ClienteDAO {
         }
         return clientes;
     }
-    
-    public static ArrayList<ReporteProductoVendido> obtenerProductoMasVendido(int idCliente) throws SQLException {
-        ArrayList<ReporteProductoVendido> productos = new ArrayList<>();
-        String query = "{CALL producto_mas_vendido_a_cliente(?)}";
-
-        try (Connection conn = ConexionBD.abrirConexion();
-             CallableStatement cs = conn.prepareCall(query)) {
-
-            cs.setInt(1, idCliente);
-            try (ResultSet rs = cs.executeQuery()) {
-                while (rs.next()) {
-                    ReporteProductoVendido producto = new ReporteProductoVendido(
-                        rs.getString("nombre"),
-                        rs.getLong("total_vendido")
-                    );
-                    productos.add(producto);
-                }
-            }
-        }
-
-        return productos;
-    }
-
 }
