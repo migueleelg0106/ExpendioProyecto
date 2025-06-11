@@ -5,6 +5,7 @@
 package expendioproyecto.controlador;
 
 import expendioproyecto.ExpendioProyecto;
+import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
@@ -16,7 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -26,9 +29,47 @@ import javafx.stage.Stage;
  * @author MSI
  */
 public class FXMLVentanaPrincipalController implements Initializable {
+    private Usuario usuarioActual;
+
 
     @FXML
     private Label lbSeleccionarOpcion;
+    @FXML
+    private Button btnInvencatio;
+    @FXML
+    private Button btnCompras;
+    @FXML
+    private Button btnVentas;
+    @FXML
+    private Button btnPedidosClientes;
+    @FXML
+    private Button btnPedidosProveedor;
+    @FXML
+    private Button btnBebidas;
+    @FXML
+    private Button btnProveedores;
+    @FXML
+    private Button btnPromociones;
+    @FXML
+    private Button btnClientes;
+    @FXML
+    private Button BtnAgregarEmpleados;
+    @FXML
+    private Button btnBebidaMasVendida;
+    @FXML
+    private Button btnBebidaMenosVendida;
+    @FXML
+    private Button btnBebidaMasVendidaCliente;
+    @FXML
+    private Button btnBebidaNoVendidaCliente;
+    @FXML
+    private Button btnBebidaStockMinimo;
+    @FXML
+    private Button btnVentasPorBebida;
+    @FXML
+    private Button btnVentasPorFecha;
+    @FXML
+    private Menu mnDeInformacion;
 
     /**
      * Initializes the controller class.
@@ -349,6 +390,29 @@ public class FXMLVentanaPrincipalController implements Initializable {
         }catch(IOException ex){
             ex.printStackTrace();
         }
+    }
+
+    public void configurarVistaSegunTipo(Usuario usuario) {
+        this.usuarioActual = usuario;
+
+        if ("empleado".equalsIgnoreCase(usuario.getTipo())) {
+            ocultarNodo(btnBebidas);
+            ocultarNodo(btnProveedores);
+            ocultarNodo(btnPromociones);
+            ocultarNodo(BtnAgregarEmpleados);
+
+            // Ocultar todo el menú de reportes
+            ocultarMenu(mnDeInformacion);
+        }
+    }
+
+    private void ocultarNodo(javafx.scene.Node nodo) {
+        nodo.setVisible(false);
+        nodo.setManaged(false);
+    }
+
+    private void ocultarMenu(Menu menu) {
+        menu.setVisible(false); // Oculta visualmente
     }
 
     

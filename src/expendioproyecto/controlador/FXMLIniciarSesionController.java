@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package expendioproyecto.controlador;
 
 import java.io.IOException;
@@ -78,27 +74,32 @@ public class FXMLIniciarSesionController implements Initializable{
     }
     
     private void validarCredenciales(String username, String password){
-        try{
-            boolean exito = new IniciarSesionDAO().iniciarSesion
-                (username, password);
-            if (exito){
-                irPantallaPrincipal();
-            }else{
+        try {
+            Usuario usuario = new IniciarSesionDAO().iniciarSesion(username, password);
+            if (usuario != null) {
+                irPantallaPrincipal(usuario); // pasa el usuario a la siguiente vista
+            } else {
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, 
-                        "Credenciales incorrectas", "Usuario y/o contraseña "
-                        + "incorrectos, por favor verifica tu información.");
+                    "Credenciales incorrectas", 
+                    "Usuario y/o contraseña incorrectos, por favor verifica tu información.");
             }
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, 
-                    "Problemas de conexión", ex.getMessage());
+                "Problemas de conexión", ex.getMessage());
         }
     }
+
     
-    private void irPantallaPrincipal(){
+    private void irPantallaPrincipal(Usuario usuario){
         try {
             Stage escenarioBase = Utilidad.gestEscenarioComponente(tfUsername);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();
+
+            // Pasar datos al controlador de la ventana principal
+            FXMLVentanaPrincipalController controller = cargador.getController();
+            controller.configurarVistaSegunTipo(usuario);
+
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Menú Principal");
@@ -111,6 +112,7 @@ public class FXMLIniciarSesionController implements Initializable{
                     "No se pudo cargar la interfaz de la pantalla principal.");
         }
     }
+
 
     private void mostrarContrasenaVisible() {
         tfPasswordVisible.setText(pfPassword.getText());
@@ -152,5 +154,7 @@ public class FXMLIniciarSesionController implements Initializable{
             mostrarContrasenaVisible();
         }
     }
+    
+    
     
 }

@@ -40,7 +40,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicManejarInventario" prefHeight="33.0" prefWidth="100.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Inventario">
+                              <Button fx:id="btnInvencatio" mnemonicParsing="false" onAction="#clicManejarInventario" prefHeight="33.0" prefWidth="100.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Inventario">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -53,7 +53,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicCompras" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Compras">
+                              <Button fx:id="btnCompras" mnemonicParsing="false" onAction="#clicCompras" prefHeight="33.0" prefWidth="90.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Compras">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -66,7 +66,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicVentas" prefHeight="33.0" prefWidth="78.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Ventas">
+                              <Button fx:id="btnVentas" mnemonicParsing="false" onAction="#clicVentas" prefHeight="33.0" prefWidth="78.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Ventas">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -83,7 +83,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicPedidosDeClientes" prefHeight="33.0" prefWidth="165.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Pedidos de clientes">
+                              <Button fx:id="btnPedidosClientes" mnemonicParsing="false" onAction="#clicPedidosDeClientes" prefHeight="33.0" prefWidth="165.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Pedidos de clientes">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -96,7 +96,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicPedidosDeProveedor" prefHeight="33.0" prefWidth="173.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Pedidos a proveedor">
+                              <Button fx:id="btnPedidosProveedor" mnemonicParsing="false" onAction="#clicPedidosDeProveedor" prefHeight="33.0" prefWidth="173.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Pedidos a proveedor">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -113,7 +113,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicBebidas" prefHeight="33.0" prefWidth="85.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebidas">
+                              <Button fx:id="btnBebidas" mnemonicParsing="false" onAction="#clicBebidas" prefHeight="33.0" prefWidth="85.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebidas">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -126,7 +126,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicProveedores" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Proveedores">
+                              <Button fx:id="btnProveedores" mnemonicParsing="false" onAction="#clicProveedores" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Proveedores">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -139,7 +139,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicPromociones" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Promociones">
+                              <Button fx:id="btnPromociones" mnemonicParsing="false" onAction="#clicPromociones" prefHeight="33.0" prefWidth="122.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Promociones">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -152,7 +152,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicClientes" prefHeight="33.0" prefWidth="85.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Clientes">
+                              <Button fx:id="btnClientes" mnemonicParsing="false" onAction="#clicClientes" prefHeight="33.0" prefWidth="85.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Clientes">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -165,7 +165,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicAgregarEmpleados" prefHeight="33.0" prefWidth="173.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Agregar Empleados">
+                              <Button fx:id="BtnAgregarEmpleados" mnemonicParsing="false" onAction="#clicAgregarEmpleados" prefHeight="33.0" prefWidth="173.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Agregar Empleados">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -176,13 +176,13 @@
                   </CustomMenuItem>
                </items>
           </Menu>
-          <Menu mnemonicParsing="false" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="De información">
+          <Menu fx:id="mnDeInformacion" mnemonicParsing="false" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="De información">
                <items>
                   <CustomMenuItem styleClass="custom-menu-item">
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicMasVendido" prefHeight="33.0" prefWidth="195.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebida más vendida">
+                              <Button fx:id="btnBebidaMasVendida" mnemonicParsing="false" onAction="#clicMasVendido" prefHeight="33.0" prefWidth="195.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebida más vendida">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -195,7 +195,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicMenosVendido" prefHeight="33.0" prefWidth="215.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebida menos vendida">
+                              <Button fx:id="btnBebidaMenosVendida" mnemonicParsing="false" onAction="#clicMenosVendido" prefHeight="33.0" prefWidth="215.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebida menos vendida">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -208,7 +208,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicMasVendidoACliente" prefHeight="33.0" prefWidth="285.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebida más vendida a un cliente">
+                              <Button fx:id="btnBebidaMasVendidaCliente" mnemonicParsing="false" onAction="#clicMasVendidoACliente" prefHeight="33.0" prefWidth="285.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebida más vendida a un cliente">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -221,7 +221,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicNoVendidoACliente" prefHeight="33.0" prefWidth="345.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebida que no se ha vendido a un cliente">
+                              <Button fx:id="btnBebidaNoVendidaCliente" mnemonicParsing="false" onAction="#clicNoVendidoACliente" prefHeight="33.0" prefWidth="345.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebida que no se ha vendido a un cliente">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -234,7 +234,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicConStockMinimo" prefHeight="33.0" prefWidth="255.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebidas con el stock mínimo">
+                              <Button fx:id="btnBebidaStockMinimo" mnemonicParsing="false" onAction="#clicConStockMinimo" prefHeight="33.0" prefWidth="255.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Bebidas con el stock mínimo">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -247,7 +247,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicVentasPorProducto" prefHeight="33.0" prefWidth="182.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Ventas por bebida">
+                              <Button fx:id="btnVentasPorBebida" mnemonicParsing="false" onAction="#clicVentasPorProducto" prefHeight="33.0" prefWidth="182.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Ventas por bebida">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>
@@ -260,7 +260,7 @@
                      <content>
                         <VBox alignment="CENTER_LEFT">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#clicVentasPorFecha" prefHeight="33.0" prefWidth="183.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Ventas por fechas">
+                              <Button fx:id="btnVentasPorFecha" mnemonicParsing="false" onAction="#clicVentasPorFecha" prefHeight="33.0" prefWidth="183.0" style="-fx-background-color: #ffca79; -fx-cursor: hand;" text="Ventas por fechas">
                                  <font>
                                     <Font name="Arial Rounded MT Bold" size="15.0" />
                                  </font>

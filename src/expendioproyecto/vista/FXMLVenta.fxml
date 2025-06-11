@@ -26,22 +26,22 @@
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </Label>
-      <ComboBox layoutX="27.0" layoutY="130.0" prefHeight="31.0" prefWidth="234.0" promptText="Cliente" style="-fx-cursor: hand;" />
-      <Label layoutX="690.0" layoutY="145.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Fecha" textAlignment="CENTER">
+      <ComboBox fx:id="cbCliente" layoutX="27.0" layoutY="130.0" prefHeight="31.0" prefWidth="234.0" promptText="Cliente" style="-fx-cursor: hand;" />
+      <Label fx:id="tfFecha" layoutX="690.0" layoutY="145.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Fecha" textAlignment="CENTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="690.0" layoutY="97.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Total de la venta" textAlignment="CENTER">
+      <Label fx:id="tfTotal" layoutX="690.0" layoutY="97.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Total de la venta" textAlignment="CENTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <TableView fx:id="tvInventario" layoutX="36.0" layoutY="282.0" prefHeight="365.0" prefWidth="462.0">
          <columns>
-            <TableColumn fx:id="colNombre" prefWidth="184.0" style="-fx-cursor: hand;" text="Nombre" />
-            <TableColumn fx:id="colExistencia" prefWidth="150.0" style="-fx-cursor: hand;" text="Existencia" />
-            <TableColumn fx:id="colClientePrecio" minWidth="0.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Precio" />
+            <TableColumn fx:id="colNombreBebida" prefWidth="184.0" style="-fx-cursor: hand;" text="Nombre" />
+            <TableColumn fx:id="colExistenciaBebida" prefWidth="150.0" style="-fx-cursor: hand;" text="Existencia" />
+            <TableColumn fx:id="colPrecioBebida" minWidth="0.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Precio" />
          </columns>
       </TableView>
       <TextField fx:id="tfBuscar" layoutX="276.0" layoutY="129.0" prefHeight="31.0" prefWidth="393.0" promptText="Buscar bebida" style="-fx-background-color: FFFFFF; -fx-cursor: text;" />
@@ -59,9 +59,9 @@
           </styleClass>
          <columns>
             <TableColumn fx:id="colProductosVenta" prefWidth="192.0" style="-fx-cursor: hand;" text="Productos de la venta" />
-            <TableColumn fx:id="colProductoPrecio" prefWidth="65.0" style="-fx-cursor: hand;" text="Precio" />
-            <TableColumn fx:id="colPromocion" prefWidth="86.0" style="-fx-cursor: hand;" text="Promoción" />
-            <TableColumn fx:id="colCantidad" prefWidth="93.0" style="-fx-cursor: hand;" text="Cantidad" />
+            <TableColumn fx:id="colPrecioVenta" prefWidth="65.0" style="-fx-cursor: hand;" text="Precio" />
+            <TableColumn fx:id="colPromocionVenta" prefWidth="86.0" style="-fx-cursor: hand;" text="Promoción" />
+            <TableColumn fx:id="colCantidadVenta" prefWidth="93.0" style="-fx-cursor: hand;" text="Cantidad" />
          </columns>
       </TableView>
       <Label layoutX="276.0" layoutY="105.0" text="Busque una bebida para seleccionarla:">
