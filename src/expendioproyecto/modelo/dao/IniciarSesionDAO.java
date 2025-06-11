@@ -14,7 +14,8 @@ public class IniciarSesionDAO {
         Connection connection = ConexionBD.abrirConexion();
         if (connection == null) throw new SQLException("No se pudo conectar a la base de datos.");
 
-        String sql = "SELECT username, tipo FROM usuario WHERE username = ? AND password = AES_ENCRYPT(?, ?)";
+        String sql = "SELECT username, tipo FROM usuario WHERE BINARY username = ? AND password = AES_ENCRYPT(?, ?)";
+
         PreparedStatement stmt = connection.prepareStatement(sql);
         stmt.setString(1, username);
         stmt.setString(2, password);

@@ -16,10 +16,10 @@ import java.util.ArrayList;
  *
  * @author uriel
  */
-public class ReporteMasVendidoAClienteDAO {
-    public static ArrayList<ReporteProductoVendido> obtenerProductoMasVendido(int idCliente) throws SQLException {
+public class ReporteSinVenderAClienteDAO {
+    public static ArrayList<ReporteProductoVendido> obtenerProductoMenosVendido(int idCliente) throws SQLException {
         ArrayList<ReporteProductoVendido> productos = new ArrayList<>();
-        String query = "{CALL producto_mas_vendido_a_cliente(?)}";
+        String query = "{CALL productos_no_vendidos_a_cliente(?)}";
 
         try (Connection conn = ConexionBD.abrirConexion();
              CallableStatement cs = conn.prepareCall(query)) {
@@ -28,8 +28,7 @@ public class ReporteMasVendidoAClienteDAO {
             try (ResultSet rs = cs.executeQuery()) {
                 while (rs.next()) {
                     ReporteProductoVendido producto = new ReporteProductoVendido(
-                        rs.getString("nombre"),
-                        rs.getLong("total_vendido")
+                        rs.getString("nombre")
                     );
                     productos.add(producto);
                 }

@@ -5,9 +5,12 @@
 package expendioproyecto.controlador;
 
 import expendioproyecto.ExpendioProyecto;
+import expendioproyecto.modelo.dao.ReporteVentaFechaDAO;
+import expendioproyecto.modelo.pojo.ReporteVentaFecha;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,8 +19,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -32,24 +37,67 @@ public class FXMLReporteVentasPorFechaController implements Initializable {
     @FXML
     private Button btnExportar;
     @FXML
-    private TableView<?> tvVentas;
+    private TableView<ReporteVentaFecha> tvVentas;
     @FXML
-    private TableColumn<?, ?> colSemana;
+    private TableColumn<ReporteVentaFecha, Integer> colSemana;
     @FXML
-    private TableColumn<?, ?> colMes;
+    private TableColumn<ReporteVentaFecha, Integer> colMes;
     @FXML
-    private TableColumn<?, ?> colAño;
+    private TableColumn<ReporteVentaFecha, Integer> colAño;
     @FXML
-    private TableColumn<?, ?> colTotal;
+    private TableColumn<ReporteVentaFecha, Double> colTotal;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        configurarTabla();
     }    
 
+    private void configurarTabla() {
+        colAño.setCellValueFactory(new PropertyValueFactory<>("año"));
+        colAño.setCellFactory(col -> new TableCell<ReporteVentaFecha, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? "" : String.valueOf(item));
+                setStyle("-fx-alignment: CENTER;");
+            }
+        });
+        colMes.setCellValueFactory(new PropertyValueFactory<>("mes"));
+        colMes.setCellFactory(col -> new TableCell<ReporteVentaFecha, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? "" : String.valueOf(item));
+                setStyle("-fx-alignment: CENTER;");
+            }
+        });
+        colSemana.setCellValueFactory(new PropertyValueFactory<>("semana"));
+        colSemana.setCellFactory(col -> new TableCell<ReporteVentaFecha, Integer>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? "" : String.valueOf(item));
+                setStyle("-fx-alignment: CENTER;");
+            }
+        });
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("totalVentas"));
+        colTotal.setCellFactory(column -> new TableCell<ReporteVentaFecha, Double>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(String.format("$%.2f", item));  // Mantiene 2 decimales con símbolo $
+                    setStyle("-fx-alignment: CENTER;");
+                }
+            }
+        });
+    }
+    
     @FXML
     private void btnClicRegresar(ActionEvent event) {
         try {
@@ -72,14 +120,20 @@ public class FXMLReporteVentasPorFechaController implements Initializable {
 
     @FXML
     private void btnClicPorAño(ActionEvent event) {
+        List<ReporteVentaFecha> lista = ReporteVentaFechaDAO.obtenerVentasPorAño();
+        tvVentas.getItems().setAll(lista);
     }
 
     @FXML
     private void btnClicPorMes(ActionEvent event) {
+        List<ReporteVentaFecha> lista = ReporteVentaFechaDAO.obtenerVentasPorMes();
+        tvVentas.getItems().setAll(lista);
     }
 
     @FXML
     private void btnClicPorSemana(ActionEvent event) {
+        List<ReporteVentaFecha> lista = ReporteVentaFechaDAO.obtenerVentasPorSemana();
+        tvVentas.getItems().setAll(lista);
     }
     
 }

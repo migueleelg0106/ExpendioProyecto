@@ -8,20 +8,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="922.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLReporteSinVenderAClienteController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1244.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLReporteSinVenderAClienteController">
    <children>
-      <Label prefHeight="77.0" prefWidth="924.0" style="-fx-background-color: #ffa333;" text="    Bebidas que no se venden a un cliente">
+      <Label prefHeight="77.0" prefWidth="1244.0" style="-fx-background-color: #ffa333;" text="    Bebidas que no se venden a un cliente">
          <font>
             <Font name="Arial Rounded MT Bold" size="34.0" />
          </font>
       </Label>
-      <ImageView fitHeight="77.0" fitWidth="82.0" layoutX="847.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="77.0" fitWidth="82.0" layoutX="1167.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../recurso/logoExpendioBlancoNegro.png" />
          </image>
       </ImageView>
       <Button fx:id="btnRegresar" layoutX="28.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
-      <TableView fx:id="tvProductosMenosVendidos" layoutX="693.0" layoutY="151.0" prefHeight="365.0" prefWidth="189.0">
+      <TableView fx:id="tvProductosMenosVendidos" layoutX="1003.0" layoutY="151.0" prefHeight="365.0" prefWidth="189.0">
           <styleClass>
             <String fx:value="custom-productos" />
           </styleClass>
@@ -29,12 +29,12 @@
             <TableColumn fx:id="colNombreProducto" prefWidth="184.0" style="-fx-cursor: hand;" text="Bebida" />
          </columns>
       </TableView>
-      <TableView fx:id="tvClientes" layoutX="60.0" layoutY="151.0" prefHeight="365.0" prefWidth="598.0">
+      <TableView fx:id="tvClientes" layoutX="60.0" layoutY="151.0" prefHeight="365.0" prefWidth="869.0">
          <columns>
-            <TableColumn fx:id="colRazonSocial" prefWidth="159.0" style="-fx-cursor: hand;" text="Razón Social" />
-            <TableColumn fx:id="colTelefono" prefWidth="103.0" style="-fx-cursor: hand;" text="Telefono" />
-            <TableColumn fx:id="colCorreo" prefWidth="177.0" style="-fx-cursor: hand;" text="Correo" />
-            <TableColumn fx:id="colDireccion" prefWidth="158.0" style="-fx-cursor: hand;" text="Dirección" />
+            <TableColumn fx:id="colRazonSocial" prefWidth="237.0" style="-fx-cursor: hand;" text="Razón Social" />
+            <TableColumn fx:id="colTelefono" prefWidth="136.0" style="-fx-cursor: hand;" text="Telefono" />
+            <TableColumn fx:id="colCorreo" prefWidth="213.0" style="-fx-cursor: hand;" text="Correo" />
+            <TableColumn fx:id="colDireccion" prefWidth="280.0" style="-fx-cursor: hand;" text="Dirección" />
          </columns>
       </TableView>
       <TextField fx:id="tfBuscarRazon" layoutX="67.0" layoutY="95.0" prefHeight="31.0" prefWidth="393.0" promptText="Buscar razón social" style="-fx-background-color: FFFFFF; -fx-cursor: text;" />
@@ -43,6 +43,6 @@
             <Image url="@../recurso/icons8-buscar-50.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnExportar" layoutX="788.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicExportar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar a PDF" />
+      <Button fx:id="btnExportar" layoutX="1108.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicExportar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar a PDF" />
    </children>
 </AnchorPane>

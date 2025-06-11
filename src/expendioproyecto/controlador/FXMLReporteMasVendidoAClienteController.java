@@ -6,6 +6,7 @@ package expendioproyecto.controlador;
 
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.ClienteDAO;
+import expendioproyecto.modelo.dao.ReporteMasVendidoAClienteDAO;
 import expendioproyecto.modelo.pojo.Cliente;
 import expendioproyecto.modelo.pojo.ReporteProductoVendido;
 import expendioproyecto.utilidad.Utilidad;
@@ -47,9 +48,9 @@ public class FXMLReporteMasVendidoAClienteController implements Initializable {
     @FXML
     private TableColumn<Cliente, String> colTelefono;
     @FXML
-    private TableColumn<?, String> colCorreo;
+    private TableColumn<Cliente, String> colCorreo;
     @FXML
-    private TableColumn<?, String> colDireccion;
+    private TableColumn<Cliente, String> colDireccion;
     @FXML
     private TableView<ReporteProductoVendido> tvProductosMasVendidos;
     @FXML
@@ -126,7 +127,7 @@ public class FXMLReporteMasVendidoAClienteController implements Initializable {
     
     private void cargarProductosMasVendidos(Cliente cliente) {
         try {
-            ArrayList<ReporteProductoVendido> productosDAO = ClienteDAO.obtenerProductoMasVendido(cliente.getIdCliente());
+            ArrayList<ReporteProductoVendido> productosDAO = ReporteMasVendidoAClienteDAO.obtenerProductoMasVendido(cliente.getIdCliente());
             listaProductos = FXCollections.observableArrayList(productosDAO);
             tvProductosMasVendidos.setItems(listaProductos);
         } catch (SQLException ex) {
