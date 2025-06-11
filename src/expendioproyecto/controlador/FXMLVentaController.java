@@ -149,6 +149,16 @@ public class FXMLVentaController implements Initializable {
         resultado.ifPresent(cantStr -> {
             try {
                 int cantidad = Integer.parseInt(cantStr);
+
+                if (cantidad > bebidaSeleccionada.getExistencia()) {
+                    Utilidad.mostrarAlertaSimple(
+                        Alert.AlertType.WARNING,
+                        "Stock insuficiente",
+                        "Solo hay " + bebidaSeleccionada.getExistencia() + " unidades disponibles."
+                    );
+                    return;
+                }
+
                 int promocion = obtenerPromocion(bebidaSeleccionada.getIdProducto());
                 float precioBase = bebidaSeleccionada.getPrecio();
                 float precioConDescuento = precioBase * (1 - promocion / 100f);
@@ -160,10 +170,15 @@ public class FXMLVentaController implements Initializable {
                 tfTotal.setText(String.format("$ %.2f", totalVenta.get()));
 
             } catch (NumberFormatException e) {
-                System.out.println("Cantidad inválida.");
+                Utilidad.mostrarAlertaSimple(
+                    Alert.AlertType.WARNING,
+                    "Cantidad inválida",
+                    "Ingresa un número válido para la cantidad."
+                );
             }
         });
     }
+
 
 
     @FXML
