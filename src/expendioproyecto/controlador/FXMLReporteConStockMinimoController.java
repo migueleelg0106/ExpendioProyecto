@@ -8,6 +8,7 @@ import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.ReporteProductoStockMinimoDAO;
 import expendioproyecto.modelo.pojo.ReporteProductoVendido;
 import expendioproyecto.utilidad.Utilidad;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,10 +25,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -46,11 +49,13 @@ public class FXMLReporteConStockMinimoController implements Initializable {
     @FXML
     private TableColumn<ReporteProductoVendido, Double> colStock;
     @FXML
-    private Button btnExportar;
-    @FXML
     private TableColumn<ReporteProductoVendido, Double> colExistencia;
     
     private ObservableList<ReporteProductoVendido> listaProductos;
+    @FXML
+    private MenuItem btnExportarXLSX;
+    @FXML
+    private MenuItem btnExportarPDF;
 
     /**
      * Initializes the controller class.
@@ -124,7 +129,14 @@ public class FXMLReporteConStockMinimoController implements Initializable {
     }
 
     @FXML
-    private void btnClicExportar(ActionEvent event) {
+    private void btnClicExportarXLSX(ActionEvent event) {
+        exportarArchivoConExtension("Excel Workbook (*.xlsx)", "*.xlsx"); 
     }
+
+    @FXML
+    private void btnClicExportarPDF(ActionEvent event) {
+        exportarArchivoConExtension("PDF files (*.pdf)", "*.pdf");
+    }
+    
     
 }

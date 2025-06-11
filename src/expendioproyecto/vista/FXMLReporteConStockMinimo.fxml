@@ -28,6 +28,11 @@
             <TableColumn fx:id="colStock" prefWidth="167.0" style="-fx-cursor: hand;" text="Stock Mínimo" />
          </columns>
       </TableView>
-      <Button fx:id="btnExportar" layoutX="656.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicExportar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar a PDF" />
+      <MenuButton layoutX="601.0" layoutY="545.0" mnemonicParsing="false" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar Infromación">
+         <items>
+            <MenuItem fx:id="btnExportarXLSX" mnemonicParsing="false" onAction="#btnClicExportarXLSX" text="EXCEL (XLS)" />
+            <MenuItem fx:id="btnExportarPDF" mnemonicParsing="false" onAction="#btnClicExportarPDF" text="PDF" />
+         </items>
+      </MenuButton>
    </children>
 </AnchorPane>
