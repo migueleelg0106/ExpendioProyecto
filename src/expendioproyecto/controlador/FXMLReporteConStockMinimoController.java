@@ -130,12 +130,12 @@ public class FXMLReporteConStockMinimoController implements Initializable {
 
     @FXML
     private void btnClicExportarXLSX(ActionEvent event) {
-        exportarArchivoConExtension("Excel Workbook (*.xlsx)", "*.xlsx"); 
+        //exportarArchivoConExtension("Excel Workbook (*.xlsx)", "*.xlsx"); 
     }
 
     @FXML
     private void btnClicExportarPDF(ActionEvent event) {
-        exportarArchivoConExtension("PDF files (*.pdf)", "*.pdf");
+        //exportarArchivoConExtension("PDF files (*.pdf)", "*.pdf");
     }
     
     
