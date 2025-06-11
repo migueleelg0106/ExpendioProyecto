@@ -8,6 +8,7 @@ import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.ClienteDAO;
 import expendioproyecto.modelo.pojo.Cliente;
 import expendioproyecto.modelo.pojo.Cliente;
+import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -36,6 +38,7 @@ import javafx.stage.Stage;
  * @author uriel
  */
 public class FXMLClienteController implements Initializable {
+
 
     @FXML
     private TableColumn colRazonSocial;
@@ -57,17 +60,22 @@ public class FXMLClienteController implements Initializable {
     private ObservableList<Cliente> clientes;
     
     private Cliente clienteEnEdicion = null;
+    @FXML
+    private Button btnRegresar;
 
-
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurarTabla();
         cargarInformacionTabla();
         configurarBuscador();
     }    
+    
+    private Usuario usuario;
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     
     private void configurarTabla(){
         colRazonSocial.setCellValueFactory(new PropertyValueFactory("razonSocial"));
@@ -149,9 +157,13 @@ public class FXMLClienteController implements Initializable {
     @FXML
     private void btnClicRegresar(ActionEvent event) {
         try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(tfBuscar);
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(btnRegresar);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();
+
+            FXMLVentanaPrincipalController controlador = cargador.getController();
+            controlador.configurarVistaSegunTipo(usuario);  // Pasa el usuario de vuelta
+
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Menú Principal");
@@ -161,6 +173,7 @@ public class FXMLClienteController implements Initializable {
             ex.printStackTrace();
         }
     }
+
     
     private void irFormularioCliente(Cliente clienteEditar) {
         try {

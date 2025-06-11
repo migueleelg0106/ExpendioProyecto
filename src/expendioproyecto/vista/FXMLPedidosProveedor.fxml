@@ -21,10 +21,10 @@
          </image>
       </ImageView>
       <Button fx:id="btnRegresar" layoutX="28.0" layoutY="545.0" mnemonicParsing="false" onAction="#btnClicRegresar" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Regresar" />
-      <TableView fx:id="tvBebidas" layoutX="28.0" layoutY="163.0" prefHeight="354.0" prefWidth="744.0">
+      <TableView fx:id="tvBebidasAPedir" layoutX="28.0" layoutY="163.0" prefHeight="354.0" prefWidth="744.0">
          <columns>
-            <TableColumn fx:id="colNombre" prefWidth="216.0" style="-fx-cursor: hand;" text="Nombre" />
-            <TableColumn fx:id="colDescripcion" minWidth="0.0" prefWidth="404.0" style="-fx-cursor: hand;" text="Descripción" />
+            <TableColumn fx:id="colNombre" editable="false" prefWidth="216.0" sortable="false" style="-fx-cursor: hand;" text="Nombre" />
+            <TableColumn fx:id="colDescripcion" editable="false" minWidth="0.0" prefWidth="404.0" sortable="false" style="-fx-cursor: hand;" text="Descripción" />
             <TableColumn fx:id="colCantidad" prefWidth="121.0" style="-fx-cursor: hand;" text="Cantidad" />
          </columns>
       </TableView>

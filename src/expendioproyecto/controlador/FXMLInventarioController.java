@@ -7,6 +7,7 @@ package expendioproyecto.controlador;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.BebidaDAO;
 import expendioproyecto.modelo.pojo.Bebida;
+import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
 import java.net.URL;
@@ -65,7 +66,14 @@ public class FXMLInventarioController implements Initializable {
         configurarBuscador();
     }
     
-        private void configurarTabla(){
+    private Usuario usuario;
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    
+    private void configurarTabla(){
         colExistencia.setCellValueFactory(new PropertyValueFactory("existencia"));
         colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
         colPrecio.setCellValueFactory(new PropertyValueFactory("precio"));
@@ -108,9 +116,14 @@ public class FXMLInventarioController implements Initializable {
     @FXML
     private void btnClicRegresar(ActionEvent event) {
         try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(btnRegresar);
+            Stage escenarioBase = Utilidad.gestEscenarioComponente(tfBuscar); // puedes usar otro nodo si no deseas declarar btnRegresar
+
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();
+
+            FXMLVentanaPrincipalController controlador = cargador.getController();
+            controlador.configurarVistaSegunTipo(usuario); // PASAR EL USUARIO DE REGRESO
+
             Scene escenaPrincipal = new Scene(vista);
             escenarioBase.setScene(escenaPrincipal);
             escenarioBase.setTitle("Menú Principal");
@@ -120,5 +133,6 @@ public class FXMLInventarioController implements Initializable {
             ex.printStackTrace();
         }
     }
+
     
 }

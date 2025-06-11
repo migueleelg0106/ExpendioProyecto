@@ -26,22 +26,22 @@
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </Label>
-      <ComboBox layoutX="27.0" layoutY="134.0" prefHeight="31.0" prefWidth="234.0" promptText="Proveedor" style="-fx-cursor: hand;" />
-      <Label layoutX="690.0" layoutY="145.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Fecha" textAlignment="CENTER">
+      <ComboBox fx:id="cbProveedor" layoutX="27.0" layoutY="134.0" prefHeight="31.0" prefWidth="234.0" promptText="Proveedor" style="-fx-cursor: hand;" />
+      <Label fx:id="tfFecha" layoutX="690.0" layoutY="145.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Fecha" textAlignment="CENTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="690.0" layoutY="97.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Total de la compra" textAlignment="CENTER">
+      <Label fx:id="tfTotalCompra" layoutX="690.0" layoutY="97.0" prefHeight="31.0" prefWidth="277.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Total de la compra" textAlignment="CENTER">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Label>
       <TableView fx:id="tvInventario" layoutX="36.0" layoutY="282.0" prefHeight="365.0" prefWidth="462.0">
          <columns>
-            <TableColumn fx:id="colNombre" prefWidth="184.0" style="-fx-cursor: hand;" text="Nombre" />
-            <TableColumn fx:id="colExistencia" prefWidth="150.0" style="-fx-cursor: hand;" text="Existencia" />
-            <TableColumn fx:id="colStockMinimo" minWidth="0.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Stock Mínimo" />
+            <TableColumn fx:id="colNombreBebida" prefWidth="184.0" style="-fx-cursor: hand;" text="Nombre" />
+            <TableColumn fx:id="colExistenciaBebida" prefWidth="150.0" style="-fx-cursor: hand;" text="Existencia" />
+            <TableColumn fx:id="colStockMinimoBebida" minWidth="0.0" prefWidth="125.0" style="-fx-cursor: hand;" text="Stock Mínimo" />
          </columns>
       </TableView>
       <TextField fx:id="tfBuscar" layoutX="276.0" layoutY="134.0" prefHeight="31.0" prefWidth="393.0" promptText="Buscar bebida" style="-fx-background-color: FFFFFF; -fx-cursor: text;" />
@@ -51,13 +51,13 @@
          </image>
       </ImageView>
       <Button layoutX="390.0" layoutY="219.0" mnemonicParsing="false" onAction="#btnClicAgregar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffc978; -fx-cursor: hand;" text="Agregar" />
-      <Button layoutX="796.0" layoutY="672.0" mnemonicParsing="false" onAction="#btnClicFinalizarVenta" prefHeight="58.0" prefWidth="170.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Finalizar Venta" />
+      <Button layoutX="796.0" layoutY="672.0" mnemonicParsing="false" onAction="#btnClicFinalizarCompra" prefHeight="58.0" prefWidth="170.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Finalizar Compra" />
       <Button layoutX="859.0" layoutY="219.0" mnemonicParsing="false" onAction="#btnClicEliminar" prefHeight="48.0" prefWidth="108.0" style="-fx-background-color: #ffeb42; -fx-border-color: #a6992b; -fx-cursor: hand;" text="Eliminar" />
       <TableView fx:id="tvProductos" layoutX="527.0" layoutY="282.0" prefHeight="365.0" prefWidth="440.0" styleClass="custom-productos">
          <columns>
             <TableColumn fx:id="colProductosCompra" prefWidth="192.0" style="-fx-cursor: hand;" text="Productos de la compra" />
             <TableColumn fx:id="colPrecioCompra" prefWidth="139.0" style="-fx-cursor: hand;" text="Precio de compra" />
-            <TableColumn fx:id="colCantidad" prefWidth="106.0" style="-fx-cursor: hand;" text="Cantidad" />
+            <TableColumn fx:id="colCantidadCompra" prefWidth="106.0" style="-fx-cursor: hand;" text="Cantidad" />
          </columns>
       </TableView>
       <Label layoutX="276.0" layoutY="105.0" text="Busque una bebida para seleccionarla:">
