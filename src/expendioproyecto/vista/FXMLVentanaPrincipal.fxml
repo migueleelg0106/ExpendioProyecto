@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f1e5d0;" stylesheets="@../recurso/estilos.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="expendioproyecto.controlador.FXMLVentanaPrincipalController">
    <children>
-      <Label fx:id="lbSeleccionarOpcion" layoutX="45.0" layoutY="95.0" text="Seleccione la opción que desée utilizar:">
+      <Label fx:id="lbSeleccionarOpcion" layoutX="45.0" layoutY="95.0" text="Seleccione la opción que quiera utilizar:">
          <font>
             <Font name="Arial Rounded MT Bold" size="28.0" />
          </font>
