@@ -35,7 +35,7 @@
             <TableColumn fx:id="colDescripcionBebida" editable="false" minWidth="0.0" prefWidth="291.0" style="-fx-cursor: hand;" text="Descripción" />
          </columns>
       </TableView>
-      <TextField fx:id="tfBuscar" layoutX="694.0" layoutY="101.0" prefHeight="39.0" prefWidth="393.0" promptText="Buscar bebida" style="-fx-background-color: FFFFFF; -fx-border-color: 000000; -fx-cursor: text;" />
+      <TextField fx:id="tfBuscar" layoutX="694.0" layoutY="101.0" prefHeight="39.0" prefWidth="393.0" promptText="Buscar bebida" style="-fx-background-color: FFFFFF; -fx-cursor: text;" />
       <ImageView fitHeight="39.0" fitWidth="51.0" layoutX="1047.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../recurso/icons8-buscar-50.png" />
