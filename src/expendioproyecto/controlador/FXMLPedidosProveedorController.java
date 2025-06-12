@@ -196,7 +196,8 @@ public class FXMLPedidosProveedorController implements Initializable {
                         bebida -> bebida.getNombre(),
                         bebida -> bebida.getDescripcion(),
                         bebida -> String.valueOf(bebida.getCantidadSugerida())
-                    )
+                    ),
+                    false
                 );
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Excel exportado correctamente.");
             } catch (IOException ex) {
@@ -227,7 +228,8 @@ public class FXMLPedidosProveedorController implements Initializable {
                     ),
                     new Font(Font.HELVETICA, 12, Font.BOLD),
                     new Font(Font.HELVETICA, 10, Font.NORMAL),
-                    true
+                    true,
+                    false
                 );
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "PDF exportado correctamente.");
             } catch (IOException | DocumentException ex) {

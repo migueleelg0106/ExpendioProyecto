@@ -151,14 +151,15 @@ public class FXMLReporteConStockMinimoController implements Initializable {
             try {
                 ExportarAXLSX.exportarAXLSX(
                     archivo,
-                    "Stock Mínimo",
+                    "Reporte de Bebidas con Stock Mínimo",
                     listaProductos,
                     Arrays.asList("Nombre", "Existencia", "Stock Mínimo"),
                     Arrays.asList(
                         producto -> producto.getNombre(),
                         producto -> String.valueOf((int) producto.getExistencia()),
                         producto -> String.valueOf((int) producto.getStock())
-                    )
+                    ),
+                    false
                 );
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Excel exportado correctamente.");
             } catch (IOException ex) {
@@ -179,7 +180,7 @@ public class FXMLReporteConStockMinimoController implements Initializable {
             try {
                 ExportarAPDF.exportarAPDF(
                     archivo,
-                    "Reporte de Productos con Stock Mínimo",
+                    "Reporte de Bebidas con Stock Mínimo",
                     listaProductos,
                     Arrays.asList("Nombre", "Existencia", "Stock Mínimo"),
                     Arrays.asList(
@@ -189,7 +190,8 @@ public class FXMLReporteConStockMinimoController implements Initializable {
                     ),
                     new Font(Font.HELVETICA, 12, Font.BOLD),
                     new Font(Font.HELVETICA, 10, Font.NORMAL),
-                    true
+                    true,
+                    false
                 );
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "PDF exportado correctamente.");
             } catch (IOException | DocumentException ex) {

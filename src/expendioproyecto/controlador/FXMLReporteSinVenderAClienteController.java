@@ -181,7 +181,7 @@ public class FXMLReporteSinVenderAClienteController implements Initializable {
             try {
                 ExportarAXLSX.exportarAXLSXConCliente(
                     archivo,
-                    "Producto Menos Vendido A Un Cliente",
+                    "Reporte de Bebida Que Aún No Se Le Vende A Un Cliente",
                     clienteSeleccionado,
                     Arrays.asList("Razón Social", "Correo", "Teléfono", "Dirección"),
                     Arrays.asList(
@@ -194,8 +194,8 @@ public class FXMLReporteSinVenderAClienteController implements Initializable {
                     Arrays.asList("Producto"),
                     Arrays.asList(
                         p -> p.getNombre()
-                    )
-                );
+                    ),
+                false);
 
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "El archivo se ha exportado correctamente.");
             } catch (IOException e) {
@@ -226,7 +226,7 @@ public class FXMLReporteSinVenderAClienteController implements Initializable {
 
                 ExportarAPDF.exportarAPDFConCliente(
                     archivo,
-                    "Producto Menos Vendido A Un Cliente",
+                    "Reporte de Bebida Que No Se Le Vende A Un Cliente",
                     clienteSeleccionado,
                     Arrays.asList("Razón Social", "Correo", "Teléfono", "Dirección"),
                     Arrays.asList(
@@ -242,7 +242,8 @@ public class FXMLReporteSinVenderAClienteController implements Initializable {
                     ),
                     fontTitulo,
                     fontCelda,
-                    true
+                    true,
+                    false
                 );
 
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "El archivo se ha exportado correctamente.");

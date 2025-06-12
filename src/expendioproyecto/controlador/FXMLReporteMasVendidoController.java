@@ -4,22 +4,36 @@
  */
 package expendioproyecto.controlador;
 
+import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.PdfPCell;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.ReporteProductoMasVendidoDAO;
+import expendioproyecto.modelo.pojo.Bebida;
 import expendioproyecto.modelo.pojo.ReporteProductoVendido;
 import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.ExportarAPDF;
 import expendioproyecto.utilidad.ExportarAXLSX;
 import expendioproyecto.utilidad.Utilidad;
+import java.awt.Color;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.TimeZone;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,6 +52,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * FXML Controller class
@@ -155,13 +177,14 @@ public class FXMLReporteMasVendidoController implements Initializable {
             try {
                 ExportarAXLSX.exportarAXLSX(
                     archivo,
-                    "Reporte de Productos Más Vendidos",
+                    "Reporte de Bebidas Más Vendidas",
                     listaProductos,
                     Arrays.asList("Nombre del Producto", "Total Vendido"),
                     Arrays.asList(
                         producto -> producto.getNombre(),
                         producto -> String.valueOf(producto.getTotalVendido())
-                    )
+                    ),
+                    true
                 );
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Excel exportado correctamente.");
             } catch (IOException ex) {
@@ -170,6 +193,7 @@ public class FXMLReporteMasVendidoController implements Initializable {
             }
         } 
     }
+
 
     @FXML
     private void btnClicExportarPDF(ActionEvent event) {
@@ -182,7 +206,7 @@ public class FXMLReporteMasVendidoController implements Initializable {
             try {
                 ExportarAPDF.exportarAPDF(
                     archivo,
-                    "Reporte de Productos Más Vendidos",
+                    "Reporte de Bebidas Más Vendidas",
                     listaProductos,
                     Arrays.asList("Nombre del Producto", "Total Vendido"),
                     Arrays.asList(
@@ -191,6 +215,7 @@ public class FXMLReporteMasVendidoController implements Initializable {
                     ),
                     new Font(Font.HELVETICA, 12, Font.BOLD),
                     new Font(Font.HELVETICA, 10, Font.NORMAL),
+                    true,
                     true
                 );
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "PDF exportado correctamente.");
@@ -200,6 +225,7 @@ public class FXMLReporteMasVendidoController implements Initializable {
             }
         }
     }
+
     
     private Usuario usuario;
 

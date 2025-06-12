@@ -200,7 +200,7 @@ public class FXMLReporteMasVendidoAClienteController implements Initializable {
             try {
                 ExportarAXLSX.exportarAXLSXConCliente(
                     archivo,
-                    "Producto Más Vendido A Un Cliente",
+                    "Reporte de Bebidas Más Vendidas A Un Cliente",
                     clienteSeleccionado,
                     Arrays.asList("Razón Social", "Correo", "Teléfono", "Dirección"),
                     Arrays.asList(
@@ -214,8 +214,8 @@ public class FXMLReporteMasVendidoAClienteController implements Initializable {
                     Arrays.asList(
                         p -> p.getNombre(),
                         p -> String.valueOf(p.getTotalVendido())
-                    )
-                );
+                    ),
+                true);
 
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "El archivo se ha exportado correctamente.");
             } catch (IOException e) {
@@ -246,7 +246,7 @@ public class FXMLReporteMasVendidoAClienteController implements Initializable {
 
                 ExportarAPDF.exportarAPDFConCliente(
                     archivo,
-                    "Producto Más Vendido A Un Cliente",
+                    "Reporte de Bebidas Más Vendidas A Un Cliente",
                     clienteSeleccionado,
                     Arrays.asList("Razón Social", "Correo", "Teléfono", "Dirección"),
                     Arrays.asList(
@@ -263,6 +263,7 @@ public class FXMLReporteMasVendidoAClienteController implements Initializable {
                     ),
                     fontTitulo,
                     fontCelda,
+                    true,
                     true
                 );
 

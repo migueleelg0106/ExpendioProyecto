@@ -163,14 +163,15 @@ public class FXMLReporteVentasPorBebidaController implements Initializable {
             try {
                 ExportarAXLSX.exportarAXLSX(
                     archivo,
-                    "Reporte de Productos Vendidos",
+                    "Reporte de Bebidas Vendidas",
                     listaProductos,
                     Arrays.asList("Nombre del Producto", "Cantidad Vendida", "Subtotal"),
                     Arrays.asList(
                         producto -> producto.getNombre(),
                         producto -> String.valueOf(producto.getTotalVendido()),
                         producto -> String.format("$%.2f", producto.getTotalVentasPrecio())
-                    )
+                    ),
+                    false
                 );
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Excel exportado correctamente.");
             } catch (IOException ex) {
@@ -191,7 +192,7 @@ public class FXMLReporteVentasPorBebidaController implements Initializable {
             try {
                 ExportarAPDF.exportarAPDF(
                     archivo,
-                    "Reporte de Productos Vendidos",
+                    "Reporte de Bebidas Vendidas",
                     listaProductos,
                     Arrays.asList("Nombre del Producto", "Cantidad Vendida", "Subtotal"),
                     Arrays.asList(
@@ -201,7 +202,8 @@ public class FXMLReporteVentasPorBebidaController implements Initializable {
                     ),
                     new Font(Font.HELVETICA, 12, Font.BOLD),
                     new Font(Font.HELVETICA, 10, Font.NORMAL),
-                    true
+                    true,
+                    false
                 );
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "PDF exportado correctamente.");
             } catch (IOException | DocumentException ex) {

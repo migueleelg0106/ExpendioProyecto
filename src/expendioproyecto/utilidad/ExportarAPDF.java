@@ -3,6 +3,7 @@ package expendioproyecto.utilidad;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
 import expendioproyecto.utilidad.Utilidad.ValorCelda;
+import java.awt.Color;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,53 +16,57 @@ import java.util.TimeZone;
 public class ExportarAPDF {
       
     public static <T> void exportarAPDF(
-        File archivo,
-        String titulo,
-        List<T> lista,
-        List<String> encabezados,
-        List<ValorCelda<T>> extractores,
-        Font fontTitulo,
-        Font fontCelda,
-        boolean incluirPieDePagina
-    ) throws IOException, DocumentException {
-        
+            File archivo,
+            String titulo,
+            List<T> lista,
+            List<String> encabezados,
+            List<ValorCelda<T>> extractores,
+            Font fontTitulo,
+            Font fontCelda,
+            boolean incluirPieDePagina,
+            boolean resaltarPrimeraFila
+        ) throws IOException, DocumentException {
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT-6:00"));
         String fechaHora = sdf.format(new Date());
-        
+
         Document documento = new Document();
         PdfWriter.getInstance(documento, new FileOutputStream(archivo));
         documento.open();
 
-        // Título con fuente personalizada
+        // Título
         Paragraph parrafoTitulo = new Paragraph(titulo, fontTitulo);
         parrafoTitulo.setAlignment(Element.ALIGN_CENTER);
         documento.add(parrafoTitulo);
-
-        documento.add(new Paragraph(" ")); // Espacio en blanco
+        documento.add(new Paragraph(" ")); // Espacio
 
         PdfPTable tabla = new PdfPTable(encabezados.size());
 
-        // Encabezados sin color de fondo personalizado
+        // Encabezados
         for (String encabezado : encabezados) {
             PdfPCell cell = new PdfPCell(new Phrase(encabezado, fontTitulo));
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             tabla.addCell(cell);
         }
 
-        // Filas de datos sin color de fondo
+        boolean esPrimeraFila = true;
         for (T item : lista) {
             for (ValorCelda<T> extractor : extractores) {
                 PdfPCell cell = new PdfPCell(new Phrase(extractor.obtenerValor(item), fontCelda));
                 cell.setHorizontalAlignment(Element.ALIGN_LEFT);
                 cell.setPadding(5f);
+                if (resaltarPrimeraFila && esPrimeraFila) {
+                    cell.setBackgroundColor(Color.YELLOW); // Resalta si se indica
+                }
                 tabla.addCell(cell);
             }
+            esPrimeraFila = false;
         }
 
         documento.add(tabla);
 
-        // Pie de página (si está habilitado)
+        // Pie de página
         if (incluirPieDePagina) {
             Paragraph piePagina = new Paragraph("Generado el: " + fechaHora, new Font(Font.HELVETICA, 10, Font.ITALIC));
             piePagina.setAlignment(Element.ALIGN_RIGHT);
@@ -70,33 +75,32 @@ public class ExportarAPDF {
 
         documento.close();
     }
+
     
     public static <T, C> void exportarAPDFConCliente(File archivo, String titulo,
-                                                    C cliente, List<String> camposCliente, 
-                                                    List<ValorCelda<C>> extractoresCliente,
-                                                    List<T> listaProductos,
-                                                    List<String> encabezados,
-                                                    List<ValorCelda<T>> extractores,
-                                                    Font fontTitulo,
-                                                    Font fontCelda,
-                                                    boolean incluirPieDePagina
-    ) throws IOException, DocumentException {
-        
+                                                 C cliente, List<String> camposCliente, 
+                                                 List<ValorCelda<C>> extractoresCliente,
+                                                 List<T> listaProductos,
+                                                 List<String> encabezados,
+                                                 List<ValorCelda<T>> extractores,
+                                                 Font fontTitulo,
+                                                 Font fontCelda,
+                                                 boolean incluirPieDePagina,
+                                                 boolean resaltarPrimeraFila // <-- nuevo parámetro
+        ) throws IOException, DocumentException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT-6:00"));
         String fechaHora = sdf.format(new Date());
-        
+
         Document documento = new Document();
         PdfWriter.getInstance(documento, new FileOutputStream(archivo));
         documento.open();
 
-        // Título principal
         Paragraph parrafoTitulo = new Paragraph(titulo, fontTitulo);
         parrafoTitulo.setAlignment(Element.ALIGN_CENTER);
         documento.add(parrafoTitulo);
-        documento.add(new Paragraph(" ")); // Espacio
+        documento.add(new Paragraph(" "));
 
-        // Datos del cliente
         Paragraph subtituloCliente = new Paragraph("Información del Cliente:", fontTitulo);
         documento.add(subtituloCliente);
 
@@ -106,9 +110,8 @@ public class ExportarAPDF {
             documento.add(new Paragraph(campo + ": " + valor, fontCelda));
         }
 
-        documento.add(new Paragraph(" ")); // Espacio
+        documento.add(new Paragraph(" "));
 
-        // Tabla de productos
         PdfPTable tabla = new PdfPTable(encabezados.size());
         for (String encabezado : encabezados) {
             PdfPCell cell = new PdfPCell(new Phrase(encabezado, fontTitulo));
@@ -116,13 +119,18 @@ public class ExportarAPDF {
             tabla.addCell(cell);
         }
 
+        boolean esPrimeraFila = true;
         for (T item : listaProductos) {
             for (ValorCelda<T> extractor : extractores) {
                 PdfPCell cell = new PdfPCell(new Phrase(extractor.obtenerValor(item), fontCelda));
                 cell.setHorizontalAlignment(Element.ALIGN_LEFT);
                 cell.setPadding(5f);
+                if (esPrimeraFila && resaltarPrimeraFila) {
+                    cell.setBackgroundColor(Color.YELLOW);
+                }
                 tabla.addCell(cell);
             }
+            esPrimeraFila = false;
         }
 
         documento.add(tabla);
@@ -135,4 +143,6 @@ public class ExportarAPDF {
 
         documento.close();
     }
+
+
 }

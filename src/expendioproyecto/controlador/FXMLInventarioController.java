@@ -178,7 +178,8 @@ public class FXMLInventarioController implements Initializable {
                         bebida -> String.format("%.2f", bebida.getPrecio()),
                         bebida -> String.valueOf(bebida.getStockMinimo()),
                         bebida -> bebida.getDescripcion()
-                    )
+                    ),
+                    false
                 );
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "Excel exportado correctamente.");
             } catch (IOException ex) {
@@ -199,7 +200,7 @@ public class FXMLInventarioController implements Initializable {
             try {
                 ExportarAPDF.exportarAPDF(
                     archivo,
-                    "Reporte de Inventario de Bebidas",
+                    "Inventario de Bebidas",
                     new ArrayList<>(tvBebidas.getItems()),
                     Arrays.asList("Nombre", "Existencia", "Precio", "Stock Mínimo", "Descripción"),
                     Arrays.asList(
@@ -211,7 +212,8 @@ public class FXMLInventarioController implements Initializable {
                     ),
                     new Font(Font.HELVETICA, 12, Font.BOLD),
                     new Font(Font.HELVETICA, 10, Font.NORMAL),
-                    true
+                    true,
+                    false
                 );
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", "PDF exportado correctamente.");
             } catch (IOException | DocumentException ex) {

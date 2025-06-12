@@ -16,24 +16,37 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author uriel
  */
 public class ExportarAXLSX {
-    public static <T> void exportarAXLSX(File archivo, String tituloHoja, List<T> lista, 
-            List<String> encabezados, List<Utilidad.ValorCelda<T>> extractores) throws IOException {
+    public static <T> void exportarAXLSX(
+            File archivo,
+            String tituloHoja,
+            List<T> lista,
+            List<String> encabezados,
+            List<Utilidad.ValorCelda<T>> extractores,
+            boolean resaltarPrimeraFila
+        ) throws IOException {
+
         Workbook workbook = new XSSFWorkbook();
-        
-        // Crear estilo para los encabezados (negrita)
+
+        // Estilo encabezados
         CellStyle estiloEncabezado = workbook.createCellStyle();
         Font fuenteEncabezado = workbook.createFont();
         fuenteEncabezado.setBold(true);
         estiloEncabezado.setFont(fuenteEncabezado);
-        estiloEncabezado.setAlignment(HorizontalAlignment.CENTER); // Centrar encabezados
-        
-        // Crear estilo para el contenido (centrado)
+        estiloEncabezado.setAlignment(HorizontalAlignment.CENTER);
+
+        // Estilo general
         CellStyle estiloContenido = workbook.createCellStyle();
-        estiloContenido.setAlignment(HorizontalAlignment.CENTER); // Centrar contenido
-        
+        estiloContenido.setAlignment(HorizontalAlignment.CENTER);
+
+        // Estilo para primera fila resaltada
+        CellStyle estiloResaltado = workbook.createCellStyle();
+        estiloResaltado.cloneStyleFrom(estiloContenido);
+        estiloResaltado.setFillForegroundColor(IndexedColors.YELLOW.getIndex());
+        estiloResaltado.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
         Sheet hoja = workbook.createSheet(tituloHoja);
 
-        // Crear fila de encabezados con estilo
+        // Encabezados
         Row filaEncabezado = hoja.createRow(0);
         for (int i = 0; i < encabezados.size(); i++) {
             Cell celda = filaEncabezado.createCell(i);
@@ -41,7 +54,7 @@ public class ExportarAXLSX {
             celda.setCellStyle(estiloEncabezado);
         }
 
-        // Llenar datos con estilo centrado
+        // Filas de datos
         for (int i = 0; i < lista.size(); i++) {
             Row fila = hoja.createRow(i + 1);
             T item = lista.get(i);
@@ -49,30 +62,35 @@ public class ExportarAXLSX {
                 String valor = extractores.get(j).obtenerValor(item);
                 Cell celda = fila.createCell(j);
                 celda.setCellValue(valor);
-                celda.setCellStyle(estiloContenido); // Aplicar estilo centrado
+                if (resaltarPrimeraFila && i == 0) {
+                    celda.setCellStyle(estiloResaltado);
+                } else {
+                    celda.setCellStyle(estiloContenido);
+                }
             }
         }
 
-        // Autoajustar columnas
+        // Autoajuste de columnas
         for (int i = 0; i < encabezados.size(); i++) {
             hoja.autoSizeColumn(i);
         }
 
-        // Guardar archivo
         try (FileOutputStream fos = new FileOutputStream(archivo)) {
             workbook.write(fos);
         }
 
         workbook.close();
     }
+
     
     public static <T, C> void exportarAXLSXConCliente(File archivo, String tituloHoja,
-                                                      C cliente,
-                                                      List<String> camposCliente,
-                                                      List<Utilidad.ValorCelda<C>> extractoresCliente,
-                                                      List<T> lista,
-                                                      List<String> encabezados,
-                                                      List<Utilidad.ValorCelda<T>> extractores) throws IOException {
+                                                  C cliente,
+                                                  List<String> camposCliente,
+                                                  List<Utilidad.ValorCelda<C>> extractoresCliente,
+                                                  List<T> lista,
+                                                  List<String> encabezados,
+                                                  List<Utilidad.ValorCelda<T>> extractores,
+                                                  boolean resaltarPrimeraFila) throws IOException {
         Workbook workbook = new XSSFWorkbook();
         Sheet hoja = workbook.createSheet(tituloHoja);
 
@@ -84,6 +102,14 @@ public class ExportarAXLSX {
 
         CellStyle estiloContenido = workbook.createCellStyle();
         estiloContenido.setAlignment(HorizontalAlignment.LEFT);
+
+        CellStyle estiloPrimeraFila = null;
+        if (resaltarPrimeraFila) {
+            estiloPrimeraFila = workbook.createCellStyle();
+            estiloPrimeraFila.cloneStyleFrom(estiloContenido);
+            estiloPrimeraFila.setFillForegroundColor(IndexedColors.YELLOW.getIndex());
+            estiloPrimeraFila.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        }
 
         int filaActual = 0;
 
@@ -110,14 +136,16 @@ public class ExportarAXLSX {
         }
 
         // Datos
+        boolean primeraFila = true;
         for (T item : lista) {
             Row fila = hoja.createRow(filaActual++);
             for (int j = 0; j < extractores.size(); j++) {
                 String valor = extractores.get(j).obtenerValor(item);
                 Cell celda = fila.createCell(j);
                 celda.setCellValue(valor);
-                celda.setCellStyle(estiloContenido);
+                celda.setCellStyle(primeraFila && resaltarPrimeraFila ? estiloPrimeraFila : estiloContenido);
             }
+            primeraFila = false;
         }
 
         // Autoajuste
@@ -131,4 +159,5 @@ public class ExportarAXLSX {
 
         workbook.close();
     }
+
 }
