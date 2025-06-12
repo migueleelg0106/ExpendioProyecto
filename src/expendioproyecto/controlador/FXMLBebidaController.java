@@ -104,7 +104,6 @@ public class FXMLBebidaController implements Initializable {
     
     @FXML
     private void btnClicEliminar(ActionEvent event) {        
-        //ver la validacion de si esta en una venta compra o pedido ya que si es el caso no se deberia poder elmininar etc
         Bebida bebidaSeleccionada = tvBebidas.getSelectionModel().getSelectedItem();
 
         if (bebidaSeleccionada == null) {
@@ -130,12 +129,19 @@ public class FXMLBebidaController implements Initializable {
                             "No se pudo eliminar la bebida.");
                 }
             } catch (SQLException e) {
-                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error crítico",
-                        "Ocurrió un error al intentar eliminar la bebida.");
-                e.printStackTrace();
+                if (e.getErrorCode() == 1451) {
+                    Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING,
+                            "No se puede eliminar",
+                            "No se puede eliminar una bebida asociada a alguna transacción o promoción.");
+                } else {
+                    Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR,
+                            "Error crítico",
+                            "Ocurrió un error al intentar eliminar la bebida.");
+                }
             }
         }
     }
+
 
 
     @FXML

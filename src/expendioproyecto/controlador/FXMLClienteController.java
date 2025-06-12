@@ -129,12 +129,19 @@ public class FXMLClienteController implements Initializable {
                             "No se pudo eliminar el cliente.");
                 }
             } catch (SQLException e) {
-                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error crítico",
-                        "Ocurrió un error al intentar eliminar al cliente.");
-                e.printStackTrace();
+                if (e.getErrorCode() == 1451) {
+                    Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING,
+                            "No se puede eliminar",
+                            "No se puede eliminar un cliente asociado a alguna transacción, pedido o historial de ventas.");
+                } else {
+                    Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR,
+                            "Error crítico",
+                            "Ocurrió un error al intentar eliminar al cliente.");
+                }
             }
         }
     }
+
 
 
     @FXML

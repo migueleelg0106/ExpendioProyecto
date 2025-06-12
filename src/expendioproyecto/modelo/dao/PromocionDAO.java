@@ -93,6 +93,8 @@ public class PromocionDAO {
 
             stmt.setInt(1, idPromocion);
             return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new SQLException("Error al eliminar la promoción: " + e.getMessage(), e.getSQLState(), e.getErrorCode(), e);
         }
     }
 

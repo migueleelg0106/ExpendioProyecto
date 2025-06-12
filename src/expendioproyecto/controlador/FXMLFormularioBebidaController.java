@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package expendioproyecto.controlador;
 
 import expendioproyecto.modelo.dao.BebidaDAO;
@@ -17,11 +13,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-/**
- * FXML Controller class
- *
- * @author uriel
- */
 public class FXMLFormularioBebidaController implements Initializable {
 
     @FXML
@@ -34,73 +25,32 @@ public class FXMLFormularioBebidaController implements Initializable {
     private TextField tfPrecio;
     @FXML
     private TextField tfNombre;
-    
-    private Bebida bebidaEnEdicion = null;
     @FXML
     private Label lbExistencia;
     @FXML
     private Label lbStockMinimo;
 
+    private Bebida bebidaEnEdicion = null;
+    private Usuario usuario;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        // Inicialización si es necesaria
+    }
 
     @FXML
     private void clicGuardar(ActionEvent event) {
+        if (!validarCampos()) {
+            return;
+        }
+
         String nombre = tfNombre.getText().trim();
         String descripcion = tfDescripcion.getText().trim();
-        String existenciaTexto = tfExistencia.getText().trim();
-        String precioTexto = tfPrecio.getText().trim();
-        String stockMinimoTexto = tfStockMinimo.getText().trim();
+        int existencia = Integer.parseInt(tfExistencia.getText().trim());
+        int stockMinimo = Integer.parseInt(tfStockMinimo.getText().trim());
+        float precio = Float.parseFloat(tfPrecio.getText().trim());
 
-        // Validación de campos vacíos
-        if (nombre.isEmpty() || descripcion.isEmpty() || existenciaTexto.isEmpty()
-                || precioTexto.isEmpty() || stockMinimoTexto.isEmpty()) {
-            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos incompletos",
-                    "Por favor, completa todos los campos.");
-            return;
-        }
-
-        // Validación de formato
-        if (!nombre.matches("^[a-zA-ZÁÉÍÓÚáéíóúñÑ\\s]{3,45}$")) {
-            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Nombre inválido",
-                    "El nombre debe contener solo letras y tener entre 3 y 45 caracteres.");
-            return;
-        }
-
-        if (descripcion.length() < 5 || descripcion.length() > 100) {
-            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Descripción inválida",
-                    "La descripción debe tener entre 5 y 100 caracteres.");
-            return;
-        }
-
-        int existencia, stockMinimo;
-        float precio;
-
-        try {
-            existencia = Integer.parseInt(existenciaTexto);
-            stockMinimo = Integer.parseInt(stockMinimoTexto);
-            precio = Float.parseFloat(precioTexto);
-
-            if (existencia < 0 || stockMinimo < 0 || precio < 0) {
-                Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Valores inválidos",
-                        "Existencia, precio y stock mínimo deben ser valores positivos.");
-                return;
-            }
-        } catch (NumberFormatException ex) {
-            Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Formato inválido",
-                    "Verifica que existencia, stock mínimo y precio sean números válidos.");
-            return;
-        }
-
-        // Crear o modificar bebida
         Bebida bebida = (bebidaEnEdicion == null) ? new Bebida() : bebidaEnEdicion;
-
         bebida.setNombre(nombre);
         bebida.setDescripcion(descripcion);
         bebida.setExistencia(existencia);
@@ -108,15 +58,14 @@ public class FXMLFormularioBebidaController implements Initializable {
         bebida.setPrecio(precio);
 
         try {
-            boolean exito;
-            if (bebidaEnEdicion == null) {
-                exito = BebidaDAO.insertarBebida(bebida);
-            } else {
-                exito = BebidaDAO.modificarBebida(bebida);
-            }
+            boolean exito = (bebidaEnEdicion == null)
+                    ? BebidaDAO.insertarBebida(bebida)
+                    : BebidaDAO.modificarBebida(bebida);
 
             if (exito) {
-                String mensaje = (bebidaEnEdicion == null) ? "Bebida registrada correctamente." : "Bebida modificada correctamente.";
+                String mensaje = (bebidaEnEdicion == null)
+                        ? "Bebida registrada correctamente."
+                        : "Bebida modificada correctamente.";
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", mensaje);
                 cerrarVentana();
             } else {
@@ -128,21 +77,64 @@ public class FXMLFormularioBebidaController implements Initializable {
             Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error crítico",
                     "Ocurrió un error al intentar guardar la bebida.");
             e.printStackTrace();
-        }   
+        }
     }
 
+    private boolean validarCampos() {
+        String nombre = tfNombre.getText().trim();
+        String descripcion = tfDescripcion.getText().trim();
+        String existenciaTexto = tfExistencia.getText().trim();
+        String precioTexto = tfPrecio.getText().trim();
+        String stockMinimoTexto = tfStockMinimo.getText().trim();
 
+        if (nombre.isEmpty() || descripcion.isEmpty() || existenciaTexto.isEmpty()
+                || precioTexto.isEmpty() || stockMinimoTexto.isEmpty()) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos incompletos",
+                    "Por favor, completa todos los campos.");
+            return false;
+        }
 
+        if (!nombre.matches("^[a-zA-ZÁÉÍÓÚáéíóúñÑ\\s]{3,45}$")) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Nombre inválido",
+                    "El nombre debe contener solo letras y tener entre 3 y 45 caracteres.");
+            return false;
+        }
+
+        if (descripcion.length() < 5 || descripcion.length() > 100) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Descripción inválida",
+                    "La descripción debe tener entre 5 y 100 caracteres.");
+            return false;
+        }
+
+        try {
+            int existencia = Integer.parseInt(existenciaTexto);
+            int stockMinimo = Integer.parseInt(stockMinimoTexto);
+            float precio = Float.parseFloat(precioTexto);
+
+            if (existencia < 0 || stockMinimo < 0 || precio < 0) {
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Valores inválidos",
+                        "Existencia, precio y stock mínimo deben ser valores positivos.");
+                return false;
+            }
+
+        } catch (NumberFormatException ex) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Formato inválido",
+                    "Verifica que existencia, stock mínimo y precio sean números válidos.");
+            return false;
+        }
+
+        return true;
+    }
 
     @FXML
     private void clicCancelar(ActionEvent event) {
         cerrarVentana();
     }
-    
-    private void cerrarVentana(){
+
+    private void cerrarVentana() {
         Utilidad.cerrarVentanaComponente(tfDescripcion);
     }
-    
+
     public void inicializarFormulario(Bebida bebida) {
         if (bebida != null) {
             this.bebidaEnEdicion = bebida;
@@ -154,13 +146,10 @@ public class FXMLFormularioBebidaController implements Initializable {
             lbExistencia.setText("Existencia:");
             lbStockMinimo.setText("Stock mínimo:");
 
-            // Deshabilitar los campos al editar
+            // Deshabilitar el campo al editar
             tfExistencia.setDisable(true);
-            tfStockMinimo.setDisable(true);
         }
     }
-
-    private Usuario usuario;
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;

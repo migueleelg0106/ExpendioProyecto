@@ -98,11 +98,7 @@ public class BebidaDAO {
             return sentencia.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            throw new SQLException("Error al eliminar bebida: " + e.getMessage(), e);
+            throw new SQLException("Error al eliminar bebida: " + e.getMessage(), e.getSQLState(), e.getErrorCode(), e);
         }
     }
-
-    
-    
-    
 }

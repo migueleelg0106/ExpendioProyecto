@@ -84,6 +84,8 @@ public class ProveedorDAO {
 
             sentencia.setInt(1, idProveedor);
             return sentencia.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new SQLException("Error al eliminar proveedor: " + e.getMessage(), e.getSQLState(), e.getErrorCode(), e);
         }
     }
 

@@ -110,11 +110,19 @@ public class FXMLProveedorController implements Initializable {
                     Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo eliminar el proveedor.");
                 }
             } catch (SQLException e) {
-                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error crítico", "Ocurrió un error al eliminar el proveedor.");
-                e.printStackTrace();
+                if (e.getErrorCode() == 1451) {
+                    Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING,
+                            "No se puede eliminar",
+                            "No se puede eliminar un proveedor asociado a alguna transacción o a una bebida.");
+                } else {
+                    Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR,
+                            "Error crítico",
+                            "Ocurrió un error al eliminar el proveedor.");
+                }
             }
         }
     }
+
 
     @FXML
     private void btnClicModificar(ActionEvent event) {

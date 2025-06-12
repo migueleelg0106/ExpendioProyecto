@@ -100,7 +100,7 @@ public class ClienteDAO {
             return sentencia.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            throw new SQLException("Error al eliminar cliente: " + e.getMessage(), e);
+            throw new SQLException("Error al eliminar cliente: " + e.getMessage(), e.getSQLState(), e.getErrorCode(), e);
         }
     }
 

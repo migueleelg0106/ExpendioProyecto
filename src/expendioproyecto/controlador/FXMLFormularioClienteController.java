@@ -29,10 +29,11 @@ public class FXMLFormularioClienteController implements Initializable {
     private TextField tfRazonSocial;
     @FXML
     private TextField tfCorreo;
-
-    private Cliente clienteEnEdicion = null;
     @FXML
     private Label lbRFC;
+
+    private Cliente clienteEnEdicion = null;
+    private Usuario usuario;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -40,11 +41,11 @@ public class FXMLFormularioClienteController implements Initializable {
 
         cbTipo.valueProperty().addListener((obs, oldValue, newValue) -> {
             if ("ocasional".equalsIgnoreCase(newValue)) {
-                tfRFC.clear();              // limpia el campo si hay algo
-                tfRFC.setDisable(true);    // desactiva el TextField
+                tfRFC.clear();
+                tfRFC.setDisable(true);
                 lbRFC.setText("Sin RFC");
             } else {
-                tfRFC.setDisable(false);   // lo vuelve editable
+                tfRFC.setDisable(false);
                 lbRFC.setText("Ingrese el RFC:");
             }
         });
@@ -52,18 +53,16 @@ public class FXMLFormularioClienteController implements Initializable {
 
     @FXML
     private void clicGuardar(ActionEvent event) {
+        if (!validarCampos()) {
+            return;
+        }
+
         String razonSocial = tfRazonSocial.getText().trim();
         String direccion = tfDirección.getText().trim();
         String correo = tfCorreo.getText().trim();
         String telefono = tfTeléfono.getText().trim();
         String tipo = cbTipo.getValue();
         String rfc = tfRFC.getText().trim();
-
-        if (razonSocial.isEmpty() || direccion.isEmpty() || correo.isEmpty() || telefono.isEmpty() || tipo == null) {
-            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos incompletos",
-                "Rellenar todos los campos obligatorios: razón social, tipo, dirección, correo y teléfono.");
-            return;
-        }
 
         Cliente cliente = (clienteEnEdicion == null) ? new Cliente() : clienteEnEdicion;
         cliente.setRazonSocial(razonSocial);
@@ -118,10 +117,36 @@ public class FXMLFormularioClienteController implements Initializable {
             tfRFC.setDisable("ocasional".equalsIgnoreCase(cliente.getTipo()));
         }
     }
-    
-    private Usuario usuario;
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    private boolean validarCampos() {
+        String razonSocial = tfRazonSocial.getText().trim();
+        String direccion = tfDirección.getText().trim();
+        String correo = tfCorreo.getText().trim();
+        String telefono = tfTeléfono.getText().trim();
+        String tipo = cbTipo.getValue();
+
+        if (razonSocial.isEmpty() || direccion.isEmpty() || correo.isEmpty() || telefono.isEmpty() || tipo == null) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos incompletos",
+                "Rellenar todos los campos obligatorios: razón social, tipo, dirección, correo y teléfono.");
+            return false;
+        }
+
+        if (!telefono.matches("\\d{10}")) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Teléfono inválido",
+                "El teléfono debe contener exactamente 10 dígitos numéricos.");
+            return false;
+        }
+
+        if (!correo.matches("^[\\w\\.-]+@[\\w\\.-]+\\.[a-zA-Z]{2,}$")) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Correo inválido",
+                "Ingrese un correo electrónico válido.");
+            return false;
+        }
+
+        return true;
     }
 }

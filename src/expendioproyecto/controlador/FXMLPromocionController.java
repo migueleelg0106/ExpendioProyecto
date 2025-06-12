@@ -126,8 +126,9 @@ public class FXMLPromocionController implements Initializable {
                     Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error", "No se pudo eliminar la promoción.");
                 }
             } catch (SQLException e) {
-                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error crítico", "Ocurrió un error al eliminar la promoción.");
-                e.printStackTrace();
+                Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR,
+                        "Error crítico",
+                        "Ocurrió un error al intentar eliminar a la promoción.");
             }
         }
     }

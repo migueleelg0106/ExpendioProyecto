@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package expendioproyecto.controlador;
 
 import expendioproyecto.modelo.dao.BebidaDAO;
@@ -24,11 +20,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-/**
- * FXML Controller class
- *
- * @author uriel
- */
 public class FXMLFormularioPromocionController implements Initializable {
 
     @FXML
@@ -41,44 +32,27 @@ public class FXMLFormularioPromocionController implements Initializable {
     private TextField tfDescripcion;
     @FXML
     private ComboBox<Bebida> cbBebidas;
-    
+
     private ObservableList<Bebida> bebidas;
-
     private Promocion promocionEnEdicion = null;
+    private Usuario usuario;
 
-
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarBebidas();
-    }    
+    }
 
     @FXML
     private void clicGuardar(ActionEvent event) {
+        if (!validarCampos()) {
+            return;
+        }
+
         String descripcion = tfDescripcion.getText().trim();
-        String descuentoTexto = tfDescuento.getText().trim();
+        int descuento = Integer.parseInt(tfDescuento.getText().trim());
         LocalDate fechaInicio = dpFechaInicio.getValue();
         LocalDate fechaVencimiento = dpFechaVencimiento.getValue();
         Bebida bebidaSeleccionada = cbBebidas.getValue();
-
-        if (descripcion.isEmpty() || descuentoTexto.isEmpty() || fechaInicio == null || fechaVencimiento == null || bebidaSeleccionada == null) {
-            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos incompletos", "Completa todos los campos obligatorios.");
-            return;
-        }
-
-        int descuento;
-        try {
-            descuento = Integer.parseInt(descuentoTexto);
-            if (descuento < 1 || descuento > 100) {
-                Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Descuento inválido", "El descuento debe ser un número entre 1 y 100.");
-                return;
-            }
-        } catch (NumberFormatException e) {
-            Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Formato inválido", "El descuento debe ser un número válido.");
-            return;
-        }
 
         Promocion promocion = (promocionEnEdicion == null) ? new Promocion() : promocionEnEdicion;
         promocion.setDescripcion(descripcion);
@@ -88,12 +62,9 @@ public class FXMLFormularioPromocionController implements Initializable {
         promocion.setIdProducto(bebidaSeleccionada.getIdProducto());
 
         try {
-            boolean exito;
-            if (promocionEnEdicion == null) {
-                exito = PromocionDAO.insertarPromocion(promocion);
-            } else {
-                exito = PromocionDAO.modificarPromocion(promocion);
-            }
+            boolean exito = (promocionEnEdicion == null)
+                    ? PromocionDAO.insertarPromocion(promocion)
+                    : PromocionDAO.modificarPromocion(promocion);
 
             if (exito) {
                 String mensaje = (promocionEnEdicion == null)
@@ -111,17 +82,48 @@ public class FXMLFormularioPromocionController implements Initializable {
         }
     }
 
+    private boolean validarCampos() {
+        String descripcion = tfDescripcion.getText().trim();
+        String descuentoTexto = tfDescuento.getText().trim();
+        LocalDate fechaInicio = dpFechaInicio.getValue();
+        LocalDate fechaVencimiento = dpFechaVencimiento.getValue();
+        Bebida bebidaSeleccionada = cbBebidas.getValue();
 
+        if (descripcion.isEmpty() || descuentoTexto.isEmpty() || fechaInicio == null || fechaVencimiento == null || bebidaSeleccionada == null) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos incompletos", "Completa todos los campos obligatorios.");
+            return false;
+        }
+
+        int descuento;
+        try {
+            descuento = Integer.parseInt(descuentoTexto);
+        } catch (NumberFormatException e) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Formato inválido", "El descuento debe ser un número válido.");
+            return false;
+        }
+
+        if (descuento < 1 || descuento > 100) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Descuento inválido", "El descuento debe estar entre 1 y 100.");
+            return false;
+        }
+
+        if (fechaVencimiento.isBefore(fechaInicio)) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Fechas inválidas", "La fecha de vencimiento no puede ser anterior a la fecha de inicio.");
+            return false;
+        }
+
+        return true;
+    }
 
     @FXML
     private void clicCancelar(ActionEvent event) {
         cerrarVentana();
     }
-    
-    private void cerrarVentana(){
+
+    private void cerrarVentana() {
         Utilidad.cerrarVentanaComponente(tfDescuento);
     }
-    
+
     private void cargarBebidas() {
         try {
             bebidas = FXCollections.observableArrayList(BebidaDAO.obtenerBebidas());
@@ -131,7 +133,7 @@ public class FXMLFormularioPromocionController implements Initializable {
             e.printStackTrace();
         }
     }
-    
+
     public void inicializarFormulario(Promocion promocion) {
         if (promocion != null) {
             this.promocionEnEdicion = promocion;
@@ -149,8 +151,6 @@ public class FXMLFormularioPromocionController implements Initializable {
             }
         }
     }
-    
-    private Usuario usuario;
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;

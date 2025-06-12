@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package expendioproyecto.controlador;
 
 import expendioproyecto.modelo.dao.ProveedorDAO;
@@ -17,11 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-/**
- * FXML Controller class
- *
- * @author uriel
- */
 public class FXMLFormularioProveedorController implements Initializable {
 
     @FXML
@@ -32,30 +23,25 @@ public class FXMLFormularioProveedorController implements Initializable {
     private TextField tfRazonSocial;
     @FXML
     private TextField tfCorreo;
-    
-    private Proveedor proveedorEnEdicion = null;
 
-    
-    /**
-     * Initializes the controller class.
-     */
+    private Proveedor proveedorEnEdicion = null;
+    private Usuario usuario;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        // Inicialización si es necesaria
+    }
 
     @FXML
     private void clicGuardar(ActionEvent event) {
+        if (!validarCampos()) {
+            return;
+        }
+
         String razonSocial = tfRazonSocial.getText().trim();
         String direccion = tfDireccion.getText().trim();
         String correo = tfCorreo.getText().trim();
         String telefono = tfTelefono.getText().trim();
-
-        if (razonSocial.isEmpty() || direccion.isEmpty() || correo.isEmpty() || telefono.isEmpty()) {
-            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos incompletos",
-                    "Por favor completa todos los campos.");
-            return;
-        }
 
         Proveedor proveedor = (proveedorEnEdicion == null) ? new Proveedor() : proveedorEnEdicion;
         proveedor.setRazonSocial(razonSocial);
@@ -64,15 +50,14 @@ public class FXMLFormularioProveedorController implements Initializable {
         proveedor.setTelefono(telefono);
 
         try {
-            boolean exito;
-            if (proveedorEnEdicion == null) {
-                exito = ProveedorDAO.insertarProveedor(proveedor);
-            } else {
-                exito = ProveedorDAO.modificarProveedor(proveedor);
-            }
+            boolean exito = (proveedorEnEdicion == null)
+                    ? ProveedorDAO.insertarProveedor(proveedor)
+                    : ProveedorDAO.modificarProveedor(proveedor);
 
             if (exito) {
-                String mensaje = proveedorEnEdicion == null ? "Proveedor registrado correctamente." : "Proveedor modificado correctamente.";
+                String mensaje = proveedorEnEdicion == null
+                        ? "Proveedor registrado correctamente."
+                        : "Proveedor modificado correctamente.";
                 Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Éxito", mensaje);
                 cerrarVentana();
             } else {
@@ -85,16 +70,41 @@ public class FXMLFormularioProveedorController implements Initializable {
         }
     }
 
+    private boolean validarCampos() {
+        String razonSocial = tfRazonSocial.getText().trim();
+        String direccion = tfDireccion.getText().trim();
+        String correo = tfCorreo.getText().trim();
+        String telefono = tfTelefono.getText().trim();
+
+        if (razonSocial.isEmpty() || direccion.isEmpty() || correo.isEmpty() || telefono.isEmpty()) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Campos incompletos",
+                    "Por favor completa todos los campos.");
+            return false;
+        }
+
+        if (!telefono.matches("\\d{10}")) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Teléfono inválido",
+                "El teléfono debe contener exactamente 10 dígitos numéricos.");
+            return false;
+        }
+
+        if (!correo.matches("^[\\w\\.-]+@[\\w\\.-]+\\.[a-zA-Z]{2,}$")) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.WARNING, "Correo inválido",
+                    "Ingresa un correo electrónico válido.");
+            return false;
+        }
+
+        return true;
+    }
 
     @FXML
     private void clicCancelar(ActionEvent event) {
         cerrarVentana();
     }
-    
-    private void cerrarVentana(){
+
+    private void cerrarVentana() {
         Utilidad.cerrarVentanaComponente(tfDireccion);
     }
-    
 
     public void inicializarFormulario(Proveedor proveedor) {
         if (proveedor != null) {
@@ -105,8 +115,6 @@ public class FXMLFormularioProveedorController implements Initializable {
             tfTelefono.setText(proveedor.getTelefono());
         }
     }
-
-    private Usuario usuario;
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
