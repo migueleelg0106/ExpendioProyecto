@@ -79,7 +79,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicManejarInventario(ActionEvent event) {
         try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLInventario.fxml"));
             Parent vista = cargador.load();
 
@@ -100,7 +100,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicPedidosDeClientes(ActionEvent event) {
         try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLPedidosClientes.fxml"));
             Parent vista = cargador.load();
 
@@ -121,7 +121,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicPedidosDeProveedor(ActionEvent event) {
         try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLPedidosProveedor.fxml"));
             Parent vista = cargador.load();
 
@@ -141,7 +141,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicVentas(ActionEvent event) {
         try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVenta.fxml"));
             Parent vista = cargador.load();
 
@@ -162,7 +162,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicBebidas(ActionEvent event) {
         try{
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLBebida.fxml"));
             Parent vista = cargador.load();
 
@@ -182,7 +182,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicProveedores(ActionEvent event) {
         try{
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLProveedor.fxml"));
             Parent vista = cargador.load();
 
@@ -202,7 +202,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicPromociones(ActionEvent event) {
         try{
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLPromocion.fxml"));
             Parent vista = cargador.load();
 
@@ -222,7 +222,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicCompras(ActionEvent event) {
         try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLCompra.fxml"));
             Parent vista = cargador.load();
 
@@ -243,7 +243,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicClientes(ActionEvent event) {
         try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLCliente.fxml"));
             Parent vista = cargador.load();
 
@@ -271,7 +271,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
 
         if (confirmado) {
             try {
-                Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+                Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
                 Parent vista = FXMLLoader.load(ExpendioProyecto.class.getResource("vista/FXMLIniciarSesion.fxml"));
 
                 Scene escenaPrincipal = new Scene(vista);
@@ -289,7 +289,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicMasVendido(ActionEvent event) {
         try{
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteMasVendido.fxml"));
             Parent vista = cargador.load();
 
@@ -309,7 +309,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicMenosVendido(ActionEvent event) {
         try{
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteMenosVendido.fxml"));
             Parent vista = cargador.load();
 
@@ -329,7 +329,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicMasVendidoACliente(ActionEvent event) {
         try{
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteMasVendidoACliente.fxml"));
             Parent vista = cargador.load();
 
@@ -349,7 +349,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicNoVendidoACliente(ActionEvent event) {
         try{
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteSinVenderACliente.fxml"));
             Parent vista = cargador.load();
 
@@ -370,7 +370,6 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicAgregarEmpleados(ActionEvent event) {
         try{
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLAgregarEmpleado.fxml"));
             Parent vista = cargador.load();
 
@@ -391,7 +390,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicVentasPorFecha(ActionEvent event) {
         try{
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteVentasPorFecha.fxml"));
             Parent vista = cargador.load();
 
@@ -411,7 +410,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicVentasPorProducto(ActionEvent event) {
         try{
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteVentasPorBebida.fxml"));
             Parent vista = cargador.load();
 
@@ -431,7 +430,7 @@ public class FXMLVentanaPrincipalController implements Initializable {
     @FXML
     private void clicConStockMinimo(ActionEvent event) {
         try{
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(lbSeleccionarOpcion);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(lbSeleccionarOpcion);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLReporteConStockMinimo.fxml"));
             Parent vista = cargador.load();
 

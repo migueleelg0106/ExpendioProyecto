@@ -122,7 +122,7 @@ public class FXMLCompraController implements Initializable {
         @FXML
         private void btnClicRegresar(ActionEvent event) {
             try {
-                Stage escenarioBase = Utilidad.gestEscenarioComponente(btnRegresar);
+                Stage escenarioBase = Utilidad.getEscenarioComponente(btnRegresar);
                 FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
                 Parent vista = cargador.load();
 

@@ -140,7 +140,7 @@ public class FXMLInventarioController implements Initializable {
     @FXML
     private void btnClicRegresar(ActionEvent event) {
         try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(tfBuscar); // puedes usar otro nodo si no deseas declarar btnRegresar
+            Stage escenarioBase = Utilidad.getEscenarioComponente(tfBuscar); // puedes usar otro nodo si no deseas declarar btnRegresar
 
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();

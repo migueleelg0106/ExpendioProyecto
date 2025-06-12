@@ -92,7 +92,7 @@ public class FXMLIniciarSesionController implements Initializable{
     
     private void irPantallaPrincipal(Usuario usuario){
         try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(tfUsername);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(tfUsername);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();
 

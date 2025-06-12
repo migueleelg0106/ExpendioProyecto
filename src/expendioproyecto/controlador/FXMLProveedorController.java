@@ -134,7 +134,7 @@ public class FXMLProveedorController implements Initializable {
     @FXML
     private void btnClicRegresar(ActionEvent event) {
         try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(tfBuscar);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(tfBuscar);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();
 

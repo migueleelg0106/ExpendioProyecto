@@ -7,7 +7,6 @@ package expendioproyecto.controlador;
 import expendioproyecto.ExpendioProyecto;
 import expendioproyecto.modelo.dao.ClienteDAO;
 import expendioproyecto.modelo.pojo.Cliente;
-import expendioproyecto.modelo.pojo.Cliente;
 import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
@@ -157,7 +156,7 @@ public class FXMLClienteController implements Initializable {
     @FXML
     private void btnClicRegresar(ActionEvent event) {
         try {
-            Stage escenarioBase = Utilidad.gestEscenarioComponente(btnRegresar);
+            Stage escenarioBase = Utilidad.getEscenarioComponente(btnRegresar);
             FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLVentanaPrincipal.fxml"));
             Parent vista = cargador.load();
 
