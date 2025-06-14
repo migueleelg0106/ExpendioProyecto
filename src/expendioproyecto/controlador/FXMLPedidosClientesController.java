@@ -197,7 +197,7 @@ private ComboBox<Cliente> cbCliente;
         if (seleccion != null) {
             listaPedido.remove(seleccion);
 
-            // Actualizar subtotal estimado (si lo estás usando)
+            // Actualizar subtotal estimado
             float subtotalActual = Float.parseFloat(tfSubtotal.getText().replace("$", "").trim());
             float subtotalEliminado = seleccion.getCantidad() * seleccion.getBebida().getPrecio();
             float nuevoSubtotal = subtotalActual - subtotalEliminado;

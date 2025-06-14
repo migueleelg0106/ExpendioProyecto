@@ -244,7 +244,7 @@ public class FXMLVentaController implements Initializable {
         try (Connection conexion = ConexionBD.abrirConexion()) {
             conexion.setAutoCommit(false);
 
-            crearTablaTemporalVenta(conexion); // 👈 crear temporal aquí
+            crearTablaTemporalVenta(conexion);
             insertarProductosTemporales(conexion);
 
             int folio = generarFolioUnico(conexion);
@@ -320,7 +320,6 @@ public class FXMLVentaController implements Initializable {
 
         } catch (Exception e) {
             e.printStackTrace();
-            // puedes mostrar un Alert si deseas
         }
 
         return 0; // no tiene promoción activa

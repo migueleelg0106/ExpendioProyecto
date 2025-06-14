@@ -158,7 +158,7 @@ public class FXMLPedidosProveedorAgregarController implements Initializable {
             colStockMinBebida.setCellValueFactory(new PropertyValueFactory<>("stockMinimo"));
             colDescripcionBebida.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
 
-            configurarFiltroBusqueda(); // ✅ se activa aquí
+            configurarFiltroBusqueda();
 
         } catch (Exception e) {
             e.printStackTrace();

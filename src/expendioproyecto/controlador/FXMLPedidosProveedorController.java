@@ -124,9 +124,6 @@ public class FXMLPedidosProveedorController implements Initializable {
 
             FXMLPedidosProveedorAgregarController controlador = loader.getController();
 
-            // Pasar usuario
-            controlador.setUsuario(usuario);
-
             // Pasar lista de IDs excluidos
             List<Integer> ids = listaPedidoAuto.stream()
                     .map(BebidaPedidoProveedor::getIdProducto)

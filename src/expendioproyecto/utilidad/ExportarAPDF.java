@@ -86,7 +86,7 @@ public class ExportarAPDF {
                                                  Font fontTitulo,
                                                  Font fontCelda,
                                                  boolean incluirPieDePagina,
-                                                 boolean resaltarPrimeraFila // <-- nuevo parámetro
+                                                 boolean resaltarPrimeraFila 
         ) throws IOException, DocumentException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT-6:00"));
