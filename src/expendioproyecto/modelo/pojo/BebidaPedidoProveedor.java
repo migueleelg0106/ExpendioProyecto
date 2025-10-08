@@ -4,12 +4,14 @@ import javafx.beans.property.*;
 
 public class BebidaPedidoProveedor {
 
+    private final Bebida bebida;
     private final StringProperty nombre;
     private final StringProperty descripcion;
     private final IntegerProperty cantidadSugerida;
     private final int idProducto;
 
     public BebidaPedidoProveedor(Bebida bebida) {
+        this.bebida = bebida;
         this.nombre = new SimpleStringProperty(bebida.getNombre());
         this.descripcion = new SimpleStringProperty(bebida.getDescripcion());
         this.idProducto = bebida.getIdProducto();
@@ -19,6 +21,7 @@ public class BebidaPedidoProveedor {
     }
 
     public BebidaPedidoProveedor(Bebida bebida, int cantidad) {
+        this.bebida = bebida;
         this.nombre = new SimpleStringProperty(bebida.getNombre());
         this.descripcion = new SimpleStringProperty(bebida.getDescripcion());
         this.idProducto = bebida.getIdProducto();
@@ -37,6 +40,10 @@ public class BebidaPedidoProveedor {
 
     public int getCantidadSugerida() {
         return cantidadSugerida.get();
+    }
+
+    public Bebida getBebida() {
+        return bebida;
     }
 
     public int getIdProducto() {

@@ -6,6 +6,7 @@ import expendioproyecto.modelo.ConexionBD;
 import expendioproyecto.modelo.pojo.Bebida;
 import expendioproyecto.modelo.pojo.BebidaCompra;
 import expendioproyecto.modelo.pojo.Proveedor;
+import expendioproyecto.modelo.pojo.BebidaPedidoProveedor;
 import expendioproyecto.modelo.pojo.Usuario;
 import expendioproyecto.utilidad.Utilidad;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.FloatProperty;
@@ -311,5 +313,23 @@ public class FXMLCompraController implements Initializable {
         }
     }
 
-    
+    public void cargarPedidoProveedor(List<BebidaPedidoProveedor> pedidoProveedor) {
+        listaCompra.clear();
+        totalCompra.set(0);
+
+        for (BebidaPedidoProveedor pedido : pedidoProveedor) {
+            Bebida bebida = pedido.getBebida();
+            if (bebida == null) {
+                continue;
+            }
+
+            BebidaCompra compra = new BebidaCompra(bebida, pedido.getCantidadSugerida(), bebida.getPrecio());
+            listaCompra.add(compra);
+            totalCompra.set(totalCompra.get() + compra.getSubtotal());
+        }
+
+        tfTotalCompra.setText(String.format("$ %.2f", totalCompra.get()));
+    }
+
+
 }
