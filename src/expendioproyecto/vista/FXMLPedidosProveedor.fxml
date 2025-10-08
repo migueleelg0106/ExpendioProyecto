@@ -34,6 +34,7 @@
          </font>
       </Label>
       <Button fx:id="btnAgregarBebida" layoutX="431.0" layoutY="536.0" mnemonicParsing="false" onAction="#btnCliAgregarBebida" prefHeight="49.0" prefWidth="145.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Agregar Bebida" />
+      <Button fx:id="btnGenerarCompra" layoutX="282.0" layoutY="536.0" mnemonicParsing="false" onAction="#btnClicGenerarCompra" prefHeight="49.0" prefWidth="145.0" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Generar compra" />
       <MenuButton layoutX="600.0" layoutY="545.0" mnemonicParsing="false" style="-fx-background-color: #ffa333; -fx-cursor: hand;" text="Exportar Infromación">
          <items>
             <MenuItem fx:id="btnExportarXLSX" mnemonicParsing="false" onAction="#btnClicExportarXLSX" text="EXCEL (XLSX)" />

@@ -18,6 +18,7 @@ import expendioproyecto.utilidad.Utilidad;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -67,6 +68,8 @@ public class FXMLPedidosProveedorController implements Initializable {
     private MenuItem btnExportarPDF;
     @FXML
     private Button btnAgregarBebida;
+    @FXML
+    private Button btnGenerarCompra;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -173,6 +176,33 @@ public class FXMLPedidosProveedorController implements Initializable {
             listaPedidoAuto.add(nuevo); 
         }
         tvBebidasAPedir.refresh(); // actualiza la tabla
+    }
+
+    @FXML
+    private void btnClicGenerarCompra(ActionEvent event) {
+        if (listaPedidoAuto.isEmpty()) {
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.INFORMATION, "Sin productos", "No hay bebidas en el pedido para generar una compra.");
+            return;
+        }
+
+        try {
+            Stage escenarioBase = Utilidad.getEscenarioComponente(btnGenerarCompra);
+            FXMLLoader cargador = new FXMLLoader(ExpendioProyecto.class.getResource("vista/FXMLCompra.fxml"));
+            Parent vista = cargador.load();
+
+            FXMLCompraController controlador = cargador.getController();
+            controlador.setUsuario(usuario);
+            controlador.cargarPedidoProveedor(new ArrayList<>(listaPedidoAuto));
+
+            Scene escena = new Scene(vista);
+            escenarioBase.setScene(escena);
+            escenarioBase.setTitle("Compras");
+            escenarioBase.centerOnScreen();
+            escenarioBase.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            Utilidad.mostrarAlertaSimple(Alert.AlertType.ERROR, "Error al generar compra", "Ocurrió un error al abrir la ventana de compras.");
+        }
     }
 
     @FXML
